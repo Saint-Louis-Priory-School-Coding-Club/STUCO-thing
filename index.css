@@ -1,0 +1,17 @@
+.expand-button {
+    margin-top: 10px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.upvotes {
+    min-width: 30px;
+}
+
+.card {
+    margin-top: 15px;
+}
