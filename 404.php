@@ -9,9 +9,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include '../header.html'?>
+<?php include 'header.html'?>
 <br><br><br><br>
+<div class="container-fluid text-center">
 <h1 style="color:red"><strong>404 Error: Page not found</strong></h1>
 <p>The page you are looking for doesn't exist or has been moved to a different address</p>
+</div>
 </body>
 </html>
