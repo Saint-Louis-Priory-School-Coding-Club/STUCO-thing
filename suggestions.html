@@ -1,30 +1,183 @@
+<!--INFO:
+each post has an id that starts at "post-0" and goes up. post-1, post-2, etc.
+post should be expandable by clicking anywhere on it except report/upvote buttons.
+all the upvote/downvote/comment numbers will be loaded into vars ONCE via php
+javascript will modify the vars and tell the server via ajax. they won't update until next reload.
+vote count is in a span with class .vote-number
+comment count is in class .comment-number
+u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
+-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <title>title</title>
-        <link rel="stylesheet" type="text/css" href="suggestions.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <style>
+          body {
+            background-color:#eee;
+          }
+          .post {
+              display:block;
+              margin: 20px 90px 20px 40px;
+              padding: 10px 20px;
+              background: #fff;
+          }
+          .post h1 {
+            font-size:40px;
+            margin-bottom: 0;
+          }
+          .post h2 {
+            font-size:20px;
+            color:#888;
+          }
+          .post h1 span {
+            font-size:20px;
+          }
+          .post .post-options * {
+            display:inline-block;
+          }
+          .post .post-options {
+            font-size:20px;
+            width:100%;
+            margin-bottom:5px;
+          }
+          .post .upvote {
+            background: #eee;
+            color:#ef9632;
+            text-align:center;
+          }
+          .post .upvote:hover, .post .downvote:hover {
+          	background: #ddd;
+          }
+          .post .downvote {
+            background: #eee;
+            color:#7171ed;
+            text-align:center;
+          }
+          .upvoted { /* already upvoted posts. replaces the .upvote class. */ 
+          	color: #eee;
+            background:#ef9632;
+            text-align:center;
+          }
+          .upvoted:hover {
+          	color: #eee;
+            background:#ffa642;
+            text-align:center;
+          }
+          .post .downvoted {
+            color: #eee;
+            background:#7171ed;
+            text-align:center;
+          }
+          .post .downvoted:hover {
+            color: #eee;
+            background:#5959e5;
+            text-align:center;
+          }
+          
+          .post .votecheck {
+            background: #eee;
+            color:#ef9632;
+            text-align:center;
+          }
+          .post .votecheck:hover, .post .votex:hover {
+          	background: #ddd;
+          }
+          .post .votex {
+            background: #eee;
+            color:#7171ed;
+            text-align:center;
+          }
+          .votechecked {
+          	color: #eee;
+            background:#ef9632;
+            text-align:center;
+          }
+          .votechecked:hover {
+          	color: #eee;
+            background:#ffa642;
+            text-align:center;
+          }
+          .post .votexed {
+            color: #eee;
+            background:#7171ed;
+            text-align:center;
+          }
+          .post .votexed:hover {
+            color: #eee;
+            background:#5959e5;
+            text-align:center;
+          }
+          .date {
+            text-align: right;
+            color:#666;
+          }
+          .post .vote {
+            text-align:left;
+          }
+          .post .comments {
+            text-align: center;
+          }
+          .post .report {
+            text-align:right;
+          }
+          .noselect {
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              -khtml-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+          }
+        </style>
     </head>
     <body>
-        <h1>header</h1>
+    <div class="container-fluid">
+        <h1>website thingaroon</h1>
         <br>
-        <div class="post rounded">
-            <h1>test <span class="badge badge-secondary">Suggestion</span><span class="date">3s ago</span></h1>
-            <h2>by user</h2>
+        <div class="post rounded" id="post-0">
+        	<div class="row">
+            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date">2m ago</div></div>
+            
+            <h2>by Anonymous</h2>
+            
             <p>hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p>
-            <div class="post-options row">
-                <div class="vote col-sm-4"><div class="upvote square rounded">↑</div> 43 <div class="downvote square rounded">↓</div></div>
-                <div class="comments col-sm-4">🗩 43 comments</div>
+            <div class="post-options row noselect">
+                <div class="vote col-sm-4"><div class="upvoted square rounded">↑</div> <span class="vote-number">-2</span> <div class="downvote square rounded">↓</div></div>
+                <div class="comments col-sm-4">🗩 <span class="comment-number">43</span> comments</div>
+                <div class="report col-sm-4">⚐ Report</div>
+            </div>
+        </div>
+        
+        <div class="post rounded" id="post-1">
+            <h1>bazinga <span class="badge badge-secondary">Suggestion</span><span class="date">7/12/18</span></h1>
+            <h2>by user2</h2>
+            <p>y'all mind if i dab</p>
+            <div class="post-options row noselect">
+                <div class="vote col-sm-4"><div class="upvote square rounded">↑</div> <span class="vote-number">200</span> <div class="downvoted square rounded">↓</div></div>
+                <div class="comments col-sm-4">🗩 <span class="comment-number">2</span> comments</div>
+                <div class="report col-sm-4">⚐ Report</div>
+            </div>
+        </div>
+        
+        <div class="post rounded" id="post-2">
+            <h1>can we hit 50 likes? <span class="badge badge-secondary">Poll</span><span class="date">now</span></h1>
+            <h2>by whom</h2>
+            <p>this is so sad. alexa, post your parent's credit card number in the comment section. :dab:</p>
+            <div class="post-options row noselect">
+                <div class="vote col-sm-4"><div class="upvote square rounded">✓</div> <span class="check-number">200</span> <div class="downvote square rounded">✗</div> <span class="x-number">2</span></div>
+                <div class="comments col-sm-4">🗩 <span class="comment-number">2</span> comments</div>
                 <div class="report col-sm-4">⚐ Report</div>
             </div>
         </div>
         <script>
             $(".square").width($(".square").height());
         </script>
+        </div>
     </body>
 </html>

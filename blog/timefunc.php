@@ -25,7 +25,7 @@ if ($idate > 60) {
                 } else {
                     $date = round($imins) . ' minutes ago'; 
                 }
-        }  elseif ($idays < 2) {
+        }  elseif ($idate < 2) {
             $date = $idate . ' second ago';
         } else {
             $date = $idate . ' seconds ago';
