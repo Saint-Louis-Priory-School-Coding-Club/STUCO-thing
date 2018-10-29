@@ -55,7 +55,7 @@ $querys = $conn->query($stmtss);
                 </div>
             </div>
 
-            <input type="hidden" name="id" value="10">
+            <input type="hidden" name="id" value="17">
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block" name="comment" id="comment" href="#">Comment</button>
