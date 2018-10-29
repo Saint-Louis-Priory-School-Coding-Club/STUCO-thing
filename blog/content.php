@@ -53,22 +53,19 @@ foreach ($announcments as $post) {
             <input type="hidden" name="id" value="'.$id.'">
             <input type="hidden" name="votetype'.$id.'" value="up">
             </form>
-            <button class="voteup" type="submit" form="upvoteform'.$id.'" name="vote'.$id.'">↑</button>
+            <button class="voteup" type="submit" form="upvoteform'.$id.'" name="vote'.$id.'">↑&nbsp;</button>
             </div> '.$popularity.' <div class="square rounded" style="background: '.$downvotecolor.'; color:white; text-align:center;">
             <form method="POST" id="downvoteform'.$id.'">
             <input type="hidden" name="id" value="'.$id.'">
             <input type="hidden" name="votetype'.$id.'" value="down">
             </form>
-            <button class="votedown" type="submit" form="downvoteform'.$id.'" name="vote'.$id.'">↓</button>
+            <button class="votedown" type="submit" form="downvoteform'.$id.'" name="vote'.$id.'">↓&nbsp;</button>
             </div></div>
             <div class="comments col-sm-4">
             <a href="/blog/commentfunc.php" style="text-decoration:none; color:black; hover:none; cursor:context-menu;">🗩 '.$commenttotal.' comments</a>
             </div>';
             echo '<div class="report col-sm-4">⚐ Report</div>
         </div>
-    </div>
-    <script>
-        $(".square").width($(".square").height());
-    </script>';
+    </div>';
 }
 ?>
