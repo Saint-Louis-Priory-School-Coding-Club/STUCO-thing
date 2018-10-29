@@ -81,11 +81,42 @@ u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on wha
             background:#5959e5;
             text-align:center;
           }
-          .vote-check {
           
+          .post .votecheck {
+            background: #eee;
+            color:#ef9632;
+            text-align:center;
+          }
+          .post .votecheck:hover, .post .votex:hover {
+          	background: #ddd;
+          }
+          .post .votex {
+            background: #eee;
+            color:#7171ed;
+            text-align:center;
+          }
+          .votechecked {
+          	color: #eee;
+            background:#ef9632;
+            text-align:center;
+          }
+          .votechecked:hover {
+          	color: #eee;
+            background:#ffa642;
+            text-align:center;
+          }
+          .post .votexed {
+            color: #eee;
+            background:#7171ed;
+            text-align:center;
+          }
+          .post .votexed:hover {
+            color: #eee;
+            background:#5959e5;
+            text-align:center;
           }
           .date {
-            float: right;
+            text-align: right;
             color:#666;
           }
           .post .vote {
@@ -112,8 +143,11 @@ u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on wha
         <h1>website thingaroon</h1>
         <br>
         <div class="post rounded" id="post-0">
-            <h1>test <span class="badge badge-secondary">Test</span><span class="date">2m ago</span></h1>
+        	<div class="row">
+            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date">2m ago</div></div>
+            
             <h2>by Anonymous</h2>
+            
             <p>hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p>
             <div class="post-options row noselect">
                 <div class="vote col-sm-4"><div class="upvoted square rounded">↑</div> <span class="vote-number">-2</span> <div class="downvote square rounded">↓</div></div>
