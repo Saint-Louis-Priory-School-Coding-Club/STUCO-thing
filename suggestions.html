@@ -3,6 +3,12 @@ each post has an id that starts at "post-0" and goes up. post-1, post-2, etc.
 post should be expandable by clicking anywhere on it except report/upvote buttons.
 all the upvote/downvote/comment numbers will be loaded into vars ONCE via php
 javascript will modify the vars and tell the server via ajax. they won't update until next reload.
+-Tariqs Thoughts (What I did on the blog page, which is fully functional btw, is all with php, i
+decided to track if someone had voted already or not with cookies, it also functions for color change
+i am working on automatically adding a new page for each post, and it is working, just getting comments to
+function. I dont think there is any need for ajax because standard php can do it all, reducing the ammount of
+things in the code. just my thoughts PS like your styling for the post, kind of stole it for the blog, but
+thats ok because it makes it consistent)
 vote count is in a span with class .vote-number
 comment count is in class .comment-number
 u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
