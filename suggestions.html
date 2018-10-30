@@ -6,7 +6,10 @@ all the upvote/downvote/comment numbers will be loaded into vars ONCE via php
 javascript will modify the vars and tell the server via ajax. they won't update until next reload.
 vote count is in a span with class .vote-number
 comment count is in class .comment-number
+x / check count is in class .check-number and .x-number
 u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
+i set the min page width to around 640px (iphone 5 width) and max POST width (Not page) to 1000px
+REMINDER: THERE MUST BE A SPACE AFTER THE TITLE which i haven't even put in a span yet lmoa
 -->
 <!--
 Tariqs Thoughts (What I did on the blog page, which is fully functional btw, is all with php, i
@@ -19,7 +22,6 @@ response:
 ok cool man
 I need to replace the unicode characters with glyphicons at some point, the comment bubble doesn't show up on mac
 going to add some more styling and yeah should be good
-and it would be nice if someone worked on mobile compatibality, mine doesn't like it muchly
 t h a n k
 -->
 <!DOCTYPE html>
@@ -36,15 +38,19 @@ t h a n k
           body {
             background-color:#eee;
           }
+          html {
+          	min-width:620px;
+          }
           .post {
               display:block;
-              margin: 20px 90px 20px 40px;
+              margin: 20px 40px;
               padding: 10px 20px;
               background: #fff;
+              max-width:1000px;
           }
           .post h1 {
             font-size:40px;
-            margin-bottom: 0;
+            margin-bottom: 5px;
           }
           .post h2 {
             font-size:20px;
@@ -97,7 +103,7 @@ t h a n k
           
           .post .votecheck {
             background: #eee;
-            color:#ef9632;
+            color:#30e52d;
             text-align:center;
           }
           .post .votecheck:hover, .post .votex:hover {
@@ -105,28 +111,24 @@ t h a n k
           }
           .post .votex {
             background: #eee;
-            color:#7171ed;
+            color:#e03c2a;
             text-align:center;
           }
           .votechecked {
           	color: #eee;
-            background:#ef9632;
+            background:#30e52d;
             text-align:center;
           }
           .votechecked:hover {
-          	color: #eee;
-            background:#ffa642;
-            text-align:center;
+            background:#1fc91c;
           }
           .post .votexed {
             color: #eee;
-            background:#7171ed;
+            background:#e03c2a;
             text-align:center;
           }
           .post .votexed:hover {
-            color: #eee;
-            background:#5959e5;
-            text-align:center;
+            background:#cc2c1a;
           }
           .date {
             text-align: right;
@@ -149,6 +151,14 @@ t h a n k
               -ms-user-select: none;
               user-select: none;
           }
+          .verifycheck {
+          	background-color:#a2f2e8;
+            display:inline-block;
+            text-align:center;
+          }
+          .circle {
+          	border-radius:50%;
+          }
         </style>
     </head>
     <body>
@@ -157,7 +167,7 @@ t h a n k
         <br>
         <div class="post rounded" id="post-0" post-id=213534>
         	<div class="row">
-            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date"><h5>2m ago</h5></div></div>
+            <div class="col-sm-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
             
             <h2>by Anonymous</h2>
             
@@ -171,33 +181,44 @@ t h a n k
         
        	<div class="post rounded" id="post-1" post-id=61346>
         	<div class="row">
-            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date"><h5>2m ago</h5></div></div>
-            
+            <div class="col-sm-8"><h1>slals <span class="badge badge-secondary">Suggestion</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
             <h2>by User123</h2>
-            
             <p>hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p>
             <div class="post-options row noselect">
-                <div class="vote col-sm-4"><div class="upvoted square rounded">↑</div> <span class="vote-number">-2</span> <div class="downvote square rounded">↓</div></div>
+                <div class="vote col-sm-4"><div class="upvote square rounded">↑</div> <span class="vote-number">24</span> <div class="downvoted square rounded">↓</div></div>
                 <div class="comments col-sm-4">🗩 <span class="comment-number">43</span> comments</div>
                 <div class="report col-sm-4">⚐ Report</div>
             </div>
         </div>
+        
         <div class="post rounded" id="post-2" post-id=01240>
         	<div class="row">
-            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date"><h5>2m ago</h5></div></div>
-            
-            <h2>by Moderator man</h2>
-            
-            <p>hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p>
+            <div class="col-sm-8"><h1>tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <h2>by Mr. STUCO Member <div class="verifycheck square circle">✓</div></h2>
+            <p>is despaito just grand</p>
             <div class="post-options row noselect">
-                <div class="vote col-sm-4"><div class="upvoted square rounded">↑</div> <span class="vote-number">-2</span> <div class="downvote square rounded">↓</div></div>
+                <div class="vote col-sm-4"><div class="votechecked square rounded">✓</div> <span class="vote-number">432</span> <div class="votex square rounded">✕</div> <span class="x-number">1</span></div>
+                <div class="comments col-sm-4">🗩 <span class="comment-number">43</span> comments</div>
+                <div class="report col-sm-4">⚐ Report</div>
+            </div>
+        </div>
+        
+                <div class="post rounded" id="post-3" post-id=12344>
+        	<div class="row">
+            <div class="col-sm-8"><h1>fraf <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <h2>by Moderator man</h2>
+            <p>hwe live in a bobiety</p>
+            <div class="post-options row noselect">
+                <div class="vote col-sm-4"><div class="votecheck square rounded">✓</div> <span class="vote-number">12</span> <div class="votexed square rounded">✕</div> <span class="x-number">2</span></div>
                 <div class="comments col-sm-4">🗩 <span class="comment-number">43</span> comments</div>
                 <div class="report col-sm-4">⚐ Report</div>
             </div>
         </div>
         
         <script>
-            $(".square").width($(".square").height());
+            $('.square').each(function() {
+                $(this).width($(this).height());
+            });
         </script>
         </div>
     </body>
