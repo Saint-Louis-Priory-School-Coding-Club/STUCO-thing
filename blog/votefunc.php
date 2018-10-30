@@ -60,7 +60,7 @@ foreach ($posts as $ind) {
                     setcookie($postcookie, json_encode($cookievalue));
                 }
         }
-        echo '<meta http-equiv="Refresh" content="0">';
+        echo '<meta http-equiv="Refresh" content="0; url=#'.$id.'">';
     }
 }
 ?>

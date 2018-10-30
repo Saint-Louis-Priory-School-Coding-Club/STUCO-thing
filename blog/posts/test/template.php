@@ -4,6 +4,15 @@ $posts = $conn->query('SELECT * FROM blog WHERE id =17');
 $post = mysqli_fetch_array($posts, MYSQLI_ASSOC);
 $idate = time() - $post['date'];
 include '../../timefunc.php';
+if (isset($_POST["delete"])) {
+    $sql = $conn->query("DELETE * FROM blog WHERE id =17");
+    unlink("index.php");
+    rmdir("../17");
+    $var1 = <<<str
+<meta http-equiv="Refresh" content="0; url=/">
+str;
+    echo $var1;
+}
 ?>
 <!DOCTYPE html>
 <html>

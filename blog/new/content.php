@@ -18,6 +18,15 @@ if (isset($_POST['add'])) {
     $post = mysqli_fetch_array($posts, MYSQLI_ASSOC);
     $idate = time() - $post["date"];
     include "../../timefunc.php";
+    if (isset($_POST["delete"])) {
+        $sql = $conn->query("DELETE FROM blog WHERE id ='.$id.'");
+        unlink("index.php");
+        rmdir("../'.$id.'");
+        $var1 = <<<str
+<meta http-equiv="Refresh" content="0; url=/blog">
+str;
+    echo $var1;
+    }
     ?>
     <!DOCTYPE html>
     <html>
@@ -33,10 +42,11 @@ if (isset($_POST['add'])) {
         </head>
         <body>
             <?php include "../../../header.html"?>
+            <form method="POST" id="delete" name="delete"></form>
             <br>
             <div class="container-fluid">
                 <div class="container">
-                <h4 class="float-right"><?php echo $date; ?></h4><h1><?php echo $post["title"]; ?></h1>
+                <button form="delete" type="submit" name="delete" class="float-right btn btn-danger">Delete Post</button><h4 class="float-right"><?php echo $date; ?></h4><h1><?php echo $post["title"]; ?></h1>
                     <p>By <?php echo $post["author"]; ?></p>
                 </div>
                 <div class="container">
@@ -50,12 +60,12 @@ if (isset($_POST['add'])) {
                 <!--@if(count($comments) > 0)
                 @foreach($comments as $comment)-->
                 <?php 
-                $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id=17");
+                $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id='.$id.'");
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $stmt->close();
                 $commentc = $result->num_rows;
-                $comments = $conn->query("SELECT * FROM comments WHERE post_id=17");
+                $comments = $conn->query("SELECT * FROM comments WHERE post_id='.$id.'");
                 if ($commentc > 0) {
                     foreach ($comments as $comment) {
                         $ctitle = $comment["title"];

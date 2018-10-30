@@ -3,7 +3,7 @@ include 'dbconnect.php';
 include 'votefunc.php';
 ?>
 <div class="container-fluid text-center">
-<h1>Announcments:</h1>
+<a class="float-right btn btn-primary" href="/blog/new">Add</a><h1>Announcments:</h1>
 </div>
 <?php
 $announcments = $conn->query("SELECT * FROM blog");
@@ -42,8 +42,8 @@ foreach ($announcments as $post) {
             $downvotecolor = '#aaa';
         }
     echo '
-    <div class="post rounded">
-        <h1>'.$title.'<span class="date">'.$date.'</span></h1>
+    <div class="post rounded" id="'.$id.'">
+        <h1><a href="/blog/posts/'.$id.'" style="text-decoration:none; color:black; hover:none; cursor:context-menu;">'.$title.'</a><span class="date">'.$date.'</span></h1>
         <h2>by '.$name.'</h2>
         <p>'.$content.'</p>
         <div class="post-options row">
