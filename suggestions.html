@@ -1,17 +1,26 @@
 <!--INFO:
 each post has an id that starts at "post-0" and goes up. post-1, post-2, etc.
+I think you can also have custom html tags so there would be a post-id tag with the server's id for that post.
 post should be expandable by clicking anywhere on it except report/upvote buttons.
 all the upvote/downvote/comment numbers will be loaded into vars ONCE via php
 javascript will modify the vars and tell the server via ajax. they won't update until next reload.
--Tariqs Thoughts (What I did on the blog page, which is fully functional btw, is all with php, i
+vote count is in a span with class .vote-number
+comment count is in class .comment-number
+u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
+-->
+<!--
+Tariqs Thoughts (What I did on the blog page, which is fully functional btw, is all with php, i
 decided to track if someone had voted already or not with cookies, it also functions for color change
 i am working on automatically adding a new page for each post, and it is working, just getting comments to
 function. I dont think there is any need for ajax because standard php can do it all, reducing the ammount of
 things in the code. just my thoughts PS like your styling for the post, kind of stole it for the blog, but
 thats ok because it makes it consistent)
-vote count is in a span with class .vote-number
-comment count is in class .comment-number
-u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
+response:
+ok cool man
+I need to replace the unicode characters with glyphicons at some point, the comment bubble doesn't show up on mac
+going to add some more styling and yeah should be good
+and it would be nice if someone worked on mobile compatibality, mine doesn't like it muchly
+t h a n k
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -144,11 +153,11 @@ u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on wha
     </head>
     <body>
     <div class="container-fluid">
-        <h1>website thingaroon</h1>
+        <h1>stucospacito</h1>
         <br>
-        <div class="post rounded" id="post-0">
+        <div class="post rounded" id="post-0" post-id=213534>
         	<div class="row">
-            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date">2m ago</div></div>
+            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date"><h5>2m ago</h5></div></div>
             
             <h2>by Anonymous</h2>
             
@@ -160,27 +169,33 @@ u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on wha
             </div>
         </div>
         
-        <div class="post rounded" id="post-1">
-            <h1>bazinga <span class="badge badge-secondary">Suggestion</span><span class="date">7/12/18</span></h1>
-            <h2>by user2</h2>
-            <p>y'all mind if i dab</p>
+       	<div class="post rounded" id="post-1" post-id=61346>
+        	<div class="row">
+            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date"><h5>2m ago</h5></div></div>
+            
+            <h2>by User123</h2>
+            
+            <p>hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p>
             <div class="post-options row noselect">
-                <div class="vote col-sm-4"><div class="upvote square rounded">↑</div> <span class="vote-number">200</span> <div class="downvoted square rounded">↓</div></div>
-                <div class="comments col-sm-4">🗩 <span class="comment-number">2</span> comments</div>
+                <div class="vote col-sm-4"><div class="upvoted square rounded">↑</div> <span class="vote-number">-2</span> <div class="downvote square rounded">↓</div></div>
+                <div class="comments col-sm-4">🗩 <span class="comment-number">43</span> comments</div>
+                <div class="report col-sm-4">⚐ Report</div>
+            </div>
+        </div>
+        <div class="post rounded" id="post-2" post-id=01240>
+        	<div class="row">
+            <div class="col-sm-6"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-6 date"><h5>2m ago</h5></div></div>
+            
+            <h2>by Moderator man</h2>
+            
+            <p>hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p>
+            <div class="post-options row noselect">
+                <div class="vote col-sm-4"><div class="upvoted square rounded">↑</div> <span class="vote-number">-2</span> <div class="downvote square rounded">↓</div></div>
+                <div class="comments col-sm-4">🗩 <span class="comment-number">43</span> comments</div>
                 <div class="report col-sm-4">⚐ Report</div>
             </div>
         </div>
         
-        <div class="post rounded" id="post-2">
-            <h1>can we hit 50 likes? <span class="badge badge-secondary">Poll</span><span class="date">now</span></h1>
-            <h2>by whom</h2>
-            <p>this is so sad. alexa, post your parent's credit card number in the comment section. :dab:</p>
-            <div class="post-options row noselect">
-                <div class="vote col-sm-4"><div class="upvote square rounded">✓</div> <span class="check-number">200</span> <div class="downvote square rounded">✗</div> <span class="x-number">2</span></div>
-                <div class="comments col-sm-4">🗩 <span class="comment-number">2</span> comments</div>
-                <div class="report col-sm-4">⚐ Report</div>
-            </div>
-        </div>
         <script>
             $(".square").width($(".square").height());
         </script>
