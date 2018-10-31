@@ -24,11 +24,6 @@ I need to replace the unicode characters with glyphicons at some point, the comm
 going to add some more styling and yeah should be good
 t h a n k
 -->
-<!--TODO
-Change verify check colors
-add verify check to posts
-change unicode characters to glyphicons (however)
--->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -157,9 +152,13 @@ change unicode characters to glyphicons (however)
               user-select: none;
           }
           .verifycheck {
-          	background-color:#a2f2e8;
+          	background-color:#2fc5fc;
             display:inline-block;
             text-align:center;
+            color:white;
+          }
+          h1 .verifycheck {
+          	font-size:25px;
           }
           .circle {
           	border-radius:50%;
@@ -198,8 +197,8 @@ change unicode characters to glyphicons (however)
         
         <div class="post rounded" id="post-2" post-id=01240>
         	<div class="row">
-            <div class="col-sm-8"><h1>tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
-            <h2>by Mr. STUCO Member <div class="verifycheck square circle noselect">✓</div></h2>
+            <div class="col-sm-8"><h1><div class="verifycheck square circle">✓</div> tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <h2>by Mr. STUCO Member <div class="verifycheck square circle">✓</div></h2>
             <p>is despaito just grand</p>
             <div class="post-options row noselect">
                 <div class="vote col-sm-4"><div class="votechecked square rounded">✓</div> <span class="vote-number">432</span> <div class="votex square rounded">✕</div> <span class="x-number">1</span></div>
