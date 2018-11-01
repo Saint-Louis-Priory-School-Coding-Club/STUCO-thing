@@ -1,17 +1,14 @@
 <?php 
 include '../../dbconnect.php';
-$posts = $conn->query('SELECT * FROM blog WHERE id =17');
+$posts = $conn->query("SELECT * FROM blog WHERE id =$id");
 $post = mysqli_fetch_array($posts, MYSQLI_ASSOC);
-$idate = time() - $post['date'];
+$isdate = time() - $post['date'];
 include '../../timefunc.php';
 if (isset($_POST["delete"])) {
-    $sql = $conn->query("DELETE * FROM blog WHERE id =17");
+    $sql = $conn->query("DELETE * FROM blog WHERE id =$id");
     unlink("index.php");
-    rmdir("../17");
-    $var1 = <<<str
-<meta http-equiv="Refresh" content="0; url=/">
-str;
-    echo $var1;
+    rmdir("../$id");
+    echo '<meta http-equiv="Refresh" content="0; url=/">';
 }
 ?>
 <!DOCTYPE html>
@@ -45,12 +42,12 @@ str;
                 <!--@if(count($comments) > 0)
                 @foreach($comments as $comment)-->
                 <?php 
-                $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id=17");
+                $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id=$id");
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $stmt->close();
                 $commentc = $result->num_rows;
-                $comments = $conn->query("SELECT * FROM comments WHERE post_id=17");
+                $comments = $conn->query("SELECT * FROM comments WHERE post_id=$id");
                 if ($commentc > 0) {
                     foreach ($comments as $comment) {
                         echo '
@@ -61,9 +58,7 @@ str;
                         ';
                     }
                 } else {
-                    echo $string = <<<STRINGS
-                    <h3 style="color:red">No Comments</h3>
-STRINGS;
+                    echo '<h3 style="color:red">No Comments</h3>';
                 }
                 ?>
                 </div>

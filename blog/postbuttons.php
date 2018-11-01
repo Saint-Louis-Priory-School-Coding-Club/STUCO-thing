@@ -3,9 +3,9 @@ $posts = $conn->query("SELECT * FROM blog");
 //$posts = mysqli_fetch_array($postsraw, MYSQLI_ASSOC);
 foreach ($posts as $ind) {
     $id = $ind['id'];
+    $postraw = $conn->query("SELECT * FROM blog WHERE id=$id");
+    $post = mysqli_fetch_array($postraw, MYSQLI_ASSOC);
     if (isset($_POST['vote'.$id])) {
-        $postraw = $conn->query("SELECT * FROM blog WHERE id=$id");
-        $post = mysqli_fetch_array($postraw, MYSQLI_ASSOC);
         $postcookie = 'vote' . $id;
         if (isset($_COOKIE[$postcookie])) {
             $data = json_decode($_COOKIE[$postcookie]);
@@ -59,6 +59,26 @@ foreach ($posts as $ind) {
                     $cookievalue = ['neither', '#aaa'];
                     setcookie($postcookie, json_encode($cookievalue));
                 }
+        }
+        echo '<meta http-equiv="Refresh" content="0; url=#'.$id.'">';
+    }
+    if(isset($_POST['report'.$id])) {
+
+        if(isset($_COOKIE['report'.$id])) {
+            $cdata = json_decode($_COOKIE['report'.$id]);
+        } else {
+            $cdata = ['notset', 'black'];
+        }
+        if ($cdata[0] == 'notset') {
+            $reportval = ['reported', 'red'];
+            setcookie('report'.$id, json_encode($reportval));
+            $change = $post['reports'] + 1;
+            $sql = $conn->query("UPDATE blog SET reports=$change WHERE id=$id");
+        } else {
+            $reportval = ['notset', 'black'];
+            setcookie('report'.$id, json_encode($reportval));
+            $change = $post['reports'] - 1;
+            $sql = $conn->query("UPDATE blog SET reports=$change WHERE id=$id");
         }
         echo '<meta http-equiv="Refresh" content="0; url=#'.$id.'">';
     }

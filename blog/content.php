@@ -1,9 +1,26 @@
 <?php 
 include 'dbconnect.php';
-include 'votefunc.php';
+include 'postbuttons.php';
 ?>
 <div class="container-fluid text-center">
-<a class="float-right btn btn-primary" href="/blog/new">Add</a><h1>Announcments:</h1>
+<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#announcmentm">
+Add
+</button><h1>Announcments:</h1>
+</div>
+<div class="modal fade" id="announcmentm" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Announcment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php include 'create.php' ?>
+      </div>
+    </div>
+  </div>
 </div>
 <?php
 $announcments = $conn->query("SELECT * FROM blog");
@@ -12,7 +29,7 @@ foreach ($announcments as $post) {
     $title = $post['title'];
     $content = $post['content'];
     $name = $post['author'];
-    $idate = time() - $post['date'];
+    $isdate = time() - $post['date'];
     include 'timefunc.php';
     $comments = $conn->query("SELECT * FROM comments WHERE post_id=$id");
     $commenttotal = 0;
@@ -41,8 +58,15 @@ foreach ($announcments as $post) {
         } else {
             $downvotecolor = '#aaa';
         }
+    if(isset($_COOKIE['report'.$id])) {
+        $decodedreport = json_decode($_COOKIE['report'.$id]);
+        $reportcolor= $decodedreport[1];
+    } else {
+        $reportcolor = 'black';
+    }
     echo '
     <div class="post rounded" id="'.$id.'">
+        <form method="POST" id="reportform'.$id.'"></form>
         <h1><a href="/blog/posts/'.$id.'" style="text-decoration:none; color:black; hover:none; cursor:context-menu;">'.$title.'</a><span class="date">'.$date.'</span></h1>
         <h2>by '.$name.'</h2>
         <p>'.$content.'</p>
@@ -64,7 +88,7 @@ foreach ($announcments as $post) {
             <div class="comments col-sm-4">
             <a href="/blog/commentfunc.php" style="text-decoration:none; color:black; hover:none; cursor:context-menu;">🗩 '.$commenttotal.' comments</a>
             </div>';
-            echo '<div class="report col-sm-4">⚐ Report</div>
+            echo '<div class="report col-sm-4"><button type="submit" form="reportform'.$id.'" name="report'.$id.'" style="background: transparent; border:none; color:'.$reportcolor.'">⚐ Report</button></div>
         </div>
     </div>';
 }
