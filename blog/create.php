@@ -1,9 +1,9 @@
 <?php 
 if (isset($_POST['add'])) {
     include 'dbconnect.php';
-    $title = $_POST['title'];
-    $author = $_POST['author'];
-    $content = $_POST['content'];
+    $title = mysqli_real_escape_string($conn,$_POST['title']);
+    $author = mysqli_real_escape_string($conn,$_POST['author']);
+    $content = mysqli_real_escape_string($conn,$_POST['content']);
     $date = time();
     $stmts = "INSERT INTO blog (title,content,author,date) VALUES('". $title ."', '". $content ."', '". $author ."', '". $date ."')";
     $query = $conn->query($stmts);
@@ -13,7 +13,7 @@ if (isset($_POST['add'])) {
     mkdir('posts/'.$id);
     $filecreate = fopen('posts/'.$id.'/index.php', 'x') or die('Unable to open file!');
     $template = file_get_contents('template.php');
-    $text = str_replace('$id', $id, $template);
+    $text = str_replace('$inputid', $id, $template);
     fwrite($filecreate, $text);
     echo '<meta http-equiv="Refresh" content="0; url=posts/'.$id.'">';
 }

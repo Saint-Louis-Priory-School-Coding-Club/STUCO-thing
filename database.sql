@@ -45,8 +45,9 @@ CREATE TABLE `blog` (
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`id`, `title`, `author`, `date`, `content`, `upvote`, `downvote`) VALUES
-('1', 'Lunch Schedule', 'Tariq', '1541092058', 'We have redone the lunch schedule to include free money. Your welcome.', '1653', '0', '0')
+INSERT INTO `blog` (`id`, `title`, `author`, `date`, `content`, `upvote`, `downvote`, `reports`) VALUES
+(1, 'Lunch Schedule', 'Tariq', 1541092058, 'We have redone the lunch schedule to include free money. Your welcome.', 1, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -103,13 +104,14 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ALTER TABLE `comments` ADD `date` INT NOT NULL AFTER `content`;
 
 --
 -- AUTO_INCREMENT for table `users`

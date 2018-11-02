@@ -1,14 +1,15 @@
 <?php 
 include '../../dbconnect.php';
+$id = $inputid;
 $posts = $conn->query("SELECT * FROM blog WHERE id =$id");
 $post = mysqli_fetch_array($posts, MYSQLI_ASSOC);
 $isdate = time() - $post['date'];
 include '../../timefunc.php';
 if (isset($_POST["delete"])) {
-    $sql = $conn->query("DELETE * FROM blog WHERE id =$id");
+    $sql = $conn->query("DELETE FROM blog WHERE id =$id");
     unlink("index.php");
-    rmdir("../$id");
-    echo '<meta http-equiv="Refresh" content="0; url=/">';
+    rmdir("../".$id);
+    echo '<meta http-equiv="Refresh" content="0; url=/blog">';
 }
 ?>
 <!DOCTYPE html>
@@ -24,11 +25,12 @@ if (isset($_POST["delete"])) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body>
+        <form method="POST" id="deleteform"></form>
         <?php include '../../../header.html'?>
         <br>
         <div class="container-fluid">
             <div class="container">
-            <h4 class="float-right"><?php echo $date; ?></h4><h1><?php echo $post['title']; ?></h1>
+            <button type="submit" form="deleteform" name="delete" class="btn btn-danger">Delete</button><h4 class="float-right"><?php echo $date; ?></h4><h1><?php echo $post['title']; ?></h1>
                 <p>By <?php echo $post['author']; ?></p>
             </div>
             <div class="container">
@@ -39,30 +41,14 @@ if (isset($_POST["delete"])) {
                 <h1 style="color:grey"><br>Comments:</h1>
                 </div>
                 <div class="container">
-                <!--@if(count($comments) > 0)
-                @foreach($comments as $comment)-->
                 <?php 
-                $stmt = $conn->prepare("SELECT * FROM comments WHERE post_id=$id");
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $stmt->close();
-                $commentc = $result->num_rows;
-                $comments = $conn->query("SELECT * FROM comments WHERE post_id=$id");
-                if ($commentc > 0) {
-                    foreach ($comments as $comment) {
-                        echo '
-                        <h3>'.$comment['title'].'</h3>
-                        <p>'.$comment['content'].'</p>
-                        <small>Written by '.$comment['author'].'</small>
-                        <hr>
-                        ';
-                    }
-                } else {
-                    echo '<h3 style="color:red">No Comments</h3>';
-                }
+                include '../../pagination.php';
+                $paginate = new Paginater();
+                $paginate->paginate('comments', 5, $id);
                 ?>
                 </div>
                 <h2>Add Comment:</h2>
+                <?php include '../../commentfunc.php'?>
             </div>
     </body>
 </html>
