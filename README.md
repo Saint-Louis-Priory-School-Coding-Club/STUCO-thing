@@ -1,4 +1,4 @@
-There is a live version of the site currently at gzghost.me (last updated 10/30/18)
+There is a live version of the site currently at bacaww.host (last updated 11/03/18)
 
 In order to properly set up the website with the PHP databases on your personal machine
 you must import the database via the file labeled "database.sql". If you make changes to the database, 
