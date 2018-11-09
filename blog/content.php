@@ -1,8 +1,3 @@
-<?php 
-include 'dbconnect.php';
-include 'postbuttons.php';
-include 'pagination.php';
-?>
 <div class="container-fluid text-center">
 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#announcmentm">
 Add
@@ -26,5 +21,5 @@ Add
 <?php
 $sql = $conn->query("SELECT id FROM blog");
 $pager = new Paginater();
-$pager->paginate('blog', 5, $id);
+$pager->paginate('blog', 5);
 ?>

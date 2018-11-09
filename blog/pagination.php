@@ -1,13 +1,13 @@
 <?php
 class Paginater {
-    function paginate(string $dtable, $rowsperpage, $id) {
+    function paginate(string $dtable, $rowsperpage, $id = 'blog') {
 include $_SERVER['DOCUMENT_ROOT'].'/blog/dbconnect.php';
 switch ($dtable) {
     case "comments":
         $idtype = 'WHERE post_id ='.$id;
     break;
     case "blog":
-        $idtype = 'id';
+        $idtype = NULL;
     break;
     default:
         $idtype = NULL;

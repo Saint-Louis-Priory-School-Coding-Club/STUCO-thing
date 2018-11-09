@@ -14,7 +14,7 @@ if ($isdate > 60) {
                     } elseif ($idays < 2) {
                         $date = round($idays) . ' day ago';
                     } else {
-                        $date = round($idays) . ' day ago';
+                        $date = round($idays) . ' days ago';
                     }
                 } else {
                     $date = round($ihours) . ' hours ago';

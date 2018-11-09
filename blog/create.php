@@ -1,6 +1,5 @@
 <?php 
 if (isset($_POST['add'])) {
-    include 'dbconnect.php';
     $title = mysqli_real_escape_string($conn,$_POST['title']);
     $author = mysqli_real_escape_string($conn,$_POST['author']);
     $content = mysqli_real_escape_string($conn,$_POST['content']);
