@@ -16,6 +16,7 @@ Using Font Awesome instead of unicode, some icons look off since only some are a
 -->
 <!--
 Overflow (more than 400 char) is handled automatically by JS.
+I WROTE CODE TO IGNORE <> IN PARAGRAPH BODIES. Add precaution to avoid it in names and titles too.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -227,7 +228,17 @@ Overflow (more than 400 char) is handled automatically by JS.
                 $(this).width($(this).height());  // set the width to the height
             });
             $('.post-body').each(function() {
-            	// put code here lol
+            	var orig = $(this).html();  // original text
+                var newtxt = "";  // fixed text
+                var char = "";
+                for (var i = 0; i < orig.length; i++) {
+                	char = orig.charAt(i);  // character
+                    if (char == "<") {
+                    	char = "&lt;";
+                    }
+                    newtxt += char;
+                }
+                $(this).html(newtxt);
             });
             $('.post-body').each(function() {  // for each .post-body
             	var length = $(this).text().length;
