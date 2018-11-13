@@ -226,11 +226,14 @@ Overflow (more than 400 char) is handled automatically by JS.
             $('.square').each(function() {  // for each .square
                 $(this).width($(this).height());  // set the width to the height
             });
+            $('.post-body').each(function() {
+            	// put code here lol
+            });
             $('.post-body').each(function() {  // for each .post-body
             	var length = $(this).text().length;
                 if ($(this).text().length > 400) { // if more than 400 characters
-                	alert($(this).text().slice(0, 400));  // first 400 chars
-                    alert($(this).text().slice(400, length));  // last chars
+                	alert($(this).text().slice(0, 400));
+                    alert($(this).text().slice(400, length));
                 }
             });
         </script>
