@@ -16,7 +16,6 @@ Using Font Awesome instead of unicode, some icons look off since only some are a
 -->
 <!--
 Overflow (more than 400 char) is handled automatically by JS.
-I WROTE CODE TO IGNORE <> IN PARAGRAPH BODIES. Add precaution to avoid it in names and titles too.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -169,17 +168,28 @@ I WROTE CODE TO IGNORE <> IN PARAGRAPH BODIES. Add precaution to avoid it in nam
         </style>
     </head>
     <body>
-    <div class="container-fluid">
+    <!-- first post will have full comments so you can see the inner workings -->
+    <!-- text classes:
+    < title tag broken for some reason >
+    .author : author of post
+    .post-body : content
+    .vote-number : upvote count
+    .comment-number : comment count
+    post body overflow is auto-handled, add code to prevent XSS attacks
+    -->
+    <div class="container-fluid"> <!--full body page-->
         <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
         <br>
         <div class="post rounded" id="post-0" post-id=213534>
         	<div class="row">
             <div class="col-sm-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
             
-            <h2>by Anonymous</h2>
+            <h2>by <span class="author">Anonymous</span></h2>
             
-            <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user helloo<b>...</b></p>
-            <button type="button" class="btn btn-dark read-more">Read more</button>
+            <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a usesjadhvoaudshgcinuehgiadhsinudhsfgjklhdflkjghskljfsdhglkjsdfhdfhr hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hellooo00007967857856846865<p>
+            <button type="button" class="btn btn-dark read-more">Show More</button>
+            <p class="show-more-txt">text lol</p>
+            </div>
             <div class="post-options row noselect">
                 <div class="vote col-sm-4"><div class="upvoted square rounded"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded"><i class="fas fa-arrow-down"></i></div></div>
                 <div class="comments col-sm-4"><i class="far fa-comments"></i> <span class="comment-number">43</span> comments</div>
@@ -227,7 +237,7 @@ I WROTE CODE TO IGNORE <> IN PARAGRAPH BODIES. Add precaution to avoid it in nam
             $('.square').each(function() {  // for each .square
                 $(this).width($(this).height());  // set the width to the height
             });
-            $('.post-body').each(function() {
+            $('.post-body').each(function() { // last resort XSS preventer
             	var orig = $(this).html();  // original text
                 var newtxt = "";  // fixed text
                 var char = "";
@@ -240,11 +250,13 @@ I WROTE CODE TO IGNORE <> IN PARAGRAPH BODIES. Add precaution to avoid it in nam
                 }
                 $(this).html(newtxt);
             });
-            $('.post-body').each(function() {  // for each .post-body
-            	var length = $(this).text().length;
-                if ($(this).text().length > 400) { // if more than 400 characters
-                	alert($(this).text().slice(0, 400));
-                    alert($(this).text().slice(400, length));
+            $('.post-body-container').each(function() {  // for each .post-body
+            	var postbody = $(this).children("p")[0];
+                alert(postbody);
+            	var leng = postbody.text().length;
+                if (leng > 400) { // if more than 400 characters
+                	alert(postbody.text().slice(0, 400));
+                    alert(postbody.text().slice(400, leng));
                 }
             });
         </script>
