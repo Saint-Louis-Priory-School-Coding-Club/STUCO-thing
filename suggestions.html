@@ -74,7 +74,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             color:#7171ed;
             text-align:center;
           }
-          .upvoted { /* already upvoted posts. replaces the .upvote class. */ 
+          .upvoted { /* already upvoted posts. replaces the .upvote class. */
           	color: #eee;
             background:#ef9632;
             text-align:center;
@@ -94,7 +94,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             background:#5959e5;
             text-align:center;
           }
-          
+
           .post .votecheck {
             background: #eee;
             color:#41e03e;
@@ -163,7 +163,7 @@ Overflow (more than 400 char) is handled automatically by JS.
           .read-more {
           	margin-top:-10px;
             margin-bottom:10px;
-            
+
           }
         </style>
     </head>
@@ -177,15 +177,39 @@ Overflow (more than 400 char) is handled automatically by JS.
     .comment-number : comment count
     post body overflow is auto-handled, add code to prevent XSS attacks
     -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">STUCO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="suggestions.html">Suggestions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tasks">Tasks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container-fluid"> <!--full body page-->
         <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
         <br>
         <div class="post rounded" id="post-0" post-id=213534>
         	<div class="row">
             <div class="col-sm-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
-            
+
             <h2>by <span class="author">Anonymous</span></h2>
-            
+
             <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a usesjadhvoaudshgcinuehgiadhsinudhsfgjklhdflkjghskljfsdhglkjsdfhdfhr hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hellooo00007967857856846865<p>
             <button type="button" class="btn btn-dark read-more">Show More</button>
             <p class="show-more-txt">text lol</p>
@@ -196,7 +220,7 @@ Overflow (more than 400 char) is handled automatically by JS.
                 <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
             </div>
         </div>
-        
+
        	<div class="post rounded" id="post-1" post-id=61346>
         	<div class="row">
             <div class="col-sm-8"><h1>slals <span class="badge badge-secondary">Suggestion</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
@@ -208,7 +232,7 @@ Overflow (more than 400 char) is handled automatically by JS.
                 <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
             </div>
         </div>
-        
+
         <div class="post rounded" id="post-2" post-id=01240>
         	<div class="row">
             <div class="col-sm-8"><h1><div class="verifycheck square circle"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
@@ -220,7 +244,7 @@ Overflow (more than 400 char) is handled automatically by JS.
                 <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
             </div>
         </div>
-        
+
                 <div class="post rounded" id="post-3" post-id=12344>
         	<div class="row">
             <div class="col-sm-8"><h1>fraf <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
@@ -232,7 +256,7 @@ Overflow (more than 400 char) is handled automatically by JS.
                 <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
             </div>
         </div>
-        
+
         <script>
             $('.square').each(function() {  // for each .square
                 $(this).width($(this).height());  // set the width to the height
