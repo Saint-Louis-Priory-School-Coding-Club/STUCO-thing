@@ -33,7 +33,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             background-color:#eee;
           }
           html {
-          	min-width:620px;
+            min-width:620px;
           }
           .post {
               display:block;
@@ -67,20 +67,20 @@ Overflow (more than 400 char) is handled automatically by JS.
             text-align:center;
           }
           .post .upvote:hover, .post .downvote:hover {
-          	background: #ddd;
+            background: #ddd;
           }
           .post .downvote {
             background: #eee;
             color:#7171ed;
             text-align:center;
           }
-          .upvoted { /* already upvoted posts. replaces the .upvote class. */ 
-          	color: #eee;
+          .upvoted { /* already upvoted posts. replaces the .upvote class. */
+            color: #eee;
             background:#ef9632;
             text-align:center;
           }
           .upvoted:hover {
-          	color: #eee;
+            color: #eee;
             background:#ed8712;
             text-align:center;
           }
@@ -94,14 +94,14 @@ Overflow (more than 400 char) is handled automatically by JS.
             background:#5959e5;
             text-align:center;
           }
-          
+
           .post .votecheck {
             background: #eee;
             color:#41e03e;
             text-align:center;
           }
           .post .votecheck:hover, .post .votex:hover {
-          	background: #ddd;
+            background: #ddd;
           }
           .post .votex {
             background: #eee;
@@ -109,7 +109,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             text-align:center;
           }
           .votechecked {
-          	color: #eee;
+            color: #eee;
             background:#41e03e;
             text-align:center;
           }
@@ -146,7 +146,7 @@ Overflow (more than 400 char) is handled automatically by JS.
               user-select: none;
           }
           .verifycheck {
-          	background-color:#2fc5fc;
+            background-color:#2fc5fc;
             display:inline-block;
             text-align:center;
             color:white;
@@ -154,16 +154,18 @@ Overflow (more than 400 char) is handled automatically by JS.
             padding:3px;
           }
           h1 .verifycheck {
-          	font-size:20px;
+            font-size:20px;
             transform:translate(0px,-5px);
           }
           .circle {
-          	border-radius:50%;
+            border-radius:50%;
           }
           .read-more {
-          	margin-top:-10px;
+            margin-top:-10px;
             margin-bottom:10px;
-            
+          }
+          .gone {
+
           }
         </style>
     </head>
@@ -186,9 +188,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             
             <h2>by <span class="author">Anonymous</span></h2>
             
-            <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a usesjadhvoaudshgcinuehgiadhsinudhsfgjklhdflkjghskljfsdhglkjsdfhdfhr hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hellooo00007967857856846865<p>
-            <button type="button" class="btn btn-dark read-more">Show More</button>
-            <p class="show-more-txt">text lol</p>
+            <div class="post-body-container"><p class="post-body">hello i am a LZMLMNxclnkjschdbvxinanhdgihadoiufynghndafoniuughoiaudfhglkjdafhnlkjghandlkjghnaldjhgliuehduser hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a usesjadhvoaudshgcinuehgiadhsinudhsfgjklhdflkjghskljfsdhglkjsdfhdfhr hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hellooo00007967857856846865<p>
             </div>
             <div class="post-options row noselect">
                 <div class="vote col-sm-4"><div class="upvoted square rounded"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded"><i class="fas fa-arrow-down"></i></div></div>
@@ -234,6 +234,11 @@ Overflow (more than 400 char) is handled automatically by JS.
         </div>
         
         <script>
+            function togglemore(button) {
+                button = $(button);
+                alert(button.parent().parent().children().eq(0).html());
+
+            }
             $('.square').each(function() {  // for each .square
                 $(this).width($(this).height());  // set the width to the height
             });
@@ -251,16 +256,18 @@ Overflow (more than 400 char) is handled automatically by JS.
                 $(this).html(newtxt);
             });
             $('.post-body-container').each(function() {  // for each .post-body
-            	postbody = $(this).children(".post-body")[0];
-                alert(postbody);
-                alert(postbody.html());
-            	leng = postbody.text().length;
-                alert(leng);
+            	let postbody = $(this).children(".post-body")[0];
+            	let leng = postbody.innerHTML.length;
                 if (leng > 400) { // if more than 400 characters
-                	alert(postbody.text().slice(0, 400));
-                    alert(postbody.text().slice(400, leng));
+                	let html1 = postbody.innerHTML.slice(0, 400);
+                    let html2 = postbody.innerHTML.slice(400, leng);
+                    let newhtml = "<p class=\"post-body\">" + html1 + "<p>\n" +
+                        "            <button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n" +
+                        "            <p class=\"show-more-txt\">" + html2 + "</p>";
+                    $(this).html(newhtml);
                 }
             });
+
         </script>
         </div>
     </body>
