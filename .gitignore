@@ -1,1 +1,6 @@
 .idea/
+/blog/dbconnect.php
+/blog/posts/
+/test
+/tasks/test
+/tsg
