@@ -1,19 +1,19 @@
 <?php 
 if (isset($_POST['comment'])) {
-$title = mysqli_real_escape_string($conn,$_POST['title']);
-$author = mysqli_real_escape_string($conn,$_POST['author']);
-$content = mysqli_real_escape_string($conn,$_POST['content']);
-$post_id = $_POST['id'];
-$date = time();
-$stmtss = "INSERT INTO comments (title,content,author,post_id,date) VALUES('". $title ."', '". $content ."', '". $author ."', '".$post_id."','".$date."')";
-$querys = $conn->query($stmtss);
-$refreshsql = $conn->query("SELECT * FROM comments WHERE post_id = $post_id AND date=$date") or die();
-if (!$refreshsql) {
-    echo 'ERROR';
-}
-$refreshsqls = mysqli_fetch_array($refreshsql, MYSQLI_ASSOC);
-$cid = $refreshsqls['id'];
-echo '<meta http-equiv="Refresh" content="0; url=#'.$cid.'">';
+    $title = mysqli_real_escape_string($conn,$_POST['title']);
+    $author = mysqli_real_escape_string($conn,$_POST['author']);
+    $content = mysqli_real_escape_string($conn,$_POST['content']);
+    $post_id = $_POST['id'];
+    $date = time();
+    $stmtss = "INSERT INTO comments (title,content,author,post_id,date) VALUES('". $title ."', '". $content ."', '". $author ."', '".$post_id."','".$date."')";
+    $querys = $conn->query($stmtss);
+    $refreshsql = $conn->query("SELECT * FROM comments WHERE post_id = $post_id AND date=$date") or die();
+    if (!$refreshsql) {
+        echo 'ERROR';
+    }
+    $refreshsqls = mysqli_fetch_array($refreshsql, MYSQLI_ASSOC);
+    $cid = $refreshsqls['id'];
+    echo '<meta http-equiv="Refresh" content="0; url=#'.$cid.'">';
 }
 ?>
     <form method="POST" autocomplete="off"  enctype="multipart/form-data">
@@ -31,7 +31,7 @@ echo '<meta http-equiv="Refresh" content="0; url=#'.$cid.'">';
                     <input type="text" name="author" class="form-control" placeholder="Authors" required/>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="input-group">
                     <textarea name="content" class="form-control" placeholder="Description" required></textarea>
