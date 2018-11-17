@@ -17,10 +17,11 @@
             <h1 class="glyphicon glyphicon-print">Completed Stuco Tasks</h1>
         </div>
 
-        <div class="image">
+
+        <div class="left-content">
             <img src="guy.jpg" height="200px" width="200px">
         </div>
-        <div class="post rounded">
+        <div class="post rounded content">
             <div class="row">
                 <div class="col-sm-8">
                     <h1>
@@ -48,8 +49,10 @@
                 </div>
             </div>
         </div>
+        <div class="right-content"></div>
 
 
+        <div class="left-content"></div>
         <div class="post rounded">
             <div class="row">
                 <div class="col-sm-8">
@@ -78,6 +81,7 @@
                 </div>
             </div>
         </div>
+        <div class="right-content"></div>
     </div>
 </body>
 </html>
