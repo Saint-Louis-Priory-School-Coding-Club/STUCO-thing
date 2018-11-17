@@ -1,11 +1,11 @@
-<?php 
+<?php
     include 'dbconnect.php';
     include 'postbuttons.php';
     ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Announcments</title>
+    <title>Announcements</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.php">
@@ -16,7 +16,7 @@
     <?php include '../header.html'; ?>
 </head>
 <body>
-<?php 
+<?php
 include 'pagination.php';
 include 'content.php'?>
 </body>
