@@ -164,7 +164,16 @@ Overflow (more than 400 char) is handled automatically by JS.
             margin-bottom:10px;
         }
         .gone {
-
+            display:none;
+        }
+        .show-more-txt {
+            margin-top:-15px;
+        }
+        .comment-c {
+            background-color: #888888;
+        }
+        .report {
+            background-color: #888888;
         }
     </style>
 </head>
@@ -187,13 +196,11 @@ post body overflow is auto-handled, add code to prevent XSS attacks
 
         <h2>by <span class="author">Anonymous</span></h2>
 
-        <div class="post-body-container"><p class="post-body">hello i am a LZMLMNxclnkjschdbvxinanhdgihadoiufynghndafoniuughoiaudfhglkjdafhnlkjghandlkjghnaldjhgliuehduser hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a usesjadhvoaudshgcinuehgiad</p><p>
-            <button type="button" class="btn btn-dark read-more" onclick="togglemore(this)">Show More</button>
-        </p><p class="show-more-txt">hsinudhsfgjklhdflkjghskljfsdhglkjsdfhdfhr hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hellooo00007967857856846865</p></div>
+        <div class="post-body-container"><p class="post-body">hello i am a LZMLMNxclnkjschdbvxinanhdgihadoiufynghndafoniuughoiaudfhglkjdafhnlkjghandlkjghnaldjhgliuehduser hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a userdsfdsf hello i am a user hello i am a usdfdsfser hello i am a user hello i am a usesjadsgdffdgfdgadhvoaudshgcinuehgiad</p><p></div>
         <div class="post-options row noselect">
             <div class="vote col-sm-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-sm-4"><i class="far fa-comments"></i> <span class="comment-number">43</span> comments</div>
-            <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
+            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
+            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
@@ -204,8 +211,8 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <p class="post-body">do i really need to write informative stuff here?</p>
         <div class="post-options row noselect">
             <div class="vote col-sm-4"><div class="upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-sm-4"><i class="far fa-comments"></i> <span class="comment-number">7</span> comments</div>
-            <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
+            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
+            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
@@ -216,8 +223,8 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <p class="post-body">is despaito just grand</p>
         <div class="post-options row noselect">
             <div class="vote col-sm-4"><div class="votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
-            <div class="comments col-sm-4"><i class="far fa-comments"></i> <span class="comment-number">723</span> comments</div>
-            <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
+            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
+            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
@@ -228,16 +235,15 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <p class="post-body">hwe live in a bobiety</p>
         <div class="post-options row noselect">
             <div class="vote col-sm-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
-            <div class="comments col-sm-4"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div>
-            <div class="report col-sm-4"><i class="far fa-flag"></i> Report</div>
+            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
+            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
     <script>
         function togglemore(button) {
             button = $(button);
-            alert(button.parent().parent().children().eq(0).html());
-
+            button.parent().children(".show-more-txt").toggleClass("gone");
         }
         $('.square').each(function() {  // for each .square
             $(this).width($(this).height());  // set the width to the height
@@ -261,15 +267,14 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             if (leng > 400) { // if more than 400 characters
                 let html1 = postbody.innerHTML.slice(0, 400);
                 let html2 = postbody.innerHTML.slice(400, leng);
-                let newhtml = "<p class=\"post-body\">" + html1 + "<p>\n" +
-                    "            <button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n" +
-                    "            <p class=\"show-more-txt\">" + html2 + "</p>";
+                let newhtml = "<p class=\"post-body\">" + html1 + "<p>" +
+                    "<p class=\"show-more-txt gone\">" + html2 + "</p>" +
+                    "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
                 $(this).html(newhtml);
             }
         });
 
     </script>
 </div>
-
-
-</body></html>
+</body>
+</html>
