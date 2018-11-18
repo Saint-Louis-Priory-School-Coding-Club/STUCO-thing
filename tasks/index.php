@@ -33,9 +33,13 @@
                     <h5>9/17/18</h5>
                 </div>
             </div>
-
             <h2>by <span class="author">James</span></h2>
 
+            <div class="suggestion-box rounded">
+                <div class="spacing">
+                   What is this
+                </div>
+            </div>
             <div class="post-body-container">
                 <p class="post-body">
                     Wow that sure is some content!
