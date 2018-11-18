@@ -142,7 +142,7 @@ for ($x = ($currentpage - $range); $x < (($currentpage + $range) + 1); $x++) {
          echo " <a class='btn btn-primary' href='{$_SERVER['PHP_SELF']}?currentpage=$x'>$x</a> ";
       }
    }
-}     
+}
 
 if ($currentpage != $totalpages) {
    $nextpage = $currentpage + 1;
@@ -241,9 +241,9 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 }
 }
 } elseif ($dtable == 'comments') {
-    echo '<h3 style="color:red">No Comments</h3>';
+    echo '<h3 style="color:gray; text-align:center;">There is nothing to see here folks!</h3>';
 } else {
-    echo '<h3 style="color:red">No Announcments</h3>';
+    echo '<h3 style="color:gray; text-align:center;">There is nothing to see here folks!</h3>';
 }
     }
 }
