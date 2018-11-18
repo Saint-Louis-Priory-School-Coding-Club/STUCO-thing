@@ -169,11 +169,12 @@ Overflow (more than 400 char) is handled automatically by JS.
         .show-more-txt {
             margin-top:-15px;
         }
-        .comment-c {
-            background-color: #888888;
+        .comment-c, .report-c {
+            border-radius:50px;
+            padding: 0 5px;
         }
-        .report {
-            background-color: #888888;
+        .comment-c:hover, .report-c:hover {
+            background-color: #ccc;
         }
     </style>
 </head>
@@ -196,7 +197,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
 
         <h2>by <span class="author">Anonymous</span></h2>
 
-        <div class="post-body-container"><p class="post-body">hello i am a LZMLMNxclnkjschdbvxinanhdgihadoiufynghndafoniuughoiaudfhglkjdafhnlkjghandlkjghnaldjhgliuehduser hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a userdsfdsf hello i am a user hello i am a usdfdsfser hello i am a user hello i am a usesjadsgdffdgfdgadhvoaudshgcinuehgiad</p><p></div>
+        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p><p></div>
         <div class="post-options row noselect">
             <div class="vote col-sm-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
@@ -243,7 +244,8 @@ post body overflow is auto-handled, add code to prevent XSS attacks
     <script>
         function togglemore(button) {
             button = $(button);
-            button.parent().children(".show-more-txt").toggleClass("gone");
+            button.parent().parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
+            button.parent().parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
         }
         $('.square').each(function() {  // for each .square
             $(this).width($(this).height());  // set the width to the height
@@ -267,8 +269,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             if (leng > 400) { // if more than 400 characters
                 let html1 = postbody.innerHTML.slice(0, 400);
                 let html2 = postbody.innerHTML.slice(400, leng);
-                let newhtml = "<p class=\"post-body\">" + html1 + "<p>" +
-                    "<p class=\"show-more-txt gone\">" + html2 + "</p>" +
+                let newhtml = "<p class=\"post-body\">" + html1 + "<span class=\'dotdotdot\'><b>...</b></span><span class=\'show-more-txt gone\'>" + html2 + "</span><p>" +
                     "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
                 $(this).html(newhtml);
             }
