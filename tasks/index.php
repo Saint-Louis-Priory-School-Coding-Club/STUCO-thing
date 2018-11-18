@@ -1,5 +1,6 @@
 <?php 
-include '../blog/dbconnect.php';
+include '../dbconnect.php';
+include '../pagination.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,10 @@ session_start();
             <?php include 'left-content.php';?>
         </div>
         <div class="content">
-            <?php include 'content.php';?>
+            <?php 
+            $pager = new Paginater;
+            $pager->paginate('ctask', 5);
+            ?>
         </div>
         <div class="right-content">
             <?php include 'right-content.php';?>

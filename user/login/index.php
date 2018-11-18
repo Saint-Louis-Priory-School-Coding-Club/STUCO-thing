@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (!isset($conn)) {
-    require_once '../../blog/dbconnect.php';
+    require_once '../../dbconnect.php';
 }
 
 

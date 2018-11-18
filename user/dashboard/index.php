@@ -12,7 +12,7 @@
     </head>
     <body>
     <?php include '../../header.html';
-    include '../../blog/dbconnect.php';
+    include '../../dbconnect.php';
     include 'content.php'; ?>
     </body>
 </html>

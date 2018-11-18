@@ -1,5 +1,5 @@
 <?php 
-    include '../blog/dbconnect.php';
+    include '../dbconnect.php';
     $sugtxt = "Select a suggestion to view preview";
     if (isset($_POST['add'])) {
         $title = mysqli_real_escape_string($conn,$_POST['title']);
@@ -9,6 +9,15 @@
         $sugid = mysqli_real_escape_string($conn,$_POST['sugid']);
         $stmts = "INSERT INTO ctask (title,solution,author,date,suggestion_id) VALUES('". $title ."', '". $content ."', '". $author ."', '". $date ."','".$sugid."')";
         $query = $conn->query($stmts);
+        $check = $conn->query("SELECT id FROM ctask WHERE date=$date");
+        $checks = mysqli_fetch_array($check, MYSQLI_ASSOC);
+        $id = $checks['id'];
+        mkdir('posts/'.$id);
+        $filecreate = fopen('posts/'.$id.'/index.php', 'x') or die('Unable to open file!');
+        $template = file_get_contents('template.php');
+        $text = str_replace('$inputid', $id, $template);
+        fwrite($filecreate, $text);
+        echo '<meta http-equiv="Refresh" content="0; url=posts/'.$id.'">';
     }
 ?>
 <script>

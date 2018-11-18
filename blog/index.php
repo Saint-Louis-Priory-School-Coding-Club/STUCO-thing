@@ -1,5 +1,5 @@
 <?php
-    include 'dbconnect.php';
+    include '../dbconnect.php';
     include 'postbuttons.php';
     ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
 </head>
 <body>
 <?php
-include 'pagination.php';
+include '../pagination.php';
 include 'content.php'?>
 </body>
 </html>

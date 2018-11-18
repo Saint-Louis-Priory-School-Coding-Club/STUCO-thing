@@ -5,12 +5,9 @@ $author = mysqli_real_escape_string($conn,$_POST['author']);
 $content = mysqli_real_escape_string($conn,$_POST['content']);
 $post_id = $_POST['id'];
 $date = time();
-$stmtss = "INSERT INTO bcomments (title,content,author,post_id,date) VALUES('". $title ."', '". $content ."', '". $author ."', '".$post_id."','".$date."')";
+$stmtss = "INSERT INTO tcomments (title,content,author,post_id,date) VALUES('". $title ."', '". $content ."', '". $author ."', '".$post_id."','".$date."')";
 $querys = $conn->query($stmtss);
-$refreshsql = $conn->query("SELECT * FROM bcomments WHERE post_id = $post_id AND date=$date") or die();
-if (!$refreshsql) {
-    echo 'ERROR';
-}
+$refreshsql = $conn->query("SELECT * FROM tcomments WHERE post_id = $post_id AND date=$date") or die("Error, line 10 commentfunc");
 $refreshsqls = mysqli_fetch_array($refreshsql, MYSQLI_ASSOC);
 $cid = $refreshsqls['id'];
 echo '<meta http-equiv="Refresh" content="0; url=#'.$cid.'">';
