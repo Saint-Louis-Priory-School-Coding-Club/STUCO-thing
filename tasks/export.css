@@ -140,3 +140,10 @@ h1 .verifycheck {
 .comments {
   margin-left:15px;
 }
+.suggestion-box {
+  margin:15px;
+  background-color:#bfbfbf;
+}
+.spacing {
+  margin:15px;
+}
