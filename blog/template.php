@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../../dbconnect.php';
 $id = $inputid;
 $posts = $conn->query("SELECT * FROM blog WHERE id =$id");
@@ -29,19 +29,23 @@ if (isset($_POST["delete"])) {
         <?php include '../../../header.html'?>
         <br>
         <div class="container-fluid">
-            <div class="container">
-            <button type="submit" form="deleteform" name="delete" class="btn btn-danger">Delete</button><h4 class="float-right"><?php echo $date; ?></h4><h1><?php echo $post['title']; ?></h1>
-                <p>By <?php echo $post['author']; ?></p>
-            </div>
+          <div class="container">
+
+          <h4 class="float-right"><?php echo $date; ?></h4>
+          <h1><?php echo $post['title']; ?></h1>
+              <p>By <?php echo $post['author']; ?></p>
+          </div>
             <div class="container">
                 <p><?php echo $post['content']; ?></p>
+          
+                <button type="submit" form="deleteform" name="delete" class="btn btn-danger">Delete</button>
             </div>
             <div class="panel panel-default container">
                 <div class="panel-heading">
                 <h1 style="color:grey"><br>Comments:</h1>
                 </div>
                 <div class="container">
-                <?php 
+                <?php
                 include '../../pagination.php';
                 $paginate = new Paginater();
                 $paginate->paginate('comments', 5, $id);
@@ -49,6 +53,7 @@ if (isset($_POST["delete"])) {
                 </div>
                 <h2>Add Comment:</h2>
                 <?php include '../../commentfunc.php'?>
+
             </div>
     </body>
 </html>

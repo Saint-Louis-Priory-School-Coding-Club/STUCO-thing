@@ -1,7 +1,7 @@
 <div class="container-fluid text-center">
 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#announcmentm">
 Add
-</button><h1>Announcments:</h1>
+</button><h1>STUCO Announcements</h1>
 </div>
 <div class="modal fade" id="announcmentm" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
