@@ -177,29 +177,8 @@ Overflow (more than 400 char) is handled automatically by JS.
     .comment-number : comment count
     post body overflow is auto-handled, add code to prevent XSS attacks
     -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">STUCO</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="suggestions.html">Suggestions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/tasks">Tasks</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/blog">Blog</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <?php include 'header.html';?>
 
     <div class="container-fluid"> <!--full body page-->
         <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
