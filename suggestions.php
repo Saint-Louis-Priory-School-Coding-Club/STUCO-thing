@@ -244,8 +244,8 @@ post body overflow is auto-handled, add code to prevent XSS attacks
     <script>
         function togglemore(button) {
             button = $(button);
-            button.parent().parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
-            button.parent().parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
+            button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
+            button.parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
         }
         $('.square').each(function() {  // for each .square
             $(this).width($(this).height());  // set the width to the height
@@ -269,8 +269,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             if (leng > 400) { // if more than 400 characters
                 let html1 = postbody.innerHTML.slice(0, 400);
                 let html2 = postbody.innerHTML.slice(400, leng);
-                let newhtml = "<p class=\"post-body\">" + html1 + "<p>" +
-                    "<p class=\"show-more-txt gone\">" + html2 + "</p>" +
+                let newhtml = "<p class=\"post-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
                     "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
                 $(this).html(newhtml);
             }
