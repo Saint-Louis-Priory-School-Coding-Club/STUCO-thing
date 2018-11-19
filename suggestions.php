@@ -171,10 +171,10 @@ Overflow (more than 400 char) is handled automatically by JS.
         }
         .comment-c, .report-c {
             border-radius:50px;
-            padding: 0 5px;
+            padding: 0 10px;
         }
-        .report {
-            background-color: #888888;
+        .report-c:hover, .comment-c:hover {
+            background-color: #ccc;
         }
     </style>
 </head>
