@@ -21,7 +21,6 @@
             margin: 20px 40px;
             padding: 10px 20px;
             background: #fff;
-            max-width:1000px;
         }
         .post h1 {
             font-size:40px;
@@ -34,7 +33,7 @@
         .post h1 span {
             font-size:20px;
         }
-        .post .post-options * {
+        .post .post-options *, .comment-options * {
             display:inline-block;
         }
         .post .post-options {
@@ -42,15 +41,15 @@
             width:100%;
             margin-bottom:5px;
         }
-        .post .upvote {
+        .upvote {
             background: #eee;
             color:#ef9632;
             text-align:center;
         }
-        .post .upvote:hover, .post .downvote:hover {
+        .upvote:hover, .post .downvote:hover {
             background: #ddd;
         }
-        .post .downvote {
+        .downvote {
             background: #eee;
             color:#7171ed;
             text-align:center;
@@ -75,15 +74,15 @@
             background:#5959e5;
             text-align:center;
         }
-        .post .votecheck {
+        .votecheck {
             background: #eee;
             color:#41e03e;
             text-align:center;
         }
-        .post .votecheck:hover, .post .votex:hover {
+        .votecheck:hover, .post .votex:hover {
             background: #ddd;
         }
-        .post .votex {
+        .votex {
             background: #eee;
             color:#e03c2a;
             text-align:center;
@@ -108,7 +107,7 @@
             text-align: right;
             color:#666;
         }
-        .post .vote {
+        .vote {
             text-align:left;
         }
         .post .comments {
@@ -167,6 +166,7 @@
         	border-left: 3px solid #ccc;
             margin:5px;
             padding:5px;
+            margin-bottom:0;
         }
         h4 {
         	font-size:15px;
@@ -184,11 +184,13 @@
 .comment-number : comment count
 .comment-author : author of comment
 .comment-reply-count : amount of replies
+comment-id= server id of comment
+post-id server id of post
 -->
 <div class="container-fluid"> <!--full body page-->
     <h1>stucospacito but with the post</h1>
     <br>
-    <div class="post rounded" id="post-0" post-id="213534">
+    <div class="post rounded" id="post-0" post-id=65>
         <div class="row">
             <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
 
@@ -203,10 +205,20 @@
         <div class="line"></div>
         <div class="full-comments"></div>
         <h3>Comments</h3>
-        <div class="comment">
-        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
+        <div class="comment" comment-id=27172>
+        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
             <p class="comment-body">oof</p>
-            <div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div>
+            <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comment-replies">
+            	<div class="comment" comment-id=27172>
+        	<h4>By <span class="comment-author">you</span> | now | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+            <p class="comment-body">no u lol</p>
+            <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">232k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comment-replies">
+            
+            </div>
+        </div>
+            </div>
         </div>
     </div>
 </div>
@@ -243,6 +255,10 @@
                 newtxt += char;
             }
             $(this).html(newtxt);
+        });
+        $('.comment-replies').each(function() { // adds margin (JS is needed)
+        	alert("\"" + $(this).html() + "\"");
+            //.trim()
         });
         
     </script>
