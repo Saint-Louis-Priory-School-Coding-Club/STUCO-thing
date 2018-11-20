@@ -93,7 +93,6 @@ Overflow (more than 400 char) is handled automatically by JS.
             background:#5959e5;
             text-align:center;
         }
-
         .post .votecheck {
             background: #eee;
             color:#41e03e;
@@ -193,51 +192,51 @@ post body overflow is auto-handled, add code to prevent XSS attacks
     <br>
     <div class="post rounded" id="post-0" post-id="213534">
         <div class="row">
-            <div class="col-sm-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
 
         <h2>by <span class="author">Anonymous</span></h2>
 
-        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user </p><p></div>
+        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-sm-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
-            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
+            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
     <div class="post rounded" id="post-1" post-id="61346">
         <div class="row">
-            <div class="col-sm-8"><h1>slals <span class="badge badge-secondary">Suggestion</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <div class="col-8"><h1>slals <span class="badge badge-secondary">Suggestion</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
         <h2>by User123</h2>
-        <p class="post-body">do i really need to write informative stuff here?</p>
+        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-sm-4"><div class="upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
-            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="vote col-4"><div class="upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
+            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
     <div class="post rounded" id="post-2" post-id="01240">
         <div class="row">
-            <div class="col-sm-8"><h1><div class="verifycheck square circle" style="width: 30px;"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <div class="col-8"><h1><div class="verifycheck square circle" style="width: 30px;"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
         <h2>by Mr. STUCO Member <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></h2>
-        <p class="post-body">is despaito just grand</p>
+        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-sm-4"><div class="votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
-            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
-            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="vote col-4"><div class="votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
+            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
+            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
     <div class="post rounded" id="post-3" post-id="12344">
         <div class="row">
-            <div class="col-sm-8"><h1>fraf <span class="badge badge-secondary">Poll</span></h1></div><div class="col-sm-4 date"><h5>2m ago</h5></div></div>
+            <div class="col-8"><h1>fraf <span class="badge badge-secondary">Poll</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
         <h2>by Moderator man</h2>
-        <p class="post-body">hwe live in a bobiety</p>
+        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-sm-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
-            <div class="comments col-sm-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> comments</div></div>
-            <div class="report col-sm-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="vote col-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
+            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
+            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
     </div>
 
@@ -246,10 +245,21 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
             button.parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
+            if (button.html() == "Show More") {
+            	button.html("Show Less");
+            } else {
+            	button.html("Show More");
+            }
         }
+        $('.comment-number').each(function() {  // for each .comment number
+        	if ($(this).html() == "1") {  // if there is exactly 1 comment
+            	$(this).parent().children(".c-name").html("comment");
+            }
+        });
         $('.square').each(function() {  // for each .square
             $(this).width($(this).height());  // set the width to the height
         });
+        // FUNCTION MIGHT NOT BE NEEDED:
         $('.post-body').each(function() { // last resort XSS preventer
             var orig = $(this).html();  // original text
             var newtxt = "";  // fixed text
@@ -267,15 +277,15 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             let postbody = $(this).children(".post-body")[0];
             let leng = postbody.innerHTML.length;
             if (leng > 400) { // if more than 400 characters
-                let html1 = postbody.innerHTML.slice(0, 400);
+                let html1 = postbody.innerHTML.slice(0, 400);  // slice off the first 400
                 let html2 = postbody.innerHTML.slice(400, leng);
                 let newhtml = "<p class=\"post-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
                     "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
-                $(this).html(newhtml);
+                $(this).html(newhtml);  // insert them with a show more button
             }
         });
-
     </script>
 </div>
 </body>
 </html>
+
