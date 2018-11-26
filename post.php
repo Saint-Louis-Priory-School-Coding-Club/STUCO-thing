@@ -189,6 +189,25 @@
 .comment-reply-count : amount of replies
 comment-id= server id of comment
 post-id server id of post
+same upvote/downvote mechanics as a regular post
+---add a comment if you need age/date made in a div.---
+--structure of a comment (since w3 tryit doesn't make for neat looking code)
+<div class="comment">  # comment
+	--comment contents--
+    
+    <div class="comment replies">  # replies (if any) to the comment
+      <div class="comment">  # comment
+        --comment contents--
+        
+        <div class="comment replies">  # replies (if any) to the comment
+			# this comment has no replies
+        </div>
+	  </div>
+    </div>
+</div>
+idea for how to store in database:
+store post and comment replying to. If the comment is replying to the post directly, have it store "0"
+list out each comment matching the post-id and comment-reply of 0. Then for each list out each comment replying to that... bla bla bla have some recursive loop thing until all comments have no replies or replies listed. idk i'm not an expert with back end
 -->
 <div class="container-fluid"> <!--full body page-->
     <h1>stucospacito but with the post</h1>
@@ -202,7 +221,7 @@ post-id server id of post
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
+            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">6</span> <span class="c-name">comments</span></div></div>
             <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
         <div class="line"></div>
@@ -229,12 +248,12 @@ post-id server id of post
               </div>
               </div>
               <div class="comment" comment-id=4321>
-              <h4>By <span class="comment-author">who</span> | 1m ago | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
+              <h4>By <span class="comment-author">who</span> | 11/26/2018 | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
               <p class="comment-body">its me sans undertale</p>
               <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
               <div class="comment-replies">
                                 <div class="comment" comment-id=12213>
-                <h4>By <span class="comment-author">fortnite_Gamer69</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <h4>By <span class="comment-author">fortnite_Gamer69</span> | 13h ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
                 <p class="comment-body">doot doot doot</p>
                 <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
                 <div class="comment-replies">
@@ -244,7 +263,15 @@ post-id server id of post
               </div>
             </div>
         </div>
-    </div>
+        </div>
+        <div class="comment" comment-id=27172>
+        	<h4>By <span class="comment-author">someone445</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
+            <p class="comment-body">lol</p>
+            <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">34</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comment-replies">
+            	
+            </div>
+            </div>
 </div>
 
     <script>
@@ -280,7 +307,11 @@ post-id server id of post
             }
             $(this).html(newtxt);
         });
-        
+        $('.comment-replies').each(function() {  // for each .square
+            if ($(this).html().trim() != "") {
+            	$(this).addClass("margin");
+            }
+        });
     </script>
 </div>
 </body>
