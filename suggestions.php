@@ -175,6 +175,15 @@ Overflow (more than 400 char) is handled automatically by JS.
         .report-c:hover, .comment-c:hover {
             background-color: #ccc;
         }
+        button {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
     </style>
 </head>
 <body>
@@ -236,11 +245,31 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report_post_id = $(this).parent().parent().parent().parent();" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
+	<!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">Report Post</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <script>
+    	let report_post_id = 0;  // changed when post is being reported
         function togglemore(button) {
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
@@ -288,4 +317,3 @@ post body overflow is auto-handled, add code to prevent XSS attacks
 </div>
 </body>
 </html>
-
