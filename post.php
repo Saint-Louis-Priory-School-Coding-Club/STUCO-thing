@@ -166,11 +166,14 @@
         	border-left: 3px solid #ccc;
             margin:5px;
             padding:5px;
-            margin-bottom:0;
+            margin-bottom:10px;
         }
         h4 {
         	font-size:15px;
             color:grey;
+        }
+        .margin {
+        	margin-top:10px;
         }
     </style>
 </head>
@@ -199,25 +202,46 @@ post-id server id of post
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
+            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
             <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
         </div>
         <div class="line"></div>
         <div class="full-comments"></div>
         <h3>Comments</h3>
         <div class="comment" comment-id=27172>
-        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
+        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
             <p class="comment-body">oof</p>
             <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
-            	<div class="comment" comment-id=27172>
-        	<h4>By <span class="comment-author">you</span> | now | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
-            <p class="comment-body">no u lol</p>
-            <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">232k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comment-replies">
-            
-            </div>
-        </div>
+                  <div class="comment" comment-id=1234>
+              <h4>By <span class="comment-author">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+              <p class="comment-body">no u lol</p>
+              <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">232k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+              <div class="comment-replies">
+				                                <div class="comment" comment-id=12213>
+                <h4>By <span class="comment-author">an_dude4</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <p class="comment-body">all right, this is epic</p>
+                <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">4789k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+                <div class="comment-replies">
+
+              </div>
+              </div>
+              </div>
+              </div>
+              <div class="comment" comment-id=4321>
+              <h4>By <span class="comment-author">who</span> | 1m ago | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
+              <p class="comment-body">its me sans undertale</p>
+              <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+              <div class="comment-replies">
+                                <div class="comment" comment-id=12213>
+                <h4>By <span class="comment-author">fortnite_Gamer69</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <p class="comment-body">doot doot doot</p>
+                <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+                <div class="comment-replies">
+
+              </div>
+              </div>
+              </div>
             </div>
         </div>
     </div>
@@ -255,10 +279,6 @@ post-id server id of post
                 newtxt += char;
             }
             $(this).html(newtxt);
-        });
-        $('.comment-replies').each(function() { // adds margin (JS is needed)
-        	alert("\"" + $(this).html() + "\"");
-            //.trim()
         });
         
     </script>
