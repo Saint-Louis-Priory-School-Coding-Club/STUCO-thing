@@ -157,23 +157,23 @@
             background-color: #ccc;
         }
         .line {
-            width:100%;
+        	width:100%;
             height:3px;
             background-color:#ccc;
             margin: 15px 0;
         }
         .comment {
-            border-left: 3px solid #ccc;
+        	border-left: 3px solid #ccc;
             margin:5px;
             padding:5px;
             margin-bottom:10px;
         }
         h4 {
-            font-size:15px;
+        	font-size:15px;
             color:grey;
         }
         .margin {
-            margin-top:10px;
+        	margin-top:10px;
         }
     </style>
 </head>
@@ -208,8 +208,6 @@ same upvote/downvote mechanics as a regular post
 idea for how to store in database:
 store post and comment replying to. If the comment is replying to the post directly, have it store "0"
 list out each comment matching the post-id and comment-reply of 0. Then for each list out each comment replying to that... bla bla bla have some recursive loop thing until all comments have no replies or replies listed. idk i'm not an expert with back end
-TODO:
-add readmore for comments
 -->
 <div class="container-fluid"> <!--full body page-->
     <h1>stucospacito but with the post</h1>
@@ -230,66 +228,66 @@ add readmore for comments
         <div class="full-comments"></div>
         <h3>Comments</h3>
         <div class="comment" comment-id=27172>
-            <h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
+        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
             <p class="comment-body">oof</p>
             <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
-                <div class="comment" comment-id=1234>
-                    <h4>By <span class="comment-author">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
-                    <p class="comment-body">no u lol</p>
-                    <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">232k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
-                    <div class="comment-replies">
-                        <div class="comment" comment-id=12213>
-                            <h4>By <span class="comment-author">an_dude4</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
-                            <p class="comment-body">all right, this is epic</p>
-                            <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">4789k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
-                            <div class="comment-replies">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment" comment-id=4321>
-                    <h4>By <span class="comment-author">who</span> | 11/26/2018 | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
-                    <p class="comment-body">its me sans undertale</p>
-                    <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
-                    <div class="comment-replies">
-                        <div class="comment" comment-id=12213>
-                            <h4>By <span class="comment-author">fortnite_Gamer69</span> | 13h ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
-                            <p class="comment-body">doot doot doot</p>
-                            <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
-                            <div class="comment-replies">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  <div class="comment" comment-id=1234>
+              <h4>By <span class="comment-author">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+              <p class="comment-body">no u lol</p>
+              <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">1.2k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+              <div class="comment-replies">
+				                                <div class="comment" comment-id=12213>
+                <h4>By <span class="comment-author">an_dude4</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <p class="comment-body">all right, this is epic</p>
+                <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">174k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+                <div class="comment-replies">
+
+              </div>
+              </div>
+              </div>
+              </div>
+              <div class="comment" comment-id=4321>
+              <h4>By <span class="comment-author">who</span> | 11/26/2018 | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
+              <p class="comment-body">its me sans undertale doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot dooot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot dooot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot oot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot dooot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot dooot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot doot</p>
+              <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+              <div class="comment-replies">
+                                <div class="comment" comment-id=12213>
+                <h4>By <span class="comment-author">fortnite_Gamer69</span> | 13h ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <p class="comment-body">doot doot doot</p>
+                <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+                <div class="comment-replies">
+
+              </div>
+              </div>
+              </div>
             </div>
         </div>
+        </div>
         <div class="comment" comment-id=27172>
-            <h4>By <span class="comment-author">someone445</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
+        	<h4>By <span class="comment-author">someone445</span> | 2m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
             <p class="comment-body">lol</p>
             <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">34</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
-                
+            	
             </div>
-        </div>
-    </div>
+            </div>
+</div>
 
     <script>
         function togglemore(button) {
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
             button.parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
-            if (button.html() === "Show More") {
-                button.html("Show Less");
+            if (button.html() == "Show More") {
+            	button.html("Show Less");
             } else {
-                button.html("Show More");
+            	button.html("Show More");
             }
         }
         $('.comment-number').each(function() {  // for each .comment number
-            if ($(this).html() === "1") {  // if there is exactly 1 comment
-                $(this).parent().children(".c-name").html("comment");
+        	if ($(this).html() == "1") {  // if there is exactly 1 comment
+            	$(this).parent().children(".c-name").html("comment");
             }
         });
         $('.square').each(function() {  // for each .square
@@ -302,7 +300,7 @@ add readmore for comments
             var char = "";
             for (var i = 0; i < orig.length; i++) {
                 char = orig.charAt(i);  // character
-                if (char === "<") {
+                if (char == "<") {
                     char = "&lt;";
                 }
                 newtxt += char;
@@ -310,11 +308,22 @@ add readmore for comments
             $(this).html(newtxt);
         });
         $('.comment-replies').each(function() {  // for each .square
-            if ($(this).html().trim() !== "") {
-                $(this).addClass("margin");
+            if ($(this).html().trim() != "") {
+            	$(this).addClass("margin");
+            }
+        });
+        $('.comment-body').each(function() {  // for each .post-body
+            let leng = $(this).html().length;
+            if (leng > 200) { // if more than 400 characters
+                let html1 = $(this).innerHTML.slice(0, 200);  // slice off the first 400
+                let html2 = $(this).innerHTML.slice(200, leng);
+                let newhtml = "<p class=\"comment-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
+                    "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
+                $(this).html(newhtml);  // insert them with a show more button
             }
         });
     </script>
 </div>
 </body>
 </html>
+
