@@ -1,6 +1,7 @@
 <!--INFO:
 each post has an id that starts at "post-0" and goes up. post-1, post-2, etc.
 I think you can also have custom html tags so there would be a post-id tag with the server's id for that post.
+THIS IS REQUIRED! I USE "post-id" FOR THE REPORTING SCRIPT!
 post should be expandable by clicking anywhere on it except report/upvote buttons.
 all the upvote/downvote/comment numbers will be loaded into vars ONCE via php
 javascript will modify the vars and tell the server via ajax. they won't update until next reload.
@@ -9,7 +10,6 @@ comment count is in class .comment-number
 x / check count is in class .check-number and .x-number
 u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
 i set the min page width to around 640px (iphone 5 width) and max POST width (Not page) to 1000px
-REMINDER: THERE MUST BE A SPACE AFTER THE TITLE which i haven't even put in a span yet lmoa
 -->
 <!--
 Using Font Awesome instead of unicode, some icons look off since only some are avaliable without a pro liscence.
@@ -184,6 +184,9 @@ Overflow (more than 400 char) is handled automatically by JS.
             cursor: pointer;
             outline: inherit;
         }
+        .post-body {
+        	word-break: break-all;
+        }
     </style>
 </head>
 <body>
@@ -245,10 +248,10 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report_post_id = $(this).parent().parent().parent().parent();" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
-	<!-- Modal -->
+	<!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
@@ -259,7 +262,14 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            <form action="/action_page.php">
+              <div class="form-group">
+                <label for="email">Reason for Reporting:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -269,7 +279,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
       </div>
     </div>
     <script>
-    	let report_post_id = 0;  // changed when post is being reported
+    let reported_post = 0;
         function togglemore(button) {
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
@@ -279,6 +289,10 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             } else {
             	button.html("Show More");
             }
+        }
+        function report(button) {
+        	button = $(button);
+        	reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
         }
         $('.comment-number').each(function() {  // for each .comment number
         	if ($(this).html() == "1") {  // if there is exactly 1 comment
