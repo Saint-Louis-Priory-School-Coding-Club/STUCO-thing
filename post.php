@@ -176,7 +176,7 @@
         	margin-top:10px;
         }
         .comment-body-container {
-        	word-break: break-all
+        	word-break: break-all;
         }
     </style>
 </head>
