@@ -181,6 +181,9 @@
         .btn-xs {
         	font-size:12px;
         }
+        .post-body {
+        	word-break: break-all; /* If this isn't here text can overflow  I'd need to make an annoying script to cut off large words. Don't want to do that.*/
+        }
     </style>
 </head>
 <body>
