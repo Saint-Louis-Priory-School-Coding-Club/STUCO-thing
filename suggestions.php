@@ -10,6 +10,8 @@ comment count is in class .comment-number
 x / check count is in class .check-number and .x-number
 u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
 i set the min page width to around 640px (iphone 5 width) and max POST width (Not page) to 1000px
+
+--When a post is reported, a submission to a php page (change in form near bottom) will be submitted with "reason" as the reason for reporting and "post-id" as the post id.
 -->
 <!--
 Using Font Awesome instead of unicode, some icons look off since only some are avaliable without a pro liscence.
@@ -185,7 +187,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             outline: inherit;
         }
         .post-body {
-        	word-break: break-all;
+        	word-break: break-all; /* If this isn't here text can overflow  I'd need to make an annoying script to cut off large words. Don't want to do that.*/
         }
     </style>
 </head>
@@ -198,6 +200,7 @@ Overflow (more than 400 char) is handled automatically by JS.
 .vote-number : upvote count
 .comment-number : comment count
 post body overflow is auto-handled, add code to prevent XSS attacks
+on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id to make the submission for reporting. kbye
 -->
 <div class="container-fluid"> <!--full body page-->
     <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
@@ -212,7 +215,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 
@@ -224,7 +227,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 
@@ -236,7 +239,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 
@@ -262,10 +265,11 @@ post body overflow is auto-handled, add code to prevent XSS attacks
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <form action="/action_page.php">
+            <form action="/action_page.php" id="report">
               <div class="form-group">
                 <label for="email">Reason for Reporting:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                <textarea name="reason" form="report" rows="4" cols="55">Enter reason here...</textarea>
+                <input type="hidden" name="post-id" id="report-id" value="" />
               </div>
               
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -293,6 +297,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
         function report(button) {
         	button = $(button);
         	reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
+            $("#report-id").attr("value", reported_post);
         }
         $('.comment-number').each(function() {  // for each .comment number
         	if ($(this).html() == "1") {  // if there is exactly 1 comment
@@ -323,7 +328,7 @@ post body overflow is auto-handled, add code to prevent XSS attacks
                 let html1 = postbody.innerHTML.slice(0, 400);  // slice off the first 400
                 let html2 = postbody.innerHTML.slice(400, leng);
                 let newhtml = "<p class=\"post-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
-                    "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
+                    "<button type=\"button\" class=\"btn btn-sm btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
                 $(this).html(newhtml);  // insert them with a show more button
             }
         });
