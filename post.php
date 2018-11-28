@@ -140,7 +140,7 @@
             border-radius:50%;
         }
         .read-more {
-            margin-top:-10px;
+            margin-top:-20px;
             margin-bottom:10px;
         }
         .gone {
@@ -177,6 +177,9 @@
         }
         .comment-body-container {
         	word-break: break-all;
+        }
+        .btn-xs {
+        	font-size:12px;
         }
     </style>
 </head>
@@ -231,12 +234,12 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         <div class="full-comments"></div>
         <h3>Comments</h3>
         <div class="comment" comment-id=27172>
-        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">3</span> <i class="far fa-comments"></i></h4>
+        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">4</span> <i class="far fa-comments"></i></h4>
             <div class="comment-body-container"><p class="comment-body">lol</p></div>
             <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
                   <div class="comment" comment-id=1234>
-              <h4>By <span class="comment-author">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+              <h4>By <span class="comment-author">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
               <div class="comment-body-container"><p class="comment-body">lol</p></div>
               <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">1.2k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
               <div class="comment-replies">
@@ -322,7 +325,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                 let html1 = inner.innerHTML.slice(0, 200);  // slice off the first 400
                 let html2 = inner.innerHTML.slice(200, leng);
                 let newhtml = "<p class=\"comment-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
-                    "<button type=\"button\" class=\"btn btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
+                    "<button type=\"button\" class=\"btn btn-sm btn-secondary read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
                 $(this).html(newhtml);  // insert them with a show more button
             }
         });
