@@ -10,7 +10,6 @@ comment count is in class .comment-number
 x / check count is in class .check-number and .x-number
 u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
 i set the min page width to around 640px (iphone 5 width) and max POST width (Not page) to 1000px
-
 --When a post is reported, a submission to a php page (change in form near bottom) will be submitted with "reason" as the reason for reporting and "post-id" as the post id.
 -->
 <!--
@@ -189,6 +188,12 @@ Overflow (more than 400 char) is handled automatically by JS.
         .post-body {
         	word-break: break-all; /* If this isn't here text can overflow  I'd need to make an annoying script to cut off large words. Don't want to do that.*/
         }
+        .report-submit {
+        	text-align:left;
+        }
+        .report-close {
+        	text-align:right;
+        }
     </style>
 </head>
 <body>
@@ -272,11 +277,20 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 <input type="hidden" name="post-id" id="report-id" value="" />
               </div>
               
-              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <button type="submit" class="btn btn-primary report-submit" form="report">Submit</button>
+              </div>
+              <div class="col report-close">
+                <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+              </div>
+            </div>
+          </div>
+            
           </div>
         </div>
 
@@ -284,6 +298,10 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     </div>
     <script>
     let reported_post = 0;
+    let link_format = "https://thing.com/#"; // Format for a link to the post. Replace # with the server side post ID
+    	function getlink() {
+        	window.location.href = "http://www.w3schools.com";
+        }
         function togglemore(button) {
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
