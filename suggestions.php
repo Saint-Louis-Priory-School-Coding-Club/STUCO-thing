@@ -194,8 +194,12 @@ Overflow (more than 400 char) is handled automatically by JS.
         .report-close {
         	text-align:right;
         }
+        .post-top, .comment-c {
+        	cursor: pointer;
+        }
     </style>
 </head>
+<script>let link_format = "website.com/@"; // redirect format, replace # with post id</script>
 <body>
 <!-- first post will have full comments so you can see the inner workings -->
 <!-- text classes:
@@ -211,8 +215,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
     <br>
     <div class="post rounded" id="post-0" post-id="213534">
-        <div class="row">
-            <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
+        <div class="row post-top">
+            <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
+        </div>
 
         <h2>by <span class="author">Anonymous</span></h2>
 
@@ -225,8 +230,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     </div>
 
     <div class="post rounded" id="post-1" post-id="61346">
-        <div class="row">
-            <div class="col-8"><h1>slals <span class="badge badge-secondary">Suggestion</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
+        <div class="row post-top">
+            <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
+        </div>
         <h2>by User123</h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
@@ -298,7 +304,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     </div>
     <script>
     let reported_post = 0;
-    let link_format = "https://thing.com/#"; // Format for a link to the post. Replace # with the server side post ID
+    let redirect = "";
     	function getlink() {
         	window.location.href = "http://www.w3schools.com";
         }
@@ -350,6 +356,12 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 $(this).html(newhtml);  // insert them with a show more button
             }
         });
+      $('div.post-top').click(function() { //redirect for clicking top of post
+        redirect = $($(this).parent()).attr("post-id");
+        let link = link_format.replace("@", redirect);
+        window.location.href = link;
+      });
+      //TODO: comments can be clicked too lol
     </script>
 </div>
 </body>
