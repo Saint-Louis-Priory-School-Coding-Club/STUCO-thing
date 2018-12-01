@@ -207,14 +207,14 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
 <br>
 <div class="post rounded" post-id="213534">
     <div class="row post-top">
-        <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
+        <div class="col-8"><h1>💯🤣🔥🔥💯<span class="badge badge-secondary">Destruction</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
     </div>
 
-    <h2>by <span class="author noselect" author-id="12473">luis fonsi</span></h2>
+    <h2>by <span class="author noselect" author-id="12473">thanos</span></h2>
 
-    <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
+    <div class="post-body-container"><p class="post-body">whats up, i will be destroying half of the universe in 3... 2... 1... </p></div>
     <div class="post-options row noselect">
-        <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
+        <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-69696970</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
         <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
         <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
     </div>
