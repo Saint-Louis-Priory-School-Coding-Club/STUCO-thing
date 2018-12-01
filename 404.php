@@ -14,6 +14,6 @@
 <div class="container-fluid text-center">
 <h1 style="color:red"><strong>404 Error: Page not found</strong></h1>
 <p>The page you are looking for doesn't exist or has been moved to a different address</p>
-</div>
+</div> 
 </body>
 </html>
