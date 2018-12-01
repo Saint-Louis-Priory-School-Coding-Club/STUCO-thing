@@ -1,7 +1,12 @@
 <?php
 ob_start();
-session_start();
-require_once '../../blog/dbconnect.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($conn)) {
+    require_once '../../dbconnect.php';
+}
+
 
 // if session is set direct to index
 if (isset($_SESSION['user'])) {
@@ -33,34 +38,45 @@ if (isset($_POST['btn-login'])) {
     } else $errMSG = "User not found";
 }
 ?>
-
+<?php
+if (!isset($fromextern)) {
+    ?>
 <!DOCTYPE html>
 <head>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="stylesheet.php">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<?php
+    include '../../header.html';
+?>
+
 <div class="container">
-<?php include '../../header.html';?>
 <br><br><br><br>
+<?php
+}
+?>
     <div id="login-form">
         <form method="post" autocomplete="off">
 
             <div class="col-md-12">
 
+                
                 <div class="form-group">
-                    <h2 class="">Login:</h2>
+                <h2 class="">Login:</h2>
                 </div>
 
                 <div class="form-group">
-                    <hr/>
+                <hr/>
                 </div>
-
+                
+                
                 <?php
                 if (isset($errMSG)) {
 
@@ -101,11 +117,10 @@ if (isset($_POST['btn-login'])) {
                 </div>
 
                 <div class="form-group">
-                    <a href="register.php" type="button" class="btn btn-block btn-success"
-                       name="btn-login">Register</a>
+                    <a href="../register" class="btn btn-block btn-success" name="btn-login">Register</a>
                 </div>
                 <div class="form-group">
-                    <a href="reset.php" type="button" class="btn btn-block btn-info" name="reset">Forgot Password</a>
+                    <a href="../reset.php" class="btn btn-block btn-info" name="reset">Forgot Password</a>
                 </div>
 
             </div>

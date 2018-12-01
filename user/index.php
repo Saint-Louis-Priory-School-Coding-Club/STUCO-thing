@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-require_once '../blog/dbconnect.php';
+require_once '../dbconnect.php';
 if (!isset($_SESSION['user'])) {
     echo '
     <!DOCTYPE html>

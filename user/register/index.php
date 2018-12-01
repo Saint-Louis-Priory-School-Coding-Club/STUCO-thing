@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION['user']) != "") {
     header("Location: ../index.php");
 }
-include_once '../../blog/dbconnect.php';
+include_once '../../dbconnect.php';
 if (isset($_POST['signup'])) {
 
     $uname = trim($_POST['uname']); // get posted data and remove whitespace
@@ -53,6 +53,7 @@ if (isset($_POST['signup'])) {
 ?>
 <!DOCTYPE html>
 <head>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.php">
