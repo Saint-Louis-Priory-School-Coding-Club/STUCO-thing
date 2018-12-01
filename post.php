@@ -184,6 +184,30 @@
         .post-body {
         	word-break: break-all; /* If this isn't here text can overflow  I'd need to make an annoying script to cut off large words. Don't want to do that.*/
         }
+        .noastyle, .noastyle:hover {
+            color: black;
+        }
+        .nobstyle {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+        .report-submit {
+            text-align:left;
+        }
+        .report-close {
+            text-align:right;
+        }
+        .author, .comment-author {
+            cursor: pointer;
+        }
+        .author:hover, .comment-author:hover {
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -218,36 +242,39 @@ idea for how to store in database:
 store post and comment replying to. If the comment is replying to the post directly, have it store "0"
 list out each comment matching the post-id and comment-reply of 0. Then for each list out each comment replying to that... bla bla bla have some recursive loop thing until all comments have no replies or replies listed. idk i'm not an expert with back end
 -->
+<script>
+    let user_format = "website.com/user/@" // redirect format, replace @ with user
+</script>
 <div class="container-fluid"> <!--full body page-->
     <h1>stucospacito but with the post</h1>
     <br>
-    <div class="post rounded" id="post-0" post-id=65>
+    <div class="post rounded" post-id=65>
         <div class="row">
             <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
 
-        <h2>by <span class="author">Anonymous</span></h2>
+        <h2>by <span class="author noselect" author-id="12421">someone cool</span></h2>
 
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
-            <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">6</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><i class="far fa-flag"></i> Report</div></div>
+            <div class="comments col-4"><a href="#comments" class="noastyle"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">6</span> <span class="c-name">comments</span></div></a></div>
+            <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
-        <div class="line"></div>
+        <div class="line" id="comments"></div>
         <div class="full-comments"></div>
         <h3>Comments</h3>
         <div class="comment" comment-id=27172>
-        	<h4>By <span class="comment-author">yeet</span> | 2m ago | <span class="comment-reply-count">4</span> <i class="far fa-comments"></i></h4>
+        	<h4>By <span class="comment-author noselect" author-id="12345">yeet</span> | 2m ago | <span class="comment-reply-count">4</span> <i class="far fa-comments"></i></h4>
             <div class="comment-body-container"><p class="comment-body">lol</p></div>
             <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
                   <div class="comment" comment-id=1234>
-              <h4>By <span class="comment-author">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
+              <h4>By <span class="comment-author noselect" author-id="12345">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
               <div class="comment-body-container"><p class="comment-body">lol</p></div>
               <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">1.2k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
               <div class="comment-replies">
 				                                <div class="comment" comment-id=12213>
-                <h4>By <span class="comment-author">an_dude4</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <h4>By <span class="comment-author noselect" author-id="12345">an_dude4</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
                 <div class="comment-body-container"><p class="comment-body">lol</p></div>
                 <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">174k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
                 <div class="comment-replies">
@@ -257,12 +284,12 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
               </div>
               </div>
               <div class="comment" comment-id=4321>
-              <h4>By <span class="comment-author">who</span> | 11/26/2018 | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
+              <h4>By <span class="comment-author noselect" author-id="12345">who</span> | 11/26/2018 | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
               <div class="comment-body-container"><p class="comment-body">lol</p></div>
               <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
               <div class="comment-replies">
                                 <div class="comment" comment-id=12213>
-                <h4>By <span class="comment-author">fortnite_Gamer69</span> | 13h ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+                <h4>By <span class="comment-author noselect" author-id="12345">fortnite_Gamer69</span> | 13h ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
                 <div class="comment-body-container"><p class="comment-body">lol</p></div>
                 <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
                 <div class="comment-replies">
@@ -274,7 +301,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         </div>
         </div>
         <div class="comment" comment-id=27172>
-        	<h4>By <span class="comment-author">someone445</span> | 2m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
+        	<h4>By <span class="comment-author noselect" author-id="12345">someone445</span> | 2m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
             <div class="comment-body-container"><p class="comment-body">lollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollol</p></div>
             <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">34</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
@@ -282,8 +309,49 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             </div>
             </div>
 </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Report Post</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/action_page.php" id="report">
+                        <div class="form-group">
+                            <label for="email">Reason for Reporting:</label>
+                            <textarea name="reason" form="report" rows="4" cols="55">Enter reason here...</textarea>
+                            <input type="hidden" name="post-id" id="report-id" value="" />
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary report-submit" form="report">Submit</button>
+                            </div>
+                            <div class="col report-close">
+                                <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
 
     <script>
+        let reported_post = 0;
+        function report(button) {
+            button = $(button);
+            reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
+            $("#report-id").attr("value", reported_post);
+        }
         function togglemore(button) {
             button = $(button);
             button.parent().children(".comment-body").children(".dotdotdot").toggleClass("gone");
@@ -331,6 +399,16 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                     "<button type=\"button\" class=\"btn btn-sm btn-secondary read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
                 $(this).html(newhtml);  // insert them with a show more button
             }
+        });
+        $('.author').click(function() { //redirect for clicking comments
+            redirect = $(this).attr("author-id");
+            let link = user_format.replace("@", redirect);
+            window.location.href = link;
+        });
+        $('.comment-author').click(function() { //redirect for clicking comments
+            redirect = $(this).attr("author-id");
+            let link = user_format.replace("@", redirect);
+            window.location.href = link;
         });
     </script>
 </div>
