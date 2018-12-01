@@ -371,6 +371,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             $(this).width($(this).height());  // set the width to the height
         });
         // FUNCTION MIGHT NOT BE NEEDED:
+        /*
         $('.post-body').each(function() { // last resort XSS preventer
             var orig = $(this).html();  // original text
             var newtxt = "";  // fixed text
@@ -384,6 +385,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             }
             $(this).html(newtxt);
         });
+        */
         $('.comment-replies').each(function() {  // for each .comment reply container
             if ($(this).html().trim() != "") {  // if there are replies
             	$(this).addClass("margin"); // add a margin below updoot button
