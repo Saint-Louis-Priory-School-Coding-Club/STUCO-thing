@@ -1,5 +1,4 @@
 <!--INFO:
-each post has an id that starts at "post-0" and goes up. post-1, post-2, etc.
 I think you can also have custom html tags so there would be a post-id tag with the server's id for that post.
 THIS IS REQUIRED! I USE "post-id" FOR THE REPORTING SCRIPT!
 post should be expandable by clicking anywhere on it except report/upvote buttons.
@@ -139,7 +138,6 @@ Overflow (more than 400 char) is handled automatically by JS.
         .noselect {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
-            -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
@@ -197,9 +195,18 @@ Overflow (more than 400 char) is handled automatically by JS.
         .post-top, .comment-c {
         	cursor: pointer;
         }
+        .author {
+            cursor: pointer;
+        }
+        .author:hover {
+            color: #666;
+        }
     </style>
 </head>
-<script>let link_format = "website.com/@"; // redirect format, replace # with post id</script>
+<script>
+    let link_format = "website.com/@"; // redirect format, replace @ with post id
+    let user_format = "website.com/user/@" // redirect format, replace @ with user
+</script>
 <body>
 <!-- first post will have full comments so you can see the inner workings -->
 <!-- text classes:
@@ -214,55 +221,55 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
 <div class="container-fluid"> <!--full body page-->
     <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
     <br>
-    <div class="post rounded" id="post-0" post-id="213534">
+    <div class="post rounded" post-id="213534">
         <div class="row post-top">
             <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
         </div>
 
-        <h2>by <span class="author">Anonymous</span></h2>
+        <h2>by <span class="author noselect" author-id="12473">luis fonsi</span></h2>
 
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 
-    <div class="post rounded" id="post-1" post-id="61346">
+    <div class="post rounded" post-id="61346">
         <div class="row post-top">
             <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
         </div>
-        <h2>by User123</h2>
+        <h2>by <span class="author noselect" author-id="6969">memelord</span></h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 
-    <div class="post rounded" id="post-2" post-id="01240">
-        <div class="row">
+    <div class="post rounded" post-id="01240">
+        <div class="row post-top ">
             <div class="col-8"><h1><div class="verifycheck square circle" style="width: 30px;"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
-        <h2>by Mr. STUCO Member <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></h2>
+        <h2>by <span class="author noselect" author-id="12473">Stuco guy <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></span></h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 
-    <div class="post rounded" id="post-3" post-id="12344">
-        <div class="row">
+    <div class="post rounded" post-id="12344">
+        <div class="row post-top">
             <div class="col-8"><h1>fraf <span class="badge badge-secondary">Poll</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div></div>
-        <h2>by Moderator man</h2>
+        <h2>by <span class="author noselect" author-id="124373">guy</span></h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
-            <div class="report col-4"><div class="report-c"><button type="button" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
+            <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
 	<!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
@@ -305,14 +312,11 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     <script>
     let reported_post = 0;
     let redirect = "";
-    	function getlink() {
-        	window.location.href = "http://www.w3schools.com";
-        }
         function togglemore(button) {
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
             button.parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
-            if (button.html() == "Show More") {
+            if (button.html() === "Show More") {
             	button.html("Show Less");
             } else {
             	button.html("Show More");
@@ -356,11 +360,21 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 $(this).html(newhtml);  // insert them with a show more button
             }
         });
-      $('div.post-top').click(function() { //redirect for clicking top of post
-        redirect = $($(this).parent()).attr("post-id");
-        let link = link_format.replace("@", redirect);
-        window.location.href = link;
-      });
+        $('.author').click(function() { //redirect for clicking comments
+            redirect = $(this).attr("author-id");
+            let link = user_format.replace("@", redirect);
+            window.location.href = link;
+        });
+          $('div.post-top').click(function() { //redirect for clicking top of post
+            redirect = $($(this).parent()).attr("post-id");
+            let link = link_format.replace("@", redirect);
+            window.location.href = link;
+          });
+        $('div.comment-c').click(function() { //redirect for clicking comments
+            redirect = $($(this).parent().parent().parent()).attr("post-id");
+            let link = link_format.replace("@", redirect);
+            window.location.href = link;
+        });
       //TODO: comments can be clicked too lol
     </script>
 </div>
