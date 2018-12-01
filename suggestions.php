@@ -336,6 +336,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             $(this).width($(this).height());  // set the width to the height
         });
         // FUNCTION MIGHT NOT BE NEEDED:
+    /*
         $('.post-body').each(function() { // last resort XSS preventer
             var orig = $(this).html();  // original text
             var newtxt = "";  // fixed text
@@ -349,6 +350,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             }
             $(this).html(newtxt);
         });
+        */
         $('.post-body-container').each(function() {  // for each .post-body
             let postbody = $(this).children(".post-body")[0];
             let leng = postbody.innerHTML.length;
