@@ -223,14 +223,14 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     <br>
     <div class="post rounded" post-id="213534">
         <div class="row post-top">
-            <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
+            <div class="col-8"><h1>Attention All Gamers <span class="badge badge-secondary">Announcement</span></h1></div><div class="col-4 date"><h5>now</h5></div>
         </div>
 
-        <h2>by <span class="author noselect" author-id="12473">luis fonsi</span></h2>
+        <h2>by <span class="author noselect" author-id="213213">Robert</span></h2>
 
-        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
+        <div class="post-body-container"><p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="vote col-4"><div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
@@ -243,7 +243,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
         <h2>by <span class="author noselect" author-id="6969">memelord</span></h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-4"><div class="upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="vote col-4"><div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="dv-button downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
@@ -255,7 +255,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
         <h2>by <span class="author noselect" author-id="12473">Stuco guy <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></span></h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-4"><div class="votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
+            <div class="vote col-4"><div class="ux-button votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span> <div class="dx-button votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
@@ -267,7 +267,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
         <h2>by <span class="author noselect" author-id="124373">guy</span></h2>
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-4"><div class="votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
+            <div class="vote col-4"><div class="ux-button votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span> <div class="dx-button votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div></div>
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
@@ -377,7 +377,47 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             let link = link_format.replace("@", redirect);
             window.location.href = link;
         });
-      //TODO: comments can be clicked too lol
+        $('.uv-button').click(function() { //if upvote button clicked
+            $(this).toggleClass("upvote").toggleClass("upvoted");
+            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
+            let dv = $(this).parent().children(".dv-button")[0];
+            dv = $(dv);
+            if (dv.hasClass("downvoted")) {
+                dv.removeClass("downvoted");
+                dv.addClass("downvote");
+            }
+        });
+        $('.dv-button').click(function() { //if downvote button clicked
+            $(this).toggleClass("downvote").toggleClass("downvoted");
+            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            let uv = $(this).parent().children(".uv-button")[0];
+            uv = $(uv);
+            if (uv.hasClass("upvoted")) {
+                uv.removeClass("upvoted");
+                uv.addClass("upvote");
+            }
+        });
+        $('.ux-button').click(function() { //if upvote button clicked (ux is for up x, a check)
+            $(this).toggleClass("votecheck").toggleClass("votechecked");
+            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
+            let dv = $(this).parent().children(".dx-button")[0];
+            dv = $(dv);
+            if (dv.hasClass("votexed")) {
+                dv.removeClass("votexed");
+                dv.addClass("votex");
+            }
+        });
+        $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
+            $(this).toggleClass("votex").toggleClass("votexed");
+            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            let uv = $(this).parent().children(".ux-button")[0];
+            uv = $(uv);
+            if (uv.hasClass("votechecked")) {
+                uv.removeClass("votechecked");
+                uv.addClass("votecheck");
+            }
+        });
+
     </script>
 </div>
 </body>

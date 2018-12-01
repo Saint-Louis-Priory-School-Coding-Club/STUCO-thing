@@ -256,7 +256,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
 
         <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
         <div class="post-options row noselect">
-            <div class="vote col-4"><div class="upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="vote col-4"><div class="uv-button upvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span> <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><a href="#comments" class="noastyle"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">6</span> <span class="c-name">comments</span></div></a></div>
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
@@ -266,17 +266,17 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         <div class="comment" comment-id=27172>
         	<h4>By <span class="comment-author noselect" author-id="12345">yeet</span> | 2m ago | <span class="comment-reply-count">4</span> <i class="far fa-comments"></i></h4>
             <div class="comment-body-container"><p class="comment-body">lol</p></div>
-            <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comment-options"><div class="uv-button upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span> <div class="dv-button downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
                   <div class="comment" comment-id=1234>
               <h4>By <span class="comment-author noselect" author-id="12345">Stuco Guy <div class="verifycheck square circle"><i class="fas fa-check"></i></div></span> | now | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
               <div class="comment-body-container"><p class="comment-body">lol</p></div>
-              <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">1.2k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+              <div class="comment-options"><div class="uv-button upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">1.2k</span> <div class="dv-button downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
               <div class="comment-replies">
-				                                <div class="comment" comment-id=12213>
+				<div class="comment" comment-id=12213>
                 <h4>By <span class="comment-author noselect" author-id="12345">an_dude4</span> | 1m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
                 <div class="comment-body-container"><p class="comment-body">lol</p></div>
-                <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">174k</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+                <div class="comment-options"><div class="uv-button upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">174k</span> <div class="dv-button downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
                 <div class="comment-replies">
 
               </div>
@@ -286,12 +286,12 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
               <div class="comment" comment-id=4321>
               <h4>By <span class="comment-author noselect" author-id="12345">who</span> | 11/26/2018 | <span class="comment-reply-count">1</span> <i class="far fa-comments"></i></h4>
               <div class="comment-body-container"><p class="comment-body">lol</p></div>
-              <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+              <div class="comment-options"><div class="uv-button upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">5</span> <div class="dv-button downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
               <div class="comment-replies">
                                 <div class="comment" comment-id=12213>
                 <h4>By <span class="comment-author noselect" author-id="12345">fortnite_Gamer69</span> | 13h ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
                 <div class="comment-body-container"><p class="comment-body">lol</p></div>
-                <div class="comment-options"><div class="upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+                <div class="comment-options"><div class="uv-button upvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">3</span> <div class="dv-button downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
                 <div class="comment-replies">
 
               </div>
@@ -303,7 +303,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         <div class="comment" comment-id=27172>
         	<h4>By <span class="comment-author noselect" author-id="12345">someone445</span> | 2m ago | <span class="comment-reply-count">0</span> <i class="far fa-comments"></i></h4>
             <div class="comment-body-container"><p class="comment-body">lollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollolloollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollol</p></div>
-            <div class="comment-options"><div class="upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">34</span> <div class="downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
+            <div class="comment-options"><div class="uv-button upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">34</span> <div class="dv-button downvote square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comment-replies">
             	
             </div>
@@ -363,7 +363,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             }
         }
         $('.comment-number').each(function() {  // for each .comment number
-        	if ($(this).html() == "1") {  // if there is exactly 1 comment
+        	if ($(this).html() === "1") {  // if there is exactly 1 comment
             	$(this).parent().children(".c-name").html("comment");
             }
         });
@@ -387,7 +387,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         });
         */
         $('.comment-replies').each(function() {  // for each .comment reply container
-            if ($(this).html().trim() != "") {  // if there are replies
+            if ($(this).html().trim() !== "") {  // if there are replies
             	$(this).addClass("margin"); // add a margin below updoot button
             }
         });
@@ -411,6 +411,58 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             redirect = $(this).attr("author-id");
             let link = user_format.replace("@", redirect);
             window.location.href = link;
+        });
+        $('.uv-button').click(function() { //if upvote button clicked
+            $(this).toggleClass("upvote").toggleClass("upvoted");
+            let post_clicked = "none";
+            if ($(this).parent().hasClass("comment-options")) {
+                post_clicked = $(this).parent().parent().attr("comment-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            } else {
+                post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            }
+            alert(post_clicked);
+            let dv = $(this).parent().children(".dv-button")[0];
+            dv = $(dv);
+            if (dv.hasClass("downvoted")) {
+                dv.removeClass("downvoted");
+                dv.addClass("downvote");
+            }
+        });
+        $('.dv-button').click(function() { //if downvote button clicked
+            $(this).toggleClass("downvote").toggleClass("downvoted");
+            let post_clicked = "none";
+            if ($(this).parent().hasClass("comment-options")) {
+                post_clicked = $(this).parent().parent().attr("comment-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            } else {
+                post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            }
+            alert(post_clicked);
+            let uv = $(this).parent().children(".uv-button")[0];
+            uv = $(uv);
+            if (uv.hasClass("upvoted")) {
+                uv.removeClass("upvoted");
+                uv.addClass("upvote");
+            }
+        });
+        $('.ux-button').click(function() { //if upvote button clicked (ux is for up x, a check)
+            $(this).toggleClass("votecheck").toggleClass("votechecked");
+            //let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
+            let dv = $(this).parent().children(".dx-button")[0];
+            dv = $(dv);
+            if (dv.hasClass("votexed")) {
+                dv.removeClass("votexed");
+                dv.addClass("votex");
+            }
+        });
+        $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
+            $(this).toggleClass("votex").toggleClass("votexed");
+            //let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            let uv = $(this).parent().children(".ux-button")[0];
+            uv = $(uv);
+            if (uv.hasClass("votechecked")) {
+                uv.removeClass("votechecked");
+                uv.addClass("votecheck");
+            }
         });
     </script>
 </div>
