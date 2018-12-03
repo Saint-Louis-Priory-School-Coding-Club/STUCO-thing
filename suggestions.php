@@ -184,7 +184,8 @@ Overflow (more than 400 char) is handled automatically by JS.
             outline: inherit;
         }
         .post-body {
-        	word-break: break-all; /* If this isn't here text can overflow  I'd need to make an annoying script to cut off large words. Don't want to do that.*/
+            word-wrap: break-word;
+            overflow:hidden;
         }
         .report-submit {
         	text-align:left;
@@ -201,11 +202,21 @@ Overflow (more than 400 char) is handled automatically by JS.
         .author:hover {
             color: #666;
         }
+        .alert {
+        	position:fixed;
+            bottom:-60px;
+            width:95%;
+            margin: 10px auto;
+            left: 0;
+            right: 0;
+            -webkit-transition: bottom 0.5s; /* Safari */
+    		transition: bottom 0.5s;
+        }
     </style>
 </head>
 <script>
-    let link_format = "website.com/@"; // redirect format, replace @ with post id
-    let user_format = "website.com/user/@" // redirect format, replace @ with user
+    let link_format = "http://website.com/@"; // redirect format, replace @ with post id
+    let user_format = "http://website.com/user/@" // redirect format, replace @ with user
 </script>
 <body>
 <!-- first post will have full comments so you can see the inner workings -->
@@ -241,7 +252,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             <div class="col-8"><h1>test <span class="badge badge-secondary">Test</span></h1></div><div class="col-4 date"><h5>2m ago</h5></div>
         </div>
         <h2>by <span class="author noselect" author-id="6969">memelord</span></h2>
-        <div class="post-body-container"><p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p></div>
+        <div class="post-body-container"><p class="post-body">heeeeeeeerererewduysgfnisuydmhfinashgiahomsogjmewoifhoidjksfimaemiofhaeoisjfjoihfgjwg;lkjs;gkj;lghad;lskjg;lkdfjg lol despacito</p></div>
         <div class="post-options row noselect">
             <div class="vote col-4"><div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span> <div class="dv-button downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div></div>
             <div class="comments col-4"><div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div></div>
@@ -272,6 +283,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
+    <div class="alert alert-danger" role="alert">
+  		This is a danger alert—check it out!
+	</div>
 	<!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -310,8 +324,17 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
       </div>
     </div>
     <script>
-    let reported_post = 0;
-    let redirect = "";
+        let reported_post = 0;
+        let redirect = "";
+        function closealert() {
+          $(".alert-danger").css("bottom","-60px");
+        }
+		function alert(type, text) {
+        	if (type === "danger") {
+            	$(".alert-danger").css("bottom","0");
+                setTimeout(closealert, 3000)
+            }
+        }
         function togglemore(button) {
             button = $(button);
             button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
@@ -323,6 +346,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             }
         }
         function report(button) {
+        alert("danger", "test");
         	button = $(button);
         	reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
             $("#report-id").attr("value", reported_post);
