@@ -283,8 +283,10 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             <div class="report col-4"><div class="report-c"><button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button></div></div>
         </div>
     </div>
-    <div class="alert alert-danger" role="alert">
-  		This is a danger alert—check it out!
+    <div class="alerts">
+    	<div class="alert alert-clone" role="alert">
+  			This is a danger alert—check it out!
+		</div>
 	</div>
 	<!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -329,11 +331,19 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
         function closealert() {
           $(".alert-danger").css("bottom","-60px");
         }
-		function alert(type, text) {
-        	if (type === "danger") {
-            	$(".alert-danger").css("bottom","0");
-                setTimeout(closealert, 3000)
-            }
+		function htmlalert(type, text) {
+        	let alert = $(".alert-clone").clone(true).appendTo(".alerts");
+        	setTimeout(function() {
+    			alert.addClass(type);
+				alert.html(text);
+            	alert.css("bottom","0");
+            	setTimeout(function() {
+				    alert.css("bottom","-60px");
+				    setTimeout(function() {
+				    alert.remove();
+					}, 2000)
+				}, 3000)
+			}, 100)	
         }
         function togglemore(button) {
             button = $(button);
@@ -346,7 +356,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             }
         }
         function report(button) {
-        alert("danger", "test");
         	button = $(button);
         	reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
             $("#report-id").attr("value", reported_post);
@@ -415,6 +424,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             //update count
         });
         $('.dv-button').click(function() { //if downvote button clicked
+        	let originally_voted = false;
             $(this).toggleClass("downvote").toggleClass("downvoted");
             let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
             let uv = $(this).parent().children(".uv-button")[0];
@@ -422,7 +432,16 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             if (uv.hasClass("upvoted")) {
                 uv.removeClass("upvoted");
                 uv.addClass("upvote");
+                originally_downvoted = true;
             }
+            let ajax_response = false; // True if succesful, false if failed.
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to downvote.");
+            	$(this).toggleClass("downvote").toggleClass("downvoted");
+            	uv.toggleClass("upvote").toggleClass("upvoted");
+
+            }
+            
         });
         $('.ux-button').click(function() { //if upvote button clicked (ux is for up x, a check)
             $(this).toggleClass("votecheck").toggleClass("votechecked");
