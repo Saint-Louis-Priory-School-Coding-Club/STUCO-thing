@@ -438,7 +438,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to downvote.");
             	$(this).toggleClass("downvote").toggleClass("downvoted");
-            	uv.toggleClass("upvote").toggleClass("upvoted");
+            	uv.toggleClass("upvoted").toggleClass("upvote");
 
             }
             
