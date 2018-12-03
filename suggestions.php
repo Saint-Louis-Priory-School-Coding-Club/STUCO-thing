@@ -386,6 +386,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 dv.removeClass("downvoted");
                 dv.addClass("downvote");
             }
+            //get ajax return value
+            //message if false
+            //update count
         });
         $('.dv-button').click(function() { //if downvote button clicked
             $(this).toggleClass("downvote").toggleClass("downvoted");
@@ -417,7 +420,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 uv.addClass("votecheck");
             }
         });
-
     </script>
 </div>
 </body>
