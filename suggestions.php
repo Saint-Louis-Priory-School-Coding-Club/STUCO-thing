@@ -331,16 +331,16 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
         function closealert() {
           $(".alert-danger").css("bottom","-60px");
         }
-		function htmlalert(type, text) {
-        	let alert = $(".alert-clone").clone(true).appendTo(".alerts");
+		function htmlalert(type, text) { //custom HTML alert
+        	let alert = $(".alert-clone").clone(true).appendTo(".alerts");  //clone alert template
         	setTimeout(function() {
-    			alert.addClass(type);
-				alert.html(text);
-            	alert.css("bottom","0");
+    			alert.addClass(type); // add class "type", bootstrap alert type
+				alert.html(text);  // change text to "text"
+            	alert.css("bottom","0");  //move up
             	setTimeout(function() {
-				    alert.css("bottom","-60px");
+				    alert.css("bottom","-60px");  // move down
 				    setTimeout(function() {
-				    alert.remove();
+				    	alert.remove(); // delete alert
 					}, 2000)
 				}, 3000)
 			}, 100)	
@@ -410,7 +410,13 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             let link = link_format.replace("@", redirect);
             window.location.href = link;
         });
+        //--FOR EACH BELOW "ajax_response" IS THE RESPONSE THE SERVER GIVES!
+        //if it's true it means it upvoted succesfully.
+        //otherwise it didn't.
+        //ajax_vote is the amount of votes (check server for every click
+        //ajax_vote_c and ajax_vote_x are the same but for checks and Xs
         $('.uv-button').click(function() { //if upvote button clicked
+        	let originally_voted = false;
             $(this).toggleClass("upvote").toggleClass("upvoted");
             let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
             let dv = $(this).parent().children(".dv-button")[0];
@@ -418,10 +424,21 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             if (dv.hasClass("downvoted")) {
                 dv.removeClass("downvoted");
                 dv.addClass("downvote");
+                originally_voted = true;
             }
-            //get ajax return value
-            //message if false
-            //update count
+            let ajax_response = true;
+            let ajax_vote = "420";
+            alert(ajax_vote);
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to upvote.");
+            	$(this).toggleClass("upvote").toggleClass("upvoted");
+            	if (originally_voted) {
+            		dv.toggleClass("downvoted").toggleClass("downvote");
+            	}
+
+            } else {
+            	alert($(this).parent().children(".vote-number")[0].html());
+            }
         });
         $('.dv-button').click(function() { //if downvote button clicked
         	let originally_voted = false;
@@ -432,18 +449,21 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             if (uv.hasClass("upvoted")) {
                 uv.removeClass("upvoted");
                 uv.addClass("upvote");
-                originally_downvoted = true;
+                originally_voted = true;
             }
-            let ajax_response = false; // True if succesful, false if failed.
+            let ajax_response = true; // True if succesful, false if failed. set with ajax response
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to downvote.");
             	$(this).toggleClass("downvote").toggleClass("downvoted");
-            	uv.toggleClass("upvoted").toggleClass("upvote");
+            	if (originally_voted) {
+            		uv.toggleClass("upvoted").toggleClass("upvote");
+            	}
 
             }
             
         });
         $('.ux-button').click(function() { //if upvote button clicked (ux is for up x, a check)
+            let originally_voted = false;
             $(this).toggleClass("votecheck").toggleClass("votechecked");
             let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
             let dv = $(this).parent().children(".dx-button")[0];
@@ -451,9 +471,20 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             if (dv.hasClass("votexed")) {
                 dv.removeClass("votexed");
                 dv.addClass("votex");
+                originally_voted = true;
+            }
+            let ajax_response = true;
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to check.");
+            	$(this).toggleClass("votecheck").toggleClass("votechecked");
+            	if (originally_voted) {
+            		dv.toggleClass("votex").toggleClass("votexed");
+            	}
+
             }
         });
         $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
+            let originally_voted = false;
             $(this).toggleClass("votex").toggleClass("votexed");
             let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
             let uv = $(this).parent().children(".ux-button")[0];
@@ -461,6 +492,16 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             if (uv.hasClass("votechecked")) {
                 uv.removeClass("votechecked");
                 uv.addClass("votecheck");
+                originally_voted = true;
+            }
+            let ajax_response = true; // True if succesful, false if failed. set with ajax response
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to X.");
+            	$(this).toggleClass("votex").toggleClass("votexed");
+            	if (originally_voted) {
+            		uv.toggleClass("votechecked").toggleClass("votecheck");
+            	}
+
             }
         });
     </script>
