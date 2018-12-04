@@ -410,11 +410,12 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             let link = link_format.replace("@", redirect);
             window.location.href = link;
         });
-        //--FOR EACH BELOW "ajax_response" IS THE RESPONSE THE SERVER GIVES!
+        // --FOR EACH BELOW "ajax_response" IS THE RESPONSE THE SERVER GIVES!--
         //if it's true it means it upvoted succesfully.
         //otherwise it didn't.
-        //ajax_vote is the amount of votes (check server for every click
+        //ajax_vote is the amount of votes
         //ajax_vote_c and ajax_vote_x are the same but for checks and Xs
+        // it queries the server for the updoot amount on each upvote for simplicity
         $('.uv-button').click(function() { //if upvote button clicked
         	let originally_voted = false;
             $(this).toggleClass("upvote").toggleClass("upvoted");
@@ -428,7 +429,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             }
             let ajax_response = true;
             let ajax_vote = "420";
-            alert(ajax_vote);
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to upvote.");
             	$(this).toggleClass("upvote").toggleClass("upvoted");
@@ -437,7 +437,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             	}
 
             } else {
-            	alert($(this).parent().children(".vote-number")[0].html());
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
             }
         });
         $('.dv-button').click(function() { //if downvote button clicked
@@ -452,6 +452,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 originally_voted = true;
             }
             let ajax_response = true; // True if succesful, false if failed. set with ajax response
+            let ajax_vote = "420";
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to downvote.");
             	$(this).toggleClass("downvote").toggleClass("downvoted");
@@ -459,6 +460,8 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             		uv.toggleClass("upvoted").toggleClass("upvote");
             	}
 
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
             }
             
         });
@@ -474,6 +477,8 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 originally_voted = true;
             }
             let ajax_response = true;
+            let ajax_vote_c = "120";
+            let ajax_vote_x = "210";
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to check.");
             	$(this).toggleClass("votecheck").toggleClass("votechecked");
@@ -481,6 +486,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             		dv.toggleClass("votex").toggleClass("votexed");
             	}
 
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote_c;
+            	$(this).parent().children(".x-number")[0].innerHTML = ajax_vote_x;
             }
         });
         $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
@@ -495,6 +503,8 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 originally_voted = true;
             }
             let ajax_response = true; // True if succesful, false if failed. set with ajax response
+            let ajax_vote_c = "120";
+            let ajax_vote_x = "210";
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to X.");
             	$(this).toggleClass("votex").toggleClass("votexed");
@@ -502,8 +512,13 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             		uv.toggleClass("votechecked").toggleClass("votecheck");
             	}
 
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote_c;
+            	$(this).parent().children(".x-number")[0].innerHTML = ajax_vote_x;
             }
         });
+        //TODO: for me: post creation page
+        //TODO: for not me: AJAX
     </script>
 </div>
 </body>
