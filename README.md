@@ -8,3 +8,5 @@ except with your password instead of the blank I put in. if this file(the dbconn
 
 IMPORTANT!
 because of a new datastructure update to the database, you must deleted the database you have been using, and create a new one named "stuco". Then go to import and select the database.sql file.
+
+Don't move any files or change what files are used without asking the person using them (cough cough suggestions and post)
