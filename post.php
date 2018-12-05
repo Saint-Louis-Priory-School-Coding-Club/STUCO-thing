@@ -352,6 +352,20 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
             $("#report-id").attr("value", reported_post);
         }
+        function htmlalert(type, text) { //custom HTML alert
+        	let alert = $(".alert-clone").clone(true).appendTo(".alerts");  //clone alert template
+        	setTimeout(function() {
+    			alert.addClass(type); // add class "type", bootstrap alert type
+				alert.html(text);  // change text to "text"
+            	alert.css("bottom","0");  //move up
+            	setTimeout(function() {
+				    alert.css("bottom","-60px");  // move down
+				    setTimeout(function() {
+				    	alert.remove(); // delete alert
+					}, 2000)
+				}, 3000)
+			}, 100)	
+        }
         function togglemore(button) {
             button = $(button);
             button.parent().children(".comment-body").children(".dotdotdot").toggleClass("gone");
@@ -413,6 +427,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             window.location.href = link;
         });
         $('.uv-button').click(function() { //if upvote button clicked
+        	let originally_voted = false;
             $(this).toggleClass("upvote").toggleClass("upvoted");
             let post_clicked = "none";
             if ($(this).parent().hasClass("comment-options")) {
@@ -426,9 +441,23 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             if (dv.hasClass("downvoted")) {
                 dv.removeClass("downvoted");
                 dv.addClass("downvote");
+                originally_voted = true;
+            }
+            let ajax_response = true;
+            let ajax_vote = "420";
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to upvote.");
+            	$(this).toggleClass("upvote").toggleClass("upvoted");
+            	if (originally_voted) {
+            		dv.toggleClass("downvoted").toggleClass("downvote");
+            	}
+
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
             }
         });
         $('.dv-button').click(function() { //if downvote button clicked
+        	let originally_voted = false;
             $(this).toggleClass("downvote").toggleClass("downvoted");
             let post_clicked = "none";
             if ($(this).parent().hasClass("comment-options")) {
@@ -442,16 +471,49 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             if (uv.hasClass("upvoted")) {
                 uv.removeClass("upvoted");
                 uv.addClass("upvote");
+                originally_voted = true;
+            }
+            let ajax_response = true; // True if succesful, false if failed. set with ajax response
+            let ajax_vote = "420";
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to downvote.");
+            	$(this).toggleClass("downvote").toggleClass("downvoted");
+            	if (originally_voted) {
+            		uv.toggleClass("upvoted").toggleClass("upvote");
+            	}
+
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
             }
         });
         $('.ux-button').click(function() { //if upvote button clicked (ux is for up x, a check)
+        	let originally_voted = false;
             $(this).toggleClass("votecheck").toggleClass("votechecked");
-            //let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
-            let dv = $(this).parent().children(".dx-button")[0];
+            let post_clicked = "none";
+            if ($(this).parent().hasClass("comment-options")) {
+                post_clicked = $(this).parent().parent().attr("comment-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            } else {
+                post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            }
+            alert(post_clicked);
+            let dv = $(this).parent().children(".dv-button")[0];
             dv = $(dv);
             if (dv.hasClass("votexed")) {
                 dv.removeClass("votexed");
                 dv.addClass("votex");
+                originally_voted = true;
+            }
+            let ajax_response = true;
+            let ajax_vote = "420";
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to check.");
+            	$(this).toggleClass("votecheck").toggleClass("votechecked");
+            	if (originally_voted) {
+            		dv.toggleClass("votex").toggleClass("votexed");
+            	}
+
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
             }
         });
         $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
