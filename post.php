@@ -208,6 +208,25 @@
         .author:hover, .comment-author:hover {
             color: #666;
         }
+        .read-more {
+        	font-size:14px;
+        	color: #888;
+        }
+        .read-more:hover {
+        	font-size:14px;
+        	color: #666;
+        	text-decoration:underline;
+        }
+                .alert {
+        	position:fixed;
+            bottom:-60px;
+            width:95%;
+            margin: 10px auto;
+            left: 0;
+            right: 0;
+            -webkit-transition: bottom 0.5s; /* Safari */
+    		transition: bottom 0.5s;
+        }
     </style>
 </head>
 <body>
@@ -309,6 +328,11 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             </div>
             </div>
 </div>
+    <div class="alerts">
+    	<div class="alert alert-clone" role="alert">
+  			This is a danger alert—check it out!
+		</div>
+	</div>
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -368,8 +392,8 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         }
         function togglemore(button) {
             button = $(button);
-            button.parent().children(".comment-body").children(".dotdotdot").toggleClass("gone");
-            button.parent().children(".comment-body").children(".show-more-txt").toggleClass("gone");
+            button.parent().children(".dotdotdot").toggleClass("gone");
+            button.parent().children(".show-more-txt").toggleClass("gone");
             if (button.html() == "Show More") {
             	button.html("Show Less");
             } else {
@@ -411,8 +435,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             if (leng > 200) { // if more than 400 characters
                 let html1 = inner.innerHTML.slice(0, 200);  // slice off the first 400
                 let html2 = inner.innerHTML.slice(200, leng);
-                let newhtml = "<p class=\"comment-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
-                    "<button type=\"button\" class=\"btn btn-sm btn-secondary read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
+                let newhtml = "<p class=\"comment-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span> <button type=\"button\" class=\"nobstyle read-more\" onclick=\"togglemore(this)\">Show More</button></p>\n";
                 $(this).html(newhtml);  // insert them with a show more button
             }
         });
@@ -435,7 +458,6 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             } else {
                 post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
             }
-            alert(post_clicked);
             let dv = $(this).parent().children(".dv-button")[0];
             dv = $(dv);
             if (dv.hasClass("downvoted")) {
@@ -443,8 +465,8 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                 dv.addClass("downvote");
                 originally_voted = true;
             }
-            let ajax_response = true;
-            let ajax_vote = "420";
+            let ajax_response = false;
+            let ajax_vote = "12";
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to upvote.");
             	$(this).toggleClass("upvote").toggleClass("upvoted");
@@ -465,7 +487,6 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             } else {
                 post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
             }
-            alert(post_clicked);
             let uv = $(this).parent().children(".uv-button")[0];
             uv = $(uv);
             if (uv.hasClass("upvoted")) {
@@ -495,7 +516,6 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             } else {
                 post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
             }
-            alert(post_clicked);
             let dv = $(this).parent().children(".dv-button")[0];
             dv = $(dv);
             if (dv.hasClass("votexed")) {
@@ -517,13 +537,32 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             }
         });
         $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
+        	let originally_voted = false;
             $(this).toggleClass("votex").toggleClass("votexed");
-            //let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
-            let uv = $(this).parent().children(".ux-button")[0];
-            uv = $(uv);
-            if (uv.hasClass("votechecked")) {
-                uv.removeClass("votechecked");
-                uv.addClass("votecheck");
+            let post_clicked = "none";
+            if ($(this).parent().hasClass("comment-options")) {
+                post_clicked = $(this).parent().parent().attr("comment-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            } else {
+                post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
+            }
+            let dv = $(this).parent().children(".dv-button")[0];
+            dv = $(dv);
+            if (dv.hasClass("votechecked")) {
+                dv.removeClass("votechecked");
+                dv.addClass("votecheck");
+                originally_voted = true;
+            }
+            let ajax_response = true;
+            let ajax_vote = "420";
+            if (ajax_response === false) {
+            	htmlalert("alert-danger", "Failed to X.");
+            	$(this).toggleClass("votex").toggleClass("votexed");
+            	if (originally_voted) {
+            		dv.toggleClass("votecheck").toggleClass("votechecked");
+            	}
+
+            } else {
+            	$(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
             }
         });
     </script>
