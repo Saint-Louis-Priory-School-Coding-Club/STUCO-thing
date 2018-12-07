@@ -243,7 +243,7 @@ comment-id= server id of comment
 post-id server id of post
 same upvote/downvote mechanics as a regular post
 ---add a comment if you need age/date made in a div.---
---structure of a comment (since w3 tryit doesn't make for neat looking code)
+--structure of a comment (since w3 tryit doesn't make for neat looking code)--
 <div class="comment">  # comment
 	--comment contents--
     
@@ -465,7 +465,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                 dv.addClass("downvote");
                 originally_voted = true;
             }
-            let ajax_response = false;
+            let ajax_response = true;
             let ajax_vote = "12";
             if (ajax_response === false) {
             	htmlalert("alert-danger", "Failed to upvote.");
