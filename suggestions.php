@@ -9,7 +9,7 @@ comment count is in class .comment-number
 x / check count is in class .check-number and .x-number
 u/d vote have class .upvote, .upvoted, .downvote, or .downvoted depending on what type and class it is.
 i set the min page width to around 640px (iphone 5 width) and max POST width (Not page) to 1000px
---When a post is reported, a submission to a php page (change in form near bottom) will be submitted with "reason" as the reason for reporting and "post-id" as the post id.
+--When a post is reported, a submission to a php page (change in form near bottom) will be submitted with "reason" as the reason for reporting and "post-id" as the post id.--
 -->
 <!--
 Using Font Awesome instead of unicode, some icons look off since only some are avaliable without a pro liscence.
