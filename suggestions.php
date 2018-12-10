@@ -298,6 +298,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             <div class="post-body-container">
                 <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
             </div>
+            <div class="attachment">test</div> <!--attachment for post-->
             <div class="post-options row noselect">
                 <div class="vote col-4">
                     <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
@@ -473,6 +474,11 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
                 $("#report-id").attr("value", reported_post);
             }
+            $('.attachment').each(function() { // for each .attachment
+    				if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    				 //url is image
+    				}
+            });
             $('.comment-number').each(function() { // for each .comment number
                 if ($(this).html() == "1") { // if there is exactly 1 comment
                     $(this).parent().children(".c-name").html("comment");
