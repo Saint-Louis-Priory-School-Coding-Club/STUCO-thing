@@ -263,6 +263,20 @@ Overflow (more than 400 char) is handled automatically by JS.
             /* Safari */
             transition: bottom 0.5s;
         }
+        .attachment {
+        	margin-bottom:10px;
+        	margin-top: -10px;
+        }
+        .attachment i {
+        	font-size:30px;
+        }
+        .attachment-link {
+        	color:black;
+        }
+        .attachment-link:hover {
+        	color: #888;
+        	text-decoration:none;
+        }
     </style>
 </head>
 <script>
@@ -271,7 +285,7 @@ Overflow (more than 400 char) is handled automatically by JS.
 </script>
 
 <body>
-    <!-- first post will have full comments so you can see the inner workings -->
+
     <!-- text classes:
 < title tag broken for some reason >
 .author : author of post
@@ -298,7 +312,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             <div class="post-body-container">
                 <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
             </div>
-            <div class="attachment">test</div> <!--attachment for post-->
+            <div class="attachment">http://hexbugman213.net/favicon.png</div> <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
             <div class="post-options row noselect">
                 <div class="vote col-4">
                     <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
@@ -438,7 +452,21 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
         <script>
             let reported_post = 0;
             let redirect = "";
-
+			function doesFileExist(urlToFile) {
+			    var xhr = new XMLHttpRequest();
+			    xhr.open('HEAD', urlToFile, false);
+	   	  
+			    if (xhr.status == "404") {
+			        return false;
+			    } else {
+			        return true;
+			    }
+			}
+if (!Array.prototype.last){
+    Array.prototype.last = function(){
+        return this[this.length - 1];
+    };
+};
             function closealert() {
                 $(".alert-danger").css("bottom", "-60px");
             }
@@ -475,9 +503,30 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 $("#report-id").attr("value", reported_post);
             }
             $('.attachment').each(function() { // for each .attachment
-    				if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-    				 //url is image
+    				let link = $(this).html();
+    				let new_content = "";
+    				
+    				if (link != "") {
+    					if (doesFileExist(link)) { // if file exists (checks for 404)
+    						let file_name = link.split("/").last();
+    						if (file_name.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    							new_content = "<a href=" + link + " class=\"attachment-link\"><i class=\"far fa-file-image\"></i> " + file_name + "</a>";
+    							
+    						} else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
+    							new_content = "<a href=" + link + " class=\"attachment-link\"><i class=\"far fa-file-video\"></i> " + file_name + "</a>";
+    						} else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
+    							new_content = "<a href=" + link + " class=\"attachment-link\"><i class=\"far fa-file-video\"></i> " + file_name + "</a>";
+    						} 
+    					} else {
+    						new_content = "<i class=\"fas fa-exclamation-circle\"></i> File does not exist!";
+    					}
+    					
+    					$(this).html(new_content);
     				}
+    				
+    				//if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    				 //url is image
+    				//}
             });
             $('.comment-number').each(function() { // for each .comment number
                 if ($(this).html() == "1") { // if there is exactly 1 comment
