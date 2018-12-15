@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="container">
                 <br><br>
-            <h1>This site is currently under development. The only pages that have working functions are the <a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a>. The <a href="/suggestions.php">Suggestions</a> page looks complete but has no working functions (yet)</h1>
+            <h1>Saint Louis Priory School Student Council Website <br><hr><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a>. <br> The <a href="/suggestions.php">Suggestions</a> page looks complete but has no working functions (yet)</h1>
             </div>
         </div>
     </body>

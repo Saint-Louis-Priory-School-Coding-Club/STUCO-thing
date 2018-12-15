@@ -298,7 +298,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
 
     <div class="container-fluid">
         <!--full body page-->
-        <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
         <br>
         <div class="post rounded" post-id="213534">
             <div class="row post-top">

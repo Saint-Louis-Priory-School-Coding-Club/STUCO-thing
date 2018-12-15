@@ -26,7 +26,7 @@ if (isset($_SESSION['user'])) {
 <?php
     } else {
         ?>
-        <h1>You are not a STUCO member</h1>
+        <h3>You are a student.</h3>
         <?php
     }
 } else {
