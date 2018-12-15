@@ -51,10 +51,10 @@ $result = $conn->query($sql);
 while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     switch ($dtable) {
         case "bcomments":
-            $cid = $post['id'];
-            $header = $post['title'];
-            $user = $post['author'];
-            $description = $post['content'];
+            $cid = htmlspecialchars($post['id']);
+            $header = htmlspecialchars($post['title']);
+            $user = htmlspecialchars($post['author']);
+            $description = htmlspecialchars($post['content']);
             echo '
             <h3>'.$header.'</h3>
             <p>'.$description.'</p>
@@ -62,10 +62,10 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             <hr id="'.$cid.'">';
         break;
         case "tcomments":
-            $cid = $post['id'];
-            $header = $post['title'];
-            $user = $post['author'];
-            $description = $post['content'];
+            $cid = htmlspecialchars($post['id']);
+            $header = htmlspecialchars($post['title']);
+            $user = htmlspecialchars($post['author']);
+            $description = htmlspecialchars($post['content']);
             echo '
             <h3>'.$header.'</h3>
             <p>'.$description.'</p>
@@ -73,22 +73,22 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             <hr id="'.$cid.'">';
         break;
         case "ctask":
-        $id = $post['id'];
+        $id = htmlspecialchars($post['id']);
         $comments = $conn->query("SELECT id FROM tcomments WHERE post_id=$id");
         $commenttotal = 0;
         foreach ($comments as $c) {
         $commenttotal += 1;
         }
-        $title = $post['title'];
-        $author = $post['author'];
-        $content = $post['solution'];
+        $title = htmlspecialchars($post['title']);
+        $author = htmlspecialchars($post['author']);
+        $content = htmlspecialchars($post['solution']);
         $sugid = $post['suggestion_id'];
         $date = date("M d Y", $post['date']);
         $smtp = $conn->query("SELECT * FROM suggestion WHERE id=$sugid");
         $res = mysqli_fetch_array($smtp, MYSQLI_ASSOC);
-        $sugtitle = $res['title'];
-        $sugauthor = $res['author'];
-        $sugcontent = $res['content'];
+        $sugtitle = htmlspecialchars($res['title']);
+        $sugauthor = htmlspecialchars($res['author']);
+        $sugcontent = htmlspecialchars($res['content']);
         $sugdate = date("M d Y", $res['date']);
         echo '
         <div class="post rounded" id="'.$id.'">
@@ -117,10 +117,10 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             ';
         break;
         case "blog":
-            $id = $post['id'];
-            $title = $post['title'];
-            $content = $post['content'];
-            $name = $post['author'];
+            $id = htmlspecialchars($post['id']);
+            $title = htmlspecialchars($post['title']);
+            $content = htmlspecialchars($post['content']);
+            $name = htmlspecialchars($post['author']);
             $isdate = time() - $post['date'];
             include 'timefunc.php';
             $comments = $conn->query("SELECT * FROM bcomments WHERE post_id=$id");
@@ -221,10 +221,10 @@ $result = $conn->query($sql);
 while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     switch ($dtable) {
         case "bcomments":
-            $cid = $post['id'];
-            $header = $post['title'];
-            $user = $post['author'];
-            $description = $post['content'];
+            $cid = htmlspecialchars($post['id']);
+            $header = htmlspecialchars($post['title']);
+            $user = htmlspecialchars($post['author']);
+            $description = htmlspecialchars($post['content']);
             echo '
             <h3>'.$header.'</h3>
             <p>'.$description.'</p>
@@ -232,10 +232,10 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             <hr id="'.$cid.'">';
         break;
         case "tcomments":
-            $cid = $post['id'];
-            $header = $post['title'];
-            $user = $post['author'];
-            $description = $post['content'];
+            $cid = htmlspecialchars($post['id']);
+            $header = htmlspecialchars($post['title']);
+            $user = htmlspecialchars($post['author']);
+            $description = htmlspecialchars($post['content']);
             echo '
             <h3>'.$header.'</h3>
             <p>'.$description.'</p>
@@ -243,22 +243,22 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             <hr id="'.$cid.'">';
         break;
         case "ctask":
-        $id = $post['id'];
+        $id = htmlspecialchars($post['id']);
         $comments = $conn->query("SELECT id FROM tcomments WHERE post_id=$id");
         $commenttotal = 0;
         foreach ($comments as $c) {
         $commenttotal += 1;
         }
-        $title = $post['title'];
-        $author = $post['author'];
-        $content = $post['solution'];
+        $title = htmlspecialchars($post['title']);
+        $author = htmlspecialchars($post['author']);
+        $content = htmlspecialchars($post['solution']);
         $sugid = $post['suggestion_id'];
         $date = date("M d Y", $post['date']);
         $smtp = $conn->query("SELECT * FROM suggestion WHERE id=$sugid");
         $res = mysqli_fetch_array($smtp, MYSQLI_ASSOC);
-        $sugtitle = $res['title'];
-        $sugauthor = $res['author'];
-        $sugcontent = $res['content'];
+        $sugtitle = htmlspecialchars($res['title']);
+        $sugauthor = htmlspecialchars($res['author']);
+        $sugcontent = htmlspecialchars($res['content']);
         $sugdate = date("M d Y", $res['date']);
         echo '
         <div class="post rounded" id="'.$id.'">
@@ -287,10 +287,10 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             ';
         break;
         case "blog":
-            $id = $post['id'];
-            $title = $post['title'];
-            $content = $post['content'];
-            $name = $post['author'];
+            $id = htmlspecialchars($post['id']);
+            $title = htmlspecialchars($post['title']);
+            $content = htmlspecialchars($post['content']);
+            $name = htmlspecialchars($post['author']);
             $isdate = time() - $post['date'];
             include 'timefunc.php';
             $comments = $conn->query("SELECT * FROM bcomments WHERE post_id=$id");
