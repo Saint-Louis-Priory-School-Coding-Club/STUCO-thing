@@ -7,23 +7,19 @@ if (!isset($conn)) {
     require_once '../../dbconnect.php';
 }
 
-
-// if session is set direct to index
 if (isset($_SESSION['user'])) {
     header("Location: ../index.php");
     exit;
 }
 
 if (isset($_POST['btn-login'])) {
-    $email = $_POST['email'];
-    $upass = $_POST['pass'];
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $upass = mysqli_real_escape_string($conn, $_POST['pass']);
 
-    $password = hash('sha256', $upass); // password hashing using SHA256
-    $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email= ?");
+    $password = hash('sha256', $upass);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email= ?");
     $stmt->bind_param("s", $email);
-    /* execute query */
     $stmt->execute();
-    //get result
     $res = $stmt->get_result();
     $stmt->close();
 
