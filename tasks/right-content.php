@@ -2,8 +2,8 @@
 $address = $_SERVER['PHP_SELF'];
 $fromextern = TRUE;
 if (isset($_POST['login'])) {
-    $username = trim($_POST['email']);
-    $psw = trim($_POST['password']);
+    $username = mysqli_real_escape_string($_POST['email']);
+    $psw = mysqli_real_escape_string($_POST['password']);
     $password = hash('sha256', $psw);
     $sql = $conn->query("SELECT * FROM users WHERE email='".$username."'");
     if ($sql) {
@@ -19,9 +19,9 @@ if (isset($_POST['login'])) {
     }
 }
 if (isset($_POST['signup'])) {
-    $username = trim($_POST['uname']);
-    $email = trim($_POST['email']);
-    $psw = trim($_POST['password']);
+    $username = mysqli_real_escape_string($_POST['uname']);
+    $email = mysqli_real_escape_string($_POST['email']);
+    $psw = mysqli_real_escape_string($_POST['password']);
     $password = hash('sha256', $psw);
     $sql = $conn->query("SELECT email FROM users WHERE email = $email");
     if ($sql) {
