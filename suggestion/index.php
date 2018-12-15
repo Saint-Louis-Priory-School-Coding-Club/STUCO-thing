@@ -264,7 +264,6 @@ Overflow (more than 400 char) is handled automatically by JS.
             transition: bottom 0.5s;
         }
         .attachment {
-<<<<<<< HEAD
         	margin-bottom:10px;
         	margin-top: -10px;
         }
@@ -277,20 +276,6 @@ Overflow (more than 400 char) is handled automatically by JS.
         .attachment-link:hover {
         	color: #888;
         	text-decoration:none;
-=======
-            margin-bottom:10px;
-            margin-top: -10px;
-        }
-        .attachment i {
-            font-size:30px;
-        }
-        .attachment-link {
-            color:black;
-        }
-        .attachment-link:hover {
-            color: #888;
-            text-decoration:none;
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
         }
     </style>
 </head>
@@ -301,11 +286,7 @@ Overflow (more than 400 char) is handled automatically by JS.
 
 <body>
 
-<<<<<<< HEAD
     <!-- text classes:
-=======
-<!-- text classes:
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
 < title tag broken for some reason >
 .author : author of post
 .post-body : content
@@ -314,7 +295,6 @@ Overflow (more than 400 char) is handled automatically by JS.
 post body overflow is auto-handled, add code to prevent XSS attacks
 on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id to make the submission for reporting. kbye
 -->
-<<<<<<< HEAD
     <div class="container-fluid">
         <!--full body page-->
         <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
@@ -326,23 +306,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 <div class="col-4 date">
                     <h5>now</h5></div>
             </div>
-=======
-<div class="container-fluid">
-    <!--full body page-->
-    <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
-    <br>
-    <div class="post rounded" post-id="213534">
-        <div class="row post-top">
-            <div class="col-8">
-                <h1>Attention All Gamers <span class="badge badge-secondary">Announcement</span></h1></div>
-            <div class="col-4 date">
-                <h5>now</h5></div>
-        </div>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
 
             <h2>by <span class="author noselect" author-id="213213">Robert</span></h2>
 
-<<<<<<< HEAD
             <div class="post-body-container">
                 <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
             </div>
@@ -359,28 +325,10 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     <div class="report-c">
                         <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
                     </div>
-=======
-        <div class="post-body-container">
-            <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
-        </div>
-        <div class="attachment">http://hexbugman213.net/favicon.png</div> <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
-        <div class="post-options row noselect">
-            <div class="vote col-4">
-                <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
-                <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
-            </div>
-            <div class="comments col-4">
-                <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-            </div>
-            <div class="report col-4">
-                <div class="report-c">
-                    <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
                 </div>
             </div>
         </div>
 
-<<<<<<< HEAD
         <div class="post rounded" post-id="61346">
             <div class="row post-top">
                 <div class="col-8">
@@ -404,36 +352,10 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     <div class="report-c">
                         <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
                     </div>
-=======
-    <div class="post rounded" post-id="61346">
-        <div class="row post-top">
-            <div class="col-8">
-                <h1>test <span class="badge badge-secondary">Test</span></h1></div>
-            <div class="col-4 date">
-                <h5>2m ago</h5></div>
-        </div>
-        <h2>by <span class="author noselect" author-id="6969">memelord</span></h2>
-        <div class="post-body-container">
-            <p class="post-body">heeeeeeeerererewduysgfnisuydmhfinashgiahomsogjmewoifhoidjksfimaemiofhaeoisjfjoihfgjwg;lkjs;gkj;lghad;lskjg;lkdfjg lol despacito</p>
-        </div>
-        <div class="attachment">http://hexbugman213.net/favicon.mp3</div>
-        <div class="post-options row noselect">
-            <div class="vote col-4">
-                <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span>
-                <div class="dv-button downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
-            </div>
-            <div class="comments col-4">
-                <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-            </div>
-            <div class="report col-4">
-                <div class="report-c">
-                    <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
                 </div>
             </div>
         </div>
 
-<<<<<<< HEAD
         <div class="post rounded" post-id="01240">
             <div class="row post-top ">
                 <div class="col-8">
@@ -456,35 +378,10 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     <div class="report-c">
                         <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
                     </div>
-=======
-    <div class="post rounded" post-id="01240">
-        <div class="row post-top ">
-            <div class="col-8">
-                <h1><div class="verifycheck square circle" style="width: 30px;"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div>
-            <div class="col-4 date">
-                <h5>2m ago</h5></div>
-        </div>
-        <h2>by <span class="author noselect" author-id="12473">Stuco guy <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></span></h2>
-        <div class="post-body-container">
-            <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p>
-        </div>
-        <div class="attachment">http://hexbugman213.net/favicon.file</div>
-        <div class="post-options row noselect">
-            <div class="vote col-4">
-                <div class="ux-button votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span>
-                <div class="dx-button votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
-            <div class="comments col-4">
-                <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-            </div>
-            <div class="report col-4">
-                <div class="report-c">
-                    <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
                 </div>
             </div>
         </div>
 
-<<<<<<< HEAD
         <div class="post rounded" post-id="12344">
             <div class="row post-top">
                 <div class="col-8">
@@ -502,47 +399,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     <div class="dx-button votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
                 <div class="comments col-4">
                     <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div>
-=======
-    <div class="post rounded" post-id="12344">
-        <div class="row post-top">
-            <div class="col-8">
-                <h1>fraf <span class="badge badge-secondary">Poll</span></h1></div>
-            <div class="col-4 date">
-                <h5>2m ago</h5></div>
-        </div>
-        <h2>by <span class="author noselect" author-id="124373">guy</span></h2>
-        <div class="post-body-container">
-            <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p>
-        </div>
-        <div class="post-options row noselect">
-            <div class="vote col-4">
-                <div class="ux-button votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span>
-                <div class="dx-button votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
-            <div class="comments col-4">
-                <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div>
-            </div>
-            <div class="report col-4">
-                <div class="report-c">
-                    <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="alerts">
-        <div class="alert alert-clone" role="alert">
-            This is a danger alert—check it out!
-        </div>
-    </div>
-    <!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Report Post</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
                 </div>
                 <div class="report col-4">
                     <div class="report-c">
@@ -573,7 +429,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                                 <textarea name="reason" form="report" rows="4" cols="55">Enter reason here...</textarea>
                                 <input type="hidden" name="post-id" id="report-id" value="" />
                             </div>
-<<<<<<< HEAD
 
                         </form>
                     </div>
@@ -586,10 +441,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                                 <div class="col report-close">
                                     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
                                 </div>
-=======
-                            <div class="col report-close">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
                             </div>
                         </div>
 
@@ -598,7 +449,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
 
             </div>
         </div>
-<<<<<<< HEAD
         <script>
             let reported_post = 0;
             let redirect = "";
@@ -839,243 +689,6 @@ if (!Array.prototype.last){
             //TODO: for not me: AJAX
         </script>
     </div>
-=======
-    </div>
-    <script>
-        let reported_post = 0;
-        let redirect = "";
-        if (!Array.prototype.last){
-            Array.prototype.last = function(){
-                return this[this.length - 1];
-            };
-        };
-        function closealert() {
-            $(".alert-danger").css("bottom", "-60px");
-        }
-
-        function htmlalert(type, text) { //custom HTML alert
-            let alert = $(".alert-clone").clone(true).appendTo(".alerts"); //clone alert template
-            setTimeout(function() {
-                alert.addClass(type); // add class "type", bootstrap alert type
-                alert.html(text); // change text to "text"
-                alert.css("bottom", "0"); //move up
-                setTimeout(function() {
-                    alert.css("bottom", "-60px"); // move down
-                    setTimeout(function() {
-                        alert.remove(); // delete alert
-                    }, 2000)
-                }, 3000)
-            }, 100)
-        }
-
-        function togglemore(button) {
-            button = $(button);
-            button.parent().children(".post-body").children(".dotdotdot").toggleClass("gone");
-            button.parent().children(".post-body").children(".show-more-txt").toggleClass("gone");
-            if (button.html() === "Show More") {
-                button.html("Show Less");
-            } else {
-                button.html("Show More");
-            }
-        }
-
-        function report(button) {
-            button = $(button);
-            reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
-            $("#report-id").attr("value", reported_post);
-        }
-        $('.attachment').each(function() { // for each .attachment
-            let link = $(this).html();
-            let new_content = "";
-
-            if (link !== "") {
-                if (true) { // if file exists (checks for 404)
-                    let file_name = link.split("/").last();
-
-                    if (file_name.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-                        new_content = "far fa-file-image";
-
-                    } else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
-                        new_content = "far fa-file-video";
-                    } else if (file_name.match(/\.(mp3|wav)$/) != null) {
-                        new_content = "far fa-file-audio";
-                    } else {
-                        new_content = "far fa-file";
-                    }
-                    new_content = "<a href=\"" + link + "\" class=\"attachment-link\"><i class=\"" + new_content + "\"></i> " + file_name + "</a>";
-                } else {
-                    new_content = "<i class=\"fas fa-exclamation-circle\"></i> File does not exist!";
-                }
-
-                $(this).html(new_content);
-            }
-
-            //if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-            //url is image
-            //}
-        });
-        $('.comment-number').each(function() { // for each .comment number
-            if ($(this).html() === "1") { // if there is exactly 1 comment
-                $(this).parent().children(".c-name").html("comment");
-            }
-        });
-        $('.square').each(function() { // for each .square
-            $(this).width($(this).height()); // set the width to the height
-        });
-        // FUNCTION MIGHT NOT BE NEEDED:
-        /*
-            $('.post-body').each(function() { // last resort XSS preventer
-                var orig = $(this).html();  // original text
-                var newtxt = "";  // fixed text
-                var char = "";
-                for (var i = 0; i < orig.length; i++) {
-                    char = orig.charAt(i);  // character
-                    if (char == "<") {
-                        char = "&lt;";
-                    }
-                    newtxt += char;
-                }
-                $(this).html(newtxt);
-            });
-            */
-        $('.post-body-container').each(function() { // for each .post-body
-            let postbody = $(this).children(".post-body")[0];
-            let leng = postbody.innerHTML.length;
-            if (leng > 400) { // if more than 400 characters
-                let html1 = postbody.innerHTML.slice(0, 400); // slice off the first 400
-                let html2 = postbody.innerHTML.slice(400, leng);
-                let newhtml = "<p class=\"post-body\">" + html1 + "<b class=\"dotdotdot\">...</b><span class=\"show-more-txt gone\">" + html2 + "</span></p>" +
-                    "<button type=\"button\" class=\"btn btn-sm btn-dark read-more\" onclick=\"togglemore(this)\">Show More</button>\n";
-                $(this).html(newhtml); // insert them with a show more button
-            }
-        });
-        $('.author').click(function() { //redirect for clicking comments
-            redirect = $(this).attr("author-id");
-            let link = user_format.replace("@", redirect);
-            window.location.href = link;
-        });
-        $('div.post-top').click(function() { //redirect for clicking top of post
-            redirect = $($(this).parent()).attr("post-id");
-            let link = link_format.replace("@", redirect);
-            window.location.href = link;
-        });
-        $('div.comment-c').click(function() { //redirect for clicking comments
-            redirect = $($(this).parent().parent().parent()).attr("post-id");
-            let link = link_format.replace("@", redirect);
-            window.location.href = link;
-        });
-        // --FOR EACH BELOW "ajax_response" IS THE RESPONSE THE SERVER GIVES!--
-        //if it's true it means it upvoted succesfully.
-        //otherwise it didn't.
-        //ajax_vote is the amount of votes
-        //ajax_vote_c and ajax_vote_x are the same but for checks and Xs
-        // it queries the server for the updoot amount on each upvote for simplicity
-        $('.uv-button').click(function() { //if upvote button clicked
-            let originally_voted = false;
-            $(this).toggleClass("upvote").toggleClass("upvoted");
-            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
-            let dv = $(this).parent().children(".dv-button")[0];
-            dv = $(dv);
-            if (dv.hasClass("downvoted")) {
-                dv.removeClass("downvoted");
-                dv.addClass("downvote");
-                originally_voted = true;
-            }
-            let ajax_response = true;
-            let ajax_vote = "420";
-            if (ajax_response === false) {
-                htmlalert("alert-danger", "Failed to upvote.");
-                $(this).toggleClass("upvote").toggleClass("upvoted");
-                if (originally_voted) {
-                    dv.toggleClass("downvoted").toggleClass("downvote");
-                }
-
-            } else {
-                $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
-            }
-        });
-        $('.dv-button').click(function() { //if downvote button clicked
-            let originally_voted = false;
-            $(this).toggleClass("downvote").toggleClass("downvoted");
-            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
-            let uv = $(this).parent().children(".uv-button")[0];
-            uv = $(uv);
-            if (uv.hasClass("upvoted")) {
-                uv.removeClass("upvoted");
-                uv.addClass("upvote");
-                originally_voted = true;
-            }
-            let ajax_response = true; // True if succesful, false if failed. set with ajax response
-            let ajax_vote = "420";
-            if (ajax_response === false) {
-                htmlalert("alert-danger", "Failed to downvote.");
-                $(this).toggleClass("downvote").toggleClass("downvoted");
-                if (originally_voted) {
-                    uv.toggleClass("upvoted").toggleClass("upvote");
-                }
-
-            } else {
-                $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
-            }
-
-        });
-        $('.ux-button').click(function() { //if upvote button clicked (ux is for up x, a check)
-            let originally_voted = false;
-            $(this).toggleClass("votecheck").toggleClass("votechecked");
-            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post updooted. Not used for this function but needed for AJAX folks
-            let dv = $(this).parent().children(".dx-button")[0];
-            dv = $(dv);
-            if (dv.hasClass("votexed")) {
-                dv.removeClass("votexed");
-                dv.addClass("votex");
-                originally_voted = true;
-            }
-            let ajax_response = true;
-            let ajax_vote_c = "120";
-            let ajax_vote_x = "210";
-            if (ajax_response === false) {
-                htmlalert("alert-danger", "Failed to check.");
-                $(this).toggleClass("votecheck").toggleClass("votechecked");
-                if (originally_voted) {
-                    dv.toggleClass("votex").toggleClass("votexed");
-                }
-
-            } else {
-                $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote_c;
-                $(this).parent().children(".x-number")[0].innerHTML = ajax_vote_x;
-            }
-        });
-        $('.dx-button').click(function() { //if upvote button clicked (dx is for down x, an X)
-            let originally_voted = false;
-            $(this).toggleClass("votex").toggleClass("votexed");
-            let post_clicked = $(this).parent().parent().parent().attr("post-id"); // ID of post unupdooted. Not used for this function but needed for AJAX folks
-            let uv = $(this).parent().children(".ux-button")[0];
-            uv = $(uv);
-            if (uv.hasClass("votechecked")) {
-                uv.removeClass("votechecked");
-                uv.addClass("votecheck");
-                originally_voted = true;
-            }
-            let ajax_response = true; // True if succesful, false if failed. set with ajax response
-            let ajax_vote_c = "120";
-            let ajax_vote_x = "210";
-            if (ajax_response === false) {
-                htmlalert("alert-danger", "Failed to X.");
-                $(this).toggleClass("votex").toggleClass("votexed");
-                if (originally_voted) {
-                    uv.toggleClass("votechecked").toggleClass("votecheck");
-                }
-
-            } else {
-                $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote_c;
-                $(this).parent().children(".x-number")[0].innerHTML = ajax_vote_x;
-            }
-        });
-        //TODO: for me: post creation page
-        //TODO: for not me: AJAX
-    </script>
-</div>
->>>>>>> c36b0e0846c4c747f2decc4710b8c9a093e6bb55
 </body>
 
 </html>
