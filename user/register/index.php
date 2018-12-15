@@ -7,9 +7,9 @@ if (isset($_SESSION['user']) != "") {
 include_once '../../dbconnect.php';
 if (isset($_POST['signup'])) {
 
-    $uname = trim($_POST['uname']); // get posted data and remove whitespace
-    $email = trim($_POST['email']);
-    $upass = trim($_POST['pass']);
+    $uname = mysqli_real_escape_string($_POST['uname']); // get posted data and remove whitespace
+    $email = mysqli_real_escape_string($_POST['email']);
+    $upass = mysqli_real_escape_string($_POST['pass']);
     $defaultrank = 0;
 
     // hash password with SHA256;
