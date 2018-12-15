@@ -283,7 +283,7 @@ Overflow (more than 400 char) is handled automatically by JS.
     let link_format = "http://website.com/@"; // redirect format, replace @ with post id
     let user_format = "http://website.com/user/@" // redirect format, replace @ with user
 </script>
-
+<?php include '../header.html';?>
 <body>
 
     <!-- text classes:
@@ -295,6 +295,7 @@ Overflow (more than 400 char) is handled automatically by JS.
 post body overflow is auto-handled, add code to prevent XSS attacks
 on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id to make the submission for reporting. kbye
 -->
+
     <div class="container-fluid">
         <!--full body page-->
         <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
