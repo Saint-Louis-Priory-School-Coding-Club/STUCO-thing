@@ -7,9 +7,11 @@ if (isset($_SESSION['user']) != "") {
 include_once '../../dbconnect.php';
 if (isset($_POST['signup'])) {
 
-    $uname = mysqli_real_escape_string($_POST['uname']); // get posted data and remove whitespace
-    $email = mysqli_real_escape_string($_POST['email']);
-    $upass = mysqli_real_escape_string($_POST['pass']);
+    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+    $flname = $fname . ' ' . $lname;
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $upass = mysqli_real_escape_string($conn, $_POST['pass']);
     $defaultrank = 0;
 
     // hash password with SHA256;
@@ -26,8 +28,8 @@ if (isset($_POST['signup'])) {
 
     if ($count == 0) { // if email is not found add user
 
-        $stmts = $conn->prepare("INSERT INTO users(name,email,password,stuco) VALUES(?, ?, ?, ?)");
-        $stmts->bind_param("ssss", $uname, $email, $password, $defaultrank);
+        $stmts = $conn->prepare("INSERT INTO users(flname, email,password,stuco) VALUES(?, ?, ?, ?)");
+        $stmts->bind_param("sssss", $flname, $email, $password, $defaultrank);
         $res = $stmts->execute();//get result
         $stmts->close();
         $user_id = mysqli_insert_id($conn);
@@ -96,7 +98,14 @@ if (isset($_POST['signup'])) {
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                        <input type="text" name="uname" class="form-control" placeholder="Enter Username" required/>
+                        <input type="text" name="fname" class="form-control" placeholder="First Name" required/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input type="text" name="lname" class="form-control" placeholder="Last Name" required/>
                     </div>
                 </div>
 
