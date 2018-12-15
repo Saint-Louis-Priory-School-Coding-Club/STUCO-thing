@@ -13,7 +13,33 @@
         <div class="container-fluid">
             <div class="container">
                 <br><br>
-            <h1>Saint Louis Priory School Student Council Website <br><hr><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a>. <br> The <a href="/suggestions.php">Suggestions</a> page looks complete but has no working functions (yet)</h1>
+            <h1>Saint Louis Priory School Student Council Website <br></h1>
+              <hr>
+              <a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a> are complete.
+              <br> The <a href="/suggestions.php">Suggestions</a> page looks complete but has no working functions.
+            </div>
+            <br>
+            <div class="container">
+              <h4>Current STUCO Representatives:</h4>
+              <ul>
+                <li>
+                  <h6>Form VI</h6>
+                  <div class="table">
+                  <ul id="horizontal-list">
+                    <li><img src="STUCOMembers/Preston.png"></li>
+                    <li><img src="STUCOMembers/Matthew.png"></li>
+                    <li><img src="STUCOMembers/Louis.png"></li>
+                    <li><img src="STUCOMembers/Jack.png"></li>
+                    <li><img src="STUCOMembers/Anthony.png"></li>
+                  </ul>
+                </div>
+
+
+                </li>
+                <li>Form V</li>
+                <li>Form IV</li>
+                <li>Form III</li>
+              </ul>
             </div>
         </div>
     </body>
