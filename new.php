@@ -129,7 +129,7 @@ store post and comment replying to. If the comment is replying to the post direc
 list out each comment matching the post-id and comment-reply of 0. Then for each list out each comment replying to that... bla bla bla have some recursive loop thing until all comments have no replies or replies listed. idk i'm not an expert with back end
 -->
     <script>
-        let title_len = 50;
+        let title_len = 50
         let body_len = 2000;
         // max length for each
     </script>
@@ -138,7 +138,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         <h1>stucospacito but new post owo</h1>
         <br>
         <div class="container-box rounded">
-            <h1>Create a new Post</h1>
+            <h1>Create a new Suggestion</h1>
             <form action="/action_page.php" method="POST" class="">
                 <div class="form-group row">
                     <label for="title">Title:</label>
@@ -150,7 +150,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                         <option>Suggestion</option>
                         <option>Poll</option>
                         <option>Discussion</option>
-                        <option>Meme</option>
+                        <option>Something Else</option>
                     </select>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

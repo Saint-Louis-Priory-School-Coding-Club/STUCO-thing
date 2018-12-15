@@ -23,7 +23,7 @@
         .container-box {
             display: block;
             margin: 20px 40px;
-            padding: 10px 20px;
+            padding: 5px;
             background: #fff;
         }
 
@@ -45,7 +45,16 @@
             padding: 3px;
         }
 
-        h1 .verifycheck {
+        .adminicon {
+            background-color: #F01111;
+            display: inline-block;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+            padding: 3px;
+        }
+
+        h1 .verifycheck, h1 .adminicon {
             font-size: 20px;
             transform: translate(0px, -5px);
         }
@@ -85,76 +94,43 @@
             /* Safari */
             transition: bottom 0.5s;
         }
-
-        form {
-            padding: 10px 20px 0 10px;
+        .icon {
+            width:250px;
         }
-
-        .form-control {
-            margin-bottom: 10px;
+        .fixed-col {
+            -ms-flex: 0 0 250px;
+            flex: 0 0 250px;
+        }
+        @media screen and (max-width: 767px) {
+            .pfp {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .user-info h2 {
+            color: #555555;
         }
     </style>
 </head>
 
 <body>
-<!-- first post will have full comments so you can see the inner workings -->
-<!-- text classes:
-< title tag broken for some reason >
-.author : author of post
-.post-body : content
-.vote-number : upvote count
-.comment-number : comment count
-.comment-author : author of comment
-.comment-reply-count : amount of replies
-comment-id= server id of comment
-post-id server id of post
-same upvote/downvote mechanics as a regular post
----add a comment if you need age/date made in a div.---
---structure of a comment (since w3 tryit doesn't make for neat looking code)--
-<div class="comment">  # comment
---comment contents--
-
-<div class="comment replies">  # replies (if any) to the comment
-  <div class="comment">  # comment
-    --comment contents--
-
-    <div class="comment replies">  # replies (if any) to the comment
-        # this comment has no replies
-    </div>
-  </div>
-</div>
-</div>
-idea for how to store in database:
-store post and comment replying to. If the comment is replying to the post directly, have it store "0"
-list out each comment matching the post-id and comment-reply of 0. Then for each list out each comment replying to that... bla bla bla have some recursive loop thing until all comments have no replies or replies listed. idk i'm not an expert with back end
--->
-<script>
-    let title_len = 50;
-    let body_len = 2000;
-    // max length for each
-</script>
 <div class="container-fluid">
     <!--full body page-->
-    <h1>stucospacito but new post owo</h1>
+    <h1>stucospacito but user profile</h1>
     <br>
-    <div class="container-box rounded">
-        <h1>Create a new Post</h1>
-        <form action="/action_page.php" method="POST" class="">
-            <div class="form-group row">
-                <label for="title">Title:</label>
-                <input required maxlength=0 type="text" class="form-control form-control-lg title-form" placeholder="Title" name="title" id="title">
-                <label for="content">Content:</label>
-                <textarea required maxlength=0 class="form-control content-form" rows="5" id="content" name="content"></textarea>
-                <label for="flair">Select flair:</label>
-                <select required class="form-control" id="flair" name="flair">
-                    <option>Suggestion</option>
-                    <option>Poll</option>
-                    <option>Discussion</option>
-                    <option>Meme</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="container-box rounded break-all">
+        <div class="container-box">
+            <div class="row">
+                <div class="col-md fixed-col pfp-row">
+                    <img class="pfp" src="https://is1-ssl.mzstatic.com/image/thumb/Purple71/v4/47/cf/cf/47cfcf79-9e1d-b21f-8e10-2658b7650c15/mzl.oiljceng.png/246x0w.jpg" height="200px" width="200px">
+                </div>
+                <div class="col-md user-info">
+                    <h1>xXuser42069Xx <div class="adminicon square circle" style="width: 24px;"><i class="far fa-check-circle"></i></div></h1>
+                    <h2>SLPSSCW Admin</h2>
+                </div>
             </div>
-        </form>
+            <div></div>
+        </div>
     </div>
     <div class="alerts">
         <div class="alert alert-clone" role="alert">
@@ -163,8 +139,6 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
     </div>
 
     <script>
-        $(".content-form").attr("maxlength", body_len);
-        $(".title-form").attr("maxlength", title_len);
         function htmlalert(type, text) { //custom HTML alert
             let alert = $(".alert-clone").clone(true).appendTo(".alerts"); //clone alert template
             setTimeout(function() {
@@ -182,22 +156,6 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         $('.square').each(function() { // for each .square
             $(this).width($(this).height()); // set the width to the height
         });
-        // FUNCTION MIGHT NOT BE NEEDED:
-        /*
-        $('.post-body').each(function() { // last resort XSS preventer
-            var orig = $(this).html();  // original text
-            var newtxt = "";  // fixed text
-            var char = "";
-            for (var i = 0; i < orig.length; i++) {
-                char = orig.charAt(i);  // character
-                if (char == "<") {
-                    char = "&lt;";
-                }
-                newtxt += char;
-            }
-            $(this).html(newtxt);
-        });
-        */
     </script>
 </div>
 </body>

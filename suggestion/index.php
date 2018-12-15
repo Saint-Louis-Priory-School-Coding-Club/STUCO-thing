@@ -45,6 +45,9 @@ Overflow (more than 400 char) is handled automatically by JS.
             background: #fff;
             max-width: 1000px;
         }
+        .new-post {
+            margin-left: 40px;
+        }
 
         .post h1 {
             font-size: 40px;
@@ -183,7 +186,16 @@ Overflow (more than 400 char) is handled automatically by JS.
             padding: 3px;
         }
 
-        h1 .verifycheck {
+        .adminicon {
+            background-color: #F01111;
+            display: inline-block;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+            padding: 3px;
+        }
+
+        h1 .verifycheck, h1 .adminicon {
             font-size: 20px;
             transform: translate(0px, -5px);
         }
@@ -299,6 +311,9 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
     <!--full body page-->
     <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
     <br>
+    <form action="/new.php" class="new-post">
+        <button type="submit" class="btn btn-info">New Suggestion</button>
+    </form>
     <div class="post rounded" post-id="213534">
         <div class="row post-top">
             <div class="col-8">
@@ -307,7 +322,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 <h5>now</h5></div>
         </div>
 
-        <h2>by <span class="author noselect" author-id="213213">Robert</span></h2>
+        <h2>by <span class="author noselect" author-id="12473">Page admin <div class="adminicon square circle" style="width: 24px;"><i class="far fa-check-circle"></i></div></span></h2>
 
         <div class="post-body-container">
             <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
@@ -458,7 +473,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
             Array.prototype.last = function(){
                 return this[this.length - 1];
             };
-        };
+        }
         function closealert() {
             $(".alert-danger").css("bottom", "-60px");
         }
@@ -591,18 +606,27 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 dv.addClass("downvote");
                 originally_voted = true;
             }
-            let ajax_response = true;
-            let ajax_vote = "420";
-            if (ajax_response === false) {
-                htmlalert("alert-danger", "Failed to upvote.");
-                $(this).toggleClass("upvote").toggleClass("upvoted");
-                if (originally_voted) {
-                    dv.toggleClass("downvoted").toggleClass("downvote");
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    alert(this.responseText);
+                    let ajax_response = true;
+                    let ajax_vote = "2";
+                    if (ajax_response === false) {
+                        htmlalert("alert-danger", "Failed to upvote.");
+                        $(this).toggleClass("upvote").toggleClass("upvoted");
+                        if (originally_voted) {
+                            dv.toggleClass("downvoted").toggleClass("downvote");
+                        }
+
+                    } else {
+                        $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
+                    }
                 }
 
-            } else {
-                $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
-            }
+            };
+            xhttp.open("GET", "vote-response.php?post-id=" + post_clicked + "&type=upvote", true);
+            xhttp.send();
         });
         $('.dv-button').click(function() { //if downvote button clicked
             let originally_voted = false;
@@ -681,8 +705,7 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 $(this).parent().children(".x-number")[0].innerHTML = ajax_vote_x;
             }
         });
-        //TODO: for me: post creation page
-        //TODO: for not me: AJAX
+        //TODO: AJAX
     </script>
 </div>
 </body>
