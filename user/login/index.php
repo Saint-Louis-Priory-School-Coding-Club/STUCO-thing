@@ -13,11 +13,11 @@ if (isset($_SESSION['user'])) {
 }
 
 if (isset($_POST['btn-login'])) {
-    $email = mysqli_real_escape_string($_POST['email']);
-    $upass = mysqli_real_escape_string($_POST['pass']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $upass = mysqli_real_escape_string($conn, $_POST['pass']);
 
     $password = hash('sha256', $upass);
-    $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email= ?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email= ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $res = $stmt->get_result();
