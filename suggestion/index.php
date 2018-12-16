@@ -17,6 +17,7 @@ Using Font Awesome instead of unicode, some icons look off since only some are a
 <!--
 Overflow (more than 400 char) is handled automatically by JS.
 -->
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 

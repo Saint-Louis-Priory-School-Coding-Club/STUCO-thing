@@ -1,9 +1,9 @@
 <?php
 if (isset($_SESSION['user'])) {
     $id = $_SESSION['user'];
-    $sql = $conn->query("SELECT stuco,name FROM users WHERE id=$id");
+    $sql = $conn->query("SELECT stuco,flname FROM users WHERE id=$id");
     $res = mysqli_fetch_array($sql, MYSQLI_ASSOC);
-    $name = $res['name'];
+    $name = $res['flname'];
     if ($res['stuco'] == 1) {
         ?>
         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#announcmentm">Add</button>

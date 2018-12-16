@@ -29,7 +29,7 @@ if (isset($_POST['signup'])) {
     if ($count == 0) { // if email is not found add user
 
         $stmts = $conn->prepare("INSERT INTO users(flname, email,password,stuco) VALUES(?, ?, ?, ?)");
-        $stmts->bind_param("sssss", $flname, $email, $password, $defaultrank);
+        $stmts->bind_param("ssss", $flname, $email, $password, $defaultrank);
         $res = $stmts->execute();//get result
         $stmts->close();
         $user_id = mysqli_insert_id($conn);
@@ -65,7 +65,7 @@ if (isset($_POST['signup'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include '../../header.html';?>
+<?php include '../../header.php';?>
 <br><br><br><br>
 <div class="container">
 

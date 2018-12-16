@@ -26,7 +26,7 @@ if (isset($_POST["delete"])) {
     </head>
     <body>
         <form method="POST" id="deleteform"></form>
-        <?php include '../../../header.html'?>
+        <?php include '../../../header.php'?>
         <br>
         <div class="container-fluid">
           <div class="container">

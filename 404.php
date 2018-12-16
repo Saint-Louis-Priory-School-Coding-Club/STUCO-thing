@@ -9,7 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include 'header.html'?>
+<?php include 'header.php'?>
 <br><br><br><br>
 <div class="container-fluid text-center">
 <h1 style="color:red"><strong>404 Error: Page not found</strong></h1>
