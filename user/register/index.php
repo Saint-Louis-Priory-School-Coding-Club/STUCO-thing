@@ -1,5 +1,5 @@
 <?php
-ob_start();
+include '../../function.php';
 session_start();
 if (isset($_SESSION['user']) != "") {
     header("Location: ../index.php");
@@ -12,12 +12,16 @@ if (isset($_POST['signup'])) {
     $flname = $fname . ' ' . $lname;
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $upass = mysqli_real_escape_string($conn, $_POST['pass']);
+    $rawuserdata = array(
+        'active'        => 0,
+        'prevstuco'     => 0,
+        'createdon'     => time()
+    );
+    $userdata = encode_assoc($rawuserdata);
     $defaultrank = 0;
 
-    // hash password with SHA256;
     $password = hash('sha256', $upass);
 
-    // check email exist or not
     $stmt = $conn->prepare("SELECT email FROM users WHERE email=?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -26,17 +30,17 @@ if (isset($_POST['signup'])) {
 
     $count = $result->num_rows;
 
-    if ($count == 0) { // if email is not found add user
+    if ($count == 0) {
 
-        $stmts = $conn->prepare("INSERT INTO users(flname, email,password,stuco) VALUES(?, ?, ?, ?)");
-        $stmts->bind_param("ssss", $flname, $email, $password, $defaultrank);
-        $res = $stmts->execute();//get result
+        $stmts = $conn->prepare("INSERT INTO users(flname,email,password,stuco,userdata) VALUES(?, ?, ?, ?, ?)");
+        $stmts->bind_param("sssss", $flname, $email, $password, $defaultrank, $userdata);
+        $res = $stmts->execute();
         $stmts->close();
         $user_id = mysqli_insert_id($conn);
         if ($user_id > 0) {
             $_SESSION['user'] = $user_id;
             if (isset($_SESSION['user'])) {
-                print_r($_SESSION);
+                //print_r($_SESSION);
                 header("Location: ../index.php");
                 exit;
             }
@@ -55,7 +59,7 @@ if (isset($_POST['signup'])) {
 ?>
 <!DOCTYPE html>
 <head>
-    <title>Login</title>
+    <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.php">
