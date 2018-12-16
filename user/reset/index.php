@@ -10,7 +10,6 @@ if (isset($_POST['reset'])) {
     $match = $res->num_rows;
     if($match > 0){
         $userData = decode_assoc($userRow['userdata']);
-        //var_dump($userRow['userdata']);
         $resarray = array (
             'resethash'     => $resethash
         );
@@ -51,7 +50,6 @@ if (isset($_GET['email'])) {
         if ($password !== $cpassword) exit('Passwords dont match');
         $password = hash('sha256', $password);
         $conn->query("UPDATE users SET password = '".$password."' WHERE email = '".$email."'");
-        //echo 'success!';
     }
     ?>
     <!DOCTYPE html>
