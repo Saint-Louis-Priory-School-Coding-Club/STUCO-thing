@@ -1,4 +1,5 @@
 <!--The page to show when you click on a post/comments. The top of the post and the "comments" should take you to this page when clicked.-->
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,6 +98,7 @@
 </head>
 
 <body>
+    <?php include '../header.php'?>
     <!-- first post will have full comments so you can see the inner workings -->
     <!-- text classes:
 < title tag broken for some reason >
@@ -135,7 +137,6 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
     </script>
     <div class="container-fluid">
         <!--full body page-->
-        <h1>stucospacito but new post owo</h1>
         <br>
         <div class="container-box rounded">
             <h1>Create a new Suggestion</h1>

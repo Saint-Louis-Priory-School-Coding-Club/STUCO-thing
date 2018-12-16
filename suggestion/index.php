@@ -298,6 +298,7 @@ Overflow (more than 400 char) is handled automatically by JS.
 </script>
 
 <body>
+    <?php include '../header.php'?>
 
 <!-- text classes:
 < title tag broken for some reason >
@@ -310,9 +311,8 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
 -->
 <div class="container-fluid">
     <!--full body page-->
-    <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
     <br>
-    <form action="/new.php" class="new-post">
+    <form action="/suggestion/new.php" class="new-post">
         <button type="submit" class="btn btn-info">New Suggestion</button>
     </form>
     <div class="post rounded" post-id="213534">
