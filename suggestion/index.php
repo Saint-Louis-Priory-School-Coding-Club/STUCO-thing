@@ -390,7 +390,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         let body_len = 2000;
         // max length for each
     </script>
-    <div class="container-fluid" ng-app="myApp">
+    <div class="container-fluid" ng-app="">
         <!--full body page-->
         <h1>stucospacito but new post owo</h1>
         <br>
@@ -409,7 +409,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                 </div>
                 <div class="form-group row">
                     <label for="flair">Select flair:</label>
-                    <select ng-change="alert('what');" ng-model="flair" required class="form-control" id="flair" name="flair">
+                    <select ng-model="flair" required class="form-control" id="flair" name="flair">
                         <option>Suggestion</option>
                         <option>Poll</option>
                         <option>Discussion</option>
@@ -419,7 +419,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                     </div>
                 <div class="form-group row">
                     <label for="exampleInputFile">File input</label>
-    				<input onchange="angular.element(this).scope().fileNameChanged(this)" ngf-max-size="20MB" ng-model="file" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    				<input ngf-max-size="20MB" ng-model="file" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     				<small id="fileHelp" class="form-text text-muted">An optional attachment to be shown below your post. Attachment will not show in preview.</small>
                 </div>
                 <div class="form-group row">
@@ -499,13 +499,17 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
             function flairChange() {
             	alert("what up");
             }
-                    angular.module('myApp', [])
-.controller('myCtrl', ['$scope', function($scope) {
-    $scope.flairChange = function() {
-        alert("lol");
-        flairChange();
-    };
-}]);
+            function executeOnChange() {
+ 				if ($(this).val() == "Poll") {
+ 					$(".vote").html("<div class=\"ux-button votecheck square rounded\" style=\"width: 30px;\"><i class=\"fas fa-check\"></i></div> <span class=\"vote-number\">0</span> <div class=\"dx-button votexed square rounded\" style=\"width: 30px;\"><i class=\"fas fa-times\"></i></div> <span class=\"x-number\">0</span></div>");
+ 				} else {
+ 					$(".vote").html("<div class=\"uv-button upvote square rounded\" style=\"width: 30px;\"><i class=\"fas fa-arrow-up\"></i></div> <span class=\"vote-number\">0</span> <div class=\"dv-button downvote square rounded\" style=\"width: 30px;\"><i class=\"fas fa-arrow-down\"></i></div>");
+                    
+ 				}
+			}
+            $(function() { // wait for DOM to be ready before trying to bind...
+ 			   $('#flair').change(executeOnChange);
+			});
             // FUNCTION MIGHT NOT BE NEEDED:
             /*
             $('.post-body').each(function() { // last resort XSS preventer
