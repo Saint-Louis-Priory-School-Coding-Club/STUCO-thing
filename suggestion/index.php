@@ -386,11 +386,11 @@ store post and comment replying to. If the comment is replying to the post direc
 list out each comment matching the post-id and comment-reply of 0. Then for each list out each comment replying to that... bla bla bla have some recursive loop thing until all comments have no replies or replies listed. idk i'm not an expert with back end
 -->
     <script>
-        let title_len = 50;
+        let title_len = 40;
         let body_len = 2000;
         // max length for each
     </script>
-    <div class="container-fluid" ng-app="">
+    <div class="container-fluid" ng-app="myApp">
         <!--full body page-->
         <h1>stucospacito but new post owo</h1>
         <br>
@@ -400,18 +400,27 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                 <div class="form-group row">
                     <label for="title">Title:</label>
                     <input ng-model="title" required maxlength=0 type="text" class="form-control form-control-lg title-form" placeholder="Title" name="title" id="title">
+                    <small class="form-text text-muted">Keep the title short, sweet, and right to the point.</small>
+                </div>
+                <div class="form-group row">
                     <label for="content">Content:</label>
-                    <textarea required maxlength=0 class="form-control content-form" rows="5" id="content" name="content"></textarea>
+                    <textarea ng-model="content" required maxlength=0 class="form-control content-form" rows="5" id="content" name="content"></textarea>
+                    <small class="form-text text-muted">Everything else goes in this box.</small>
+                </div>
+                <div class="form-group row">
                     <label for="flair">Select flair:</label>
-                    <select required class="form-control" id="flair" name="flair">
+                    <select ng-change="alert('what');" ng-model="flair" required class="form-control" id="flair" name="flair">
                         <option>Suggestion</option>
                         <option>Poll</option>
                         <option>Discussion</option>
                         <option>Meme</option>
                     </select>
+                    <small class="form-text text-muted">What type of post is this?</small>
+                    </div>
+                <div class="form-group row">
                     <label for="exampleInputFile">File input</label>
-    				<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    				<small id="fileHelp" class="form-text text-muted">An optional attachment to be shown below your post.</small>
+    				<input onchange="angular.element(this).scope().fileNameChanged(this)" ngf-max-size="20MB" ng-model="file" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    				<small id="fileHelp" class="form-text text-muted">An optional attachment to be shown below your post. Attachment will not show in preview.</small>
                 </div>
                 <div class="form-group row">
                 	<button type="submit" class="btn btn-primary">Submit</button>
@@ -423,15 +432,15 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         <div class="post container-box rounded" post-id="213534">
             <div class="row post-top">
                 <div class="col-8">
-                    <h1>{{title}} <span class="badge badge-secondary">Announcement</span></h1></div>
+                    <h1>{{title}} <span class="badge badge-secondary">{{flair}}</span></h1></div>
                 <div class="col-4 date">
                     <h5>now</h5></div>
             </div>
 
-            <h2>by <span class="author noselect" author-id="213213">Robert</span></h2>
+            <h2>by <span class="author noselect">You</span></h2>
 
             <div class="post-body-container">
-                <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
+                <p class="post-body">{{content}}</p>
             </div>
             <div class="attachment"></div>
             <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
@@ -487,62 +496,16 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                     $(this).html(newhtml); // insert them with a show more button
                 }
             });
-            $('.attachment').each(function() { // for each .attachment
-                let link = $(this).html();
-                let new_content = "";
-                if (link != "") {
-                    if (isFile(link)) { // if file exists (checks for 404) prefix is for CORS proxy
-                        let file_name = link.split("/").last().replace("%20", " ");
-                        if (file_name.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-                            new_content = "far fa-file-image";
-                        } else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
-                            new_content = "far fa-file-video";
-                        } else if (file_name.match(/\.(mp3|wav|pcm|aiff|aac|ogg|wma|flac|alac|wma)$/) != null) {
-                            new_content = "far fa-file-audio";
-                        } else if (file_name.match(/\.(doc|dot|wbk|docx|dotx|dotm|docb)$/) != null) {
-                            new_content = "far fa-file-word";
-                        } else if (file_name.match(/\.(pdf)$/) != null) {
-                            new_content = "far fa-file-pdf";
-                        } else if (file_name.match(/\.(asp|aspx|axd|asx|asmx|ashx|css|cfm|yaws|swf|html|htm|xhtml|jhtml|jsp|jspx|wss|do|action|java|js|pl|php|py|rb|xml|c|cpp|cs|exe)$/) != null) {
-                            new_content = "far fa-file-code";
-                        } else if (file_name.match(/\.(zip|rar|7z|tar)$/) != null) {
-                            new_content = "far fa-file-archive";
-                        } else if (file_name.match(/\.(pptx|pptm|ppt|potx|potm|pot|ppsx)$/) != null) {
-                            new_content = "far fa-file-powerpoint";
-                        } else if (file_name.match(/\.(csv)$/) != null) {
-                            new_content = "far fa-file-csv";
-                        } else if (file_name.match(/\.(xls|xlsm|xlsx|xltx|xlw)$/) != null) {
-                            new_content = "far fa-file-excel";
-                        } else if (file_name.match(/\.(txt|rtf|log|readme|md)$/) != null) {
-                            new_content = "far fa-file-alt";
-                        } else {
-                            new_content = "far fa-file";
-                        }
-                        new_content = "<a href=" + link + " class=\"attachment-link\" target=\"_blank\"><i class=\"" + new_content + "\"></i> " + file_name + "</a>";
-                    } else {
-                        new_content = "<a href=" + link + " class=\"attachment-link no-exist\" target=\"_blank\"><i class=\"fas fa-exclamation-circle\"></i> File does not exist!</a>";
-                    }
-
-                    $(this).html(new_content);
-                }
-
-                //doesFileExist("https://cors-proxy.htmldriven.com/?url=" + link)
-            });
-            $('.author').click(function() { //redirect for clicking comments
-                redirect = $(this).attr("author-id");
-                let link = user_format.replace("@", redirect);
-                window.location.href = link;
-            });
-            $('div.post-top').click(function() { //redirect for clicking top of post
-                redirect = $($(this).parent()).attr("post-id");
-                let link = link_format.replace("@", redirect);
-                window.location.href = link;
-            });
-            $('div.comment-c').click(function() { //redirect for clicking comments
-                redirect = $($(this).parent().parent().parent()).attr("post-id");
-                let link = link_format.replace("@", redirect);
-                window.location.href = link;
-            });
+            function flairChange() {
+            	alert("what up");
+            }
+                    angular.module('myApp', [])
+.controller('myCtrl', ['$scope', function($scope) {
+    $scope.flairChange = function() {
+        alert("lol");
+        flairChange();
+    };
+}]);
             // FUNCTION MIGHT NOT BE NEEDED:
             /*
             $('.post-body').each(function() { // last resort XSS preventer
