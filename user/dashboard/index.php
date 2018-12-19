@@ -3,9 +3,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 require_once '../../dbconnect.php';
+require_once '../../function.php';
 if (!isset($userRow)) {
     header('Location: ' . '/');
 }
+$userData = use_userdata($userRow['userdata'], $userRow['password']);
 if (isset($_GET['name'])) {
     $defval = $_GET['name'];
 } else {
@@ -15,7 +17,9 @@ if (isset($_POST['stucoshift'])) {
     $idtochange = $_POST['stucoshift'];
     $namer = $_POST['stucoshifter'];
     $stuco = $_POST['stuco'];
-    $conn->query("UPDATE users SET stuco=".$stuco." WHERE id= ".$idtochange."");
+    $userData['prevstuco'] = 1;
+    $userDatas = store_userdata($userData);
+    $conn->query("UPDATE users SET stuco=".$stuco.", userdata='".$userDatas."' WHERE id= ".$idtochange."");
     $_SESSION['stucoadd'] = $namer;
     $_SESSION['stucoadds'] = $stuco;
 }
@@ -139,7 +143,14 @@ if (isset($_POST['stucoshift'])) {
                 </div>
             </div>
             <div class="main">
-                <h2>Profile:</h2>
+                <?php
+                    foreach ($userData as $key => $val) {
+                        if ($val == $userData['key']) break;
+                        echo '
+                        <p><strong>'.$key.': </strong>'.$val.'</p>
+                        ';
+                    }
+                ?>
             </div>
         </div>
     </body>

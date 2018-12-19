@@ -6,7 +6,7 @@ if (isset($_POST['login'])) {
     $psw = mysqli_real_escape_string($conn, $_POST['password']);
     $password = hash('sha256', $psw);
     $sql = $conn->query("SELECT * FROM users WHERE email='".$username."'");
-    if ($sql) {
+    if ($sql !== FALSE) {
         $res = mysqli_fetch_array($sql, MYSQLI_ASSOC);
         if($res['password'] == $password) {
             $_SESSION['user'] = $res['id'];
@@ -30,9 +30,8 @@ if (isset($_POST['signup'])) {
         echo 'Email has already been registered';
     } else {
         $sql = $conn->query("INSERT INTO users (flname,email,password) VALUES ('".$flname."','".$email."','".$password."')");
-        $sql = $conn->query("SELECT id FROM users WHERE email = $email");
-        $res = mysqli_fetch_array($sql, MYSQLI_ASSOC);
-        $_SESSION['user'] = $res['id'];
+        $user_id = mysqli_insert_id($conn);
+        $_SESSION['user'] = $user_id;
         echo "<meta http-equiv='Refresh' content='0; url=".$address."'>";
     }
     

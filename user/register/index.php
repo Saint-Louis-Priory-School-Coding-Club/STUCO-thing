@@ -12,35 +12,31 @@ if (isset($_POST['signup'])) {
     $flname = $fname . ' ' . $lname;
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $upass = mysqli_real_escape_string($conn, $_POST['pass']);
+    $password = hash('sha256', $upass);
     $rawuserdata = array(
         'active'        => 0,
         'prevstuco'     => 0,
-        'createdon'     => time()
+        'createdon'     => time(),
+        'key'           => $password
     );
-    $userdata = encode_assoc($rawuserdata);
-    $defaultrank = 0;
-
-    $password = hash('sha256', $upass);
-
+    $userdata = store_userdata($rawuserdata);
     $stmt = $conn->prepare("SELECT email FROM users WHERE email=?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
-
     $count = $result->num_rows;
 
     if ($count == 0) {
 
-        $stmts = $conn->prepare("INSERT INTO users(flname,email,password,stuco,userdata) VALUES(?, ?, ?, ?, ?)");
-        $stmts->bind_param("sssss", $flname, $email, $password, $defaultrank, $userdata);
+        $stmts = $conn->prepare("INSERT INTO users(flname,email,password,userdata) VALUES(?, ?, ?, ?)");
+        $stmts->bind_param("ssss", $flname, $email, $password, $userdata);
         $res = $stmts->execute();
         $stmts->close();
         $user_id = mysqli_insert_id($conn);
         if ($user_id > 0) {
             $_SESSION['user'] = $user_id;
             if (isset($_SESSION['user'])) {
-                //print_r($_SESSION);
                 header("Location: ../index.php");
                 exit;
             }
