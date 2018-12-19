@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../../dbconnect.php';
 $id = $inputid;
 $posts = $conn->query("SELECT * FROM blog WHERE id =$id");
