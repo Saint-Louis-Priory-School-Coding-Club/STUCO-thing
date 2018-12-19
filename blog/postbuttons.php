@@ -32,10 +32,8 @@ if (isset($userData)) {
                         $conn->query("UPDATE blog SET downvote += 1 WHERE id = '".$id."'");
                         $userData[$id.'vote'] = 'down';
                     }
-                } else {
-                    echo 'FUCK!';
                 }
-                var_dump($userData);
+                //var_dump($userData);
             $useid = $_SESSION['user'];
     $userData = store_userdata($userData);
     $conn->query("UPDATE users SET userdata='".$userData."' WHERE id = '".$useid."'");
