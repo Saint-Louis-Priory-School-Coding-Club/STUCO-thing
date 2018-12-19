@@ -24,8 +24,7 @@ session_start();
         </div>
         <div class="content">
             <?php 
-            $pager = new Paginater;
-            $pager->paginate('ctask', 5);
+            paginate('ctask', 5);
             ?>
         </div>
         <div class="right-content">
