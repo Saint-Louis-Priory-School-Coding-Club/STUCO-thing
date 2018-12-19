@@ -57,6 +57,7 @@ function use_userdata($crypt, $key = NULL) {
         return $array;
     } else {
         $crypt = decrypt($crypt, $key);
+        //var_dump($crypt);
         $array = decode_assoc($crypt);
         return $array;
     }
