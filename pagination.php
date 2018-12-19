@@ -1,5 +1,4 @@
 <?php
-class Paginater {
     function paginate(string $dtable, $rowsperpage, $id = NULL) {
 include $_SERVER['DOCUMENT_ROOT'].'/dbconnect.php';
 switch ($dtable) {
@@ -129,31 +128,37 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $commenttotal= $commenttotal + 1;
             }
             $popularity = $post['upvote'] - $post['downvote'];
-            $cookienum = 'vote' . $id;
-            if (isset($_COOKIE[$cookienum])) {
-            $decodedcookie = json_decode($_COOKIE[$cookienum]);
-            if ($decodedcookie[0] == 'up' || $decodedcookie[0] == 'neither') {
-                $upvotecolor = $decodedcookie[1];
+            if (isset($userRow)) {
+                $userData = use_userdata($userRow['userdata'], $userRow['password']);
+            } else {
+                die('An Error has occured');
+            }
+            if (isset($userData)) {
+                if (isset($userData[$id.'vote'])) {
+                   if ($userData[$id. 'vote'] == 'up') {
+                            $upvotecolor = 'green';
+                            $downvotecolor = '#aaa';
+                   } else {
+                            $upvotecolor = '#aaa';
+                            $downvotecolor = 'red';
+                   }
+                   if (isset($userData[$id.'report'])) {
+                    $reportcolor = 'red';
+                } else {
+                    $reportcolor = 'black';
+                }
+                    
+                } elseif (isset($userData[$id.'report'])) {
+                    $reportcolor = 'red';
+                }
+                else {
+                    $upvotecolor = '#aaa';
+                    $downvotecolor = '#aaa';
+                    $reportcolor = 'black';
+                }
             } else {
                 $upvotecolor = '#aaa';
-            }
-            } else {
-                $upvotecolor = '#aaa';
-            }
-            if (isset($_COOKIE[$cookienum])) {
-                $decodedcookie = json_decode($_COOKIE[$cookienum]);
-                if ($decodedcookie[0] == 'down' || $decodedcookie[0] == 'neither') {
-                    $downvotecolor = $decodedcookie[1];
-                } else {
-                    $downvotecolor = '#aaa';
-                }
-                } else {
-                    $downvotecolor = '#aaa';
-                }
-            if(isset($_COOKIE['report'.$id])) {
-                $decodedreport = json_decode($_COOKIE['report'.$id]);
-                $reportcolor= $decodedreport[1];
-            } else {
+                $downvotecolor = '#aaa';
                 $reportcolor = 'black';
             }
             echo '
@@ -165,22 +170,16 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 <div class="post-options row">
                     <div class="vote col-sm-4">
                     <div class="square rounded" style="background: '.$upvotecolor.'; color:white; text-align:center;">
-                    <form method="POST" id="upvoteform'.$id.'">
-                    <input type="hidden" name="id" value="'.$id.'">
-                    <input type="hidden" name="votetype'.$id.'" value="up">
-                    </form>
-                    <button class="voteup" type="submit" form="upvoteform'.$id.'" name="vote'.$id.'">↑&nbsp;</button>
+                    <form method="POST" id="upvoteform'.$id.'"><input name="'.$id.'vote" type="hidden" value="up"></form>
+                    <button class="voteup" type="submit" form="upvoteform'.$id.'" value="up" name="'.$id.'votes">↑&nbsp;</button>
                     </div> '.$popularity.' <div class="square rounded" style="background: '.$downvotecolor.'; color:white; text-align:center;">
-                    <form method="POST" id="downvoteform'.$id.'">
-                    <input type="hidden" name="id" value="'.$id.'">
-                    <input type="hidden" name="votetype'.$id.'" value="down">
-                    </form>
-                    <button class="votedown" type="submit" form="downvoteform'.$id.'" name="vote'.$id.'">↓&nbsp;</button>
+                    <form method="POST" id="downvoteform'.$id.'"><input name="'.$id.'vote" type="hidden" value="down"></form>
+                    <button class="votedown" type="submit" form="downvoteform'.$id.'" value="down" name="'.$id.'votes">↓&nbsp;</button>
                     </div></div>
                     <div class="comments col-sm-4">
                     <a href="/blog/posts/'.$id.'#comment" style="text-decoration:none; color:black; hover:none; cursor:context-menu;">🗩 '.$commenttotal.' comments</a>
                     </div>';
-                    echo '<div class="report col-sm-4"><button type="submit" form="reportform'.$id.'" name="report'.$id.'" style="background: transparent; border:none; color:'.$reportcolor.'">⚐ Report</button></div>
+                    echo '<div class="report col-sm-4"><button type="submit" form="reportform'.$id.'" name="'.$id.'report" style="background: transparent; border:none; color:'.$reportcolor.'">⚐ Report</button></div>
                 </div>
             </div>';
         break;
@@ -299,31 +298,37 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $commenttotal= $commenttotal + 1;
             }
             $popularity = $post['upvote'] - $post['downvote'];
-            $cookienum = 'vote' . $id;
-            if (isset($_COOKIE[$cookienum])) {
-            $decodedcookie = json_decode($_COOKIE[$cookienum]);
-            if ($decodedcookie[0] == 'up' || $decodedcookie[0] == 'neither') {
-                $upvotecolor = $decodedcookie[1];
+            if (isset($userRow)) {
+                $userData = use_userdata($userRow['userdata'], $userRow['password']);
+            } else {
+                die('An Error has occured');
+            }
+            if (isset($userData)) {
+                if (isset($userData[$id.'vote'])) {
+                   if ($userData[$id. 'vote'] == 'up') {
+                            $upvotecolor = 'green';
+                            $downvotecolor = '#aaa';
+                   } else {
+                            $upvotecolor = '#aaa';
+                            $downvotecolor = 'red';
+                   }
+                   if (isset($userData[$id.'report'])) {
+                    $reportcolor = 'red';
+                } else {
+                    $reportcolor = 'black';
+                }
+                    
+                } elseif (isset($userData[$id.'report'])) {
+                    $reportcolor = 'red';
+                }
+                else {
+                    $upvotecolor = '#aaa';
+                    $downvotecolor = '#aaa';
+                    $reportcolor = 'black';
+                }
             } else {
                 $upvotecolor = '#aaa';
-            }
-            } else {
-                $upvotecolor = '#aaa';
-            }
-            if (isset($_COOKIE[$cookienum])) {
-                $decodedcookie = json_decode($_COOKIE[$cookienum]);
-                if ($decodedcookie[0] == 'down' || $decodedcookie[0] == 'neither') {
-                    $downvotecolor = $decodedcookie[1];
-                } else {
-                    $downvotecolor = '#aaa';
-                }
-                } else {
-                    $downvotecolor = '#aaa';
-                }
-            if(isset($_COOKIE['report'.$id])) {
-                $decodedreport = json_decode($_COOKIE['report'.$id]);
-                $reportcolor= $decodedreport[1];
-            } else {
+                $downvotecolor = '#aaa';
                 $reportcolor = 'black';
             }
             echo '
@@ -335,22 +340,16 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 <div class="post-options row">
                     <div class="vote col-sm-4">
                     <div class="square rounded" style="background: '.$upvotecolor.'; color:white; text-align:center;">
-                    <form method="POST" id="upvoteform'.$id.'">
-                    <input type="hidden" name="id" value="'.$id.'">
-                    <input type="hidden" name="votetype'.$id.'" value="up">
-                    </form>
-                    <button class="voteup" type="submit" form="upvoteform'.$id.'" name="vote'.$id.'">↑&nbsp;</button>
+                    <form method="POST" id="upvoteform'.$id.'"><input name="'.$id.'vote" type="hidden" value="up"></form>
+                    <button class="voteup" type="submit" form="upvoteform'.$id.'" value="up" name="'.$id.'votes">↑&nbsp;</button>
                     </div> '.$popularity.' <div class="square rounded" style="background: '.$downvotecolor.'; color:white; text-align:center;">
-                    <form method="POST" id="downvoteform'.$id.'">
-                    <input type="hidden" name="id" value="'.$id.'">
-                    <input type="hidden" name="votetype'.$id.'" value="down">
-                    </form>
-                    <button class="votedown" type="submit" form="downvoteform'.$id.'" name="vote'.$id.'">↓&nbsp;</button>
+                    <form method="POST" id="downvoteform'.$id.'"><input name="'.$id.'vote" type="hidden" value="down"></form>
+                    <button class="votedown" type="submit" form="downvoteform'.$id.'" value="down" name="'.$id.'votes">↓&nbsp;</button>
                     </div></div>
                     <div class="comments col-sm-4">
                     <a href="/blog/posts/'.$id.'#comment" style="text-decoration:none; color:black; hover:none; cursor:context-menu;">🗩 '.$commenttotal.' comments</a>
                     </div>';
-                    echo '<div class="report col-sm-4"><button type="submit" form="reportform'.$id.'" name="report'.$id.'" style="background: transparent; border:none; color:'.$reportcolor.'">⚐ Report</button></div>
+                    echo '<div class="report col-sm-4"><button type="submit" form="reportform'.$id.'" name="'.$id.'report" style="background: transparent; border:none; color:'.$reportcolor.'">⚐ Report</button></div>
                 </div>
             </div>';
         break;
@@ -367,5 +366,4 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 }
 }
     }
-}
 ?>

@@ -1,6 +1,8 @@
 <?php
     session_start();
     include '../dbconnect.php';
+    include '../function.php';
+    $userData = use_userdata($userRow['userdata'], $userRow['password']);
     include 'postbuttons.php';
     ?>
 <!DOCTYPE html>
@@ -16,8 +18,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include '../header.php'; ?>
-<?php
+<?php include '../header.php';
 include '../pagination.php';
 include 'content.php'?>
 </body>

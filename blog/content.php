@@ -19,7 +19,5 @@ Add
   </div>
 </div>
 <?php
-$sql = $conn->query("SELECT id FROM blog");
-$pager = new Paginater();
-$pager->paginate('blog', 5);
+paginate('blog', 5);
 ?>

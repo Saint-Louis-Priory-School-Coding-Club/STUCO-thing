@@ -145,10 +145,12 @@ if (isset($_POST['stucoshift'])) {
             <div class="main">
                 <?php
                     foreach ($userData as $key => $val) {
-                        if ($val == $userData['key']) break;
+                        if ($val == $userData['key']);
+                        else {
                         echo '
                         <p><strong>'.$key.': </strong>'.$val.'</p>
                         ';
+                        }
                     }
                 ?>
             </div>
