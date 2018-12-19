@@ -2,7 +2,7 @@
     session_start();
     include '../dbconnect.php';
     include '../function.php';
-    $userData = use_userdata($userRow['userdata'], $userRow['password']);
+    if (isset($userRow)) $userData = use_userdata($userRow['userdata'], $userRow['password']);
     include 'postbuttons.php';
     ?>
 <!DOCTYPE html>

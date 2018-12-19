@@ -131,7 +131,7 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             if (isset($userRow)) {
                 $userData = use_userdata($userRow['userdata'], $userRow['password']);
             } else {
-                die('An Error has occured');
+                //die('An Error has occured');
             }
             if (isset($userData)) {
                 if (isset($userData[$id.'vote'])) {
@@ -301,7 +301,7 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             if (isset($userRow)) {
                 $userData = use_userdata($userRow['userdata'], $userRow['password']);
             } else {
-                die('An Error has occured');
+                //die('An Error has occured');
             }
             if (isset($userData)) {
                 if (isset($userData[$id.'vote'])) {

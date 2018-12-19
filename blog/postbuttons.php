@@ -50,24 +50,24 @@ if (isset($userData)) {
     $userData = store_userdata($userData);
     $conn->query("UPDATE users SET userdata='".$userData."' WHERE id = '".$useid."'");
             }
-            
-        }
-        if (isset($_POST[$id.'report'])) {
-            $reports = $conn->query("SELECT reports FROM blog WHERE id = '".$id."'");
-            $reports = mysqli_fetch_assoc($reports);
-            $repminus = $reports['reports'] - 1;
-            $repplus = $repminus + 2;
-            if (isset($userData[$id.'report'])) {
-                $conn->query("UPDATE blog SET reports = $repminus WHERE id = '".$id."'");
-                unset($userData[$id.'report']);
-            } else {
-                $conn->query("UPDATE blog SET reports = $repplus WHERE id = '".$id."'");
-                $userData[$id.'report'] = TRUE;
+            if (isset($_POST[$id.'report'])) {
+                $reports = $conn->query("SELECT reports FROM blog WHERE id = '".$id."'");
+                $reports = mysqli_fetch_assoc($reports);
+                $repminus = $reports['reports'] - 1;
+                $repplus = $repminus + 2;
+                if (isset($userData[$id.'report'])) {
+                    $conn->query("UPDATE blog SET reports = $repminus WHERE id = '".$id."'");
+                    unset($userData[$id.'report']);
+                } else {
+                    $conn->query("UPDATE blog SET reports = $repplus WHERE id = '".$id."'");
+                    $userData[$id.'report'] = TRUE;
+                }
+                $useid = $_SESSION['user'];
+        $userData = store_userdata($userData);
+        $conn->query("UPDATE users SET userdata='".$userData."' WHERE id = '".$useid."'");
             }
-            $useid = $_SESSION['user'];
-    $userData = store_userdata($userData);
-    $conn->query("UPDATE users SET userdata='".$userData."' WHERE id = '".$useid."'");
         }
+        
     }
  else {
     $_SESSION['loginNeeded'] = TRUE;
