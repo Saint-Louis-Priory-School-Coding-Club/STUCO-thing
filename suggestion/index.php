@@ -17,6 +17,7 @@ Using Font Awesome instead of unicode, some icons look off since only some are a
 <!--
 Overflow (more than 400 char) is handled automatically by JS.
 -->
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -287,7 +288,7 @@ Overflow (more than 400 char) is handled automatically by JS.
     let link_format = "http://website.com/@"; // redirect format, replace @ with post id
     let user_format = "http://website.com/user/@" // redirect format, replace @ with user
 </script>
-
+<?php include '../header.php'?>
 <body>
 
     <!-- text classes:
