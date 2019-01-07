@@ -15,139 +15,139 @@
         body {
             background-color: #eee;
         }
-
+        
         html {
             min-width: 620px;
         }
-
+        
         .post {
             display: block;
             margin: 20px 40px;
             padding: 10px 20px;
             background: #fff;
         }
-
+        
         .post h1 {
             font-size: 40px;
             margin-bottom: 5px;
         }
-
+        
         .post h2 {
             font-size: 20px;
             color: #888;
         }
-
+        
         .post h1 span {
             font-size: 20px;
         }
-
+        
         .post .post-options *,
         .comment-options * {
             display: inline-block;
         }
-
+        
         .post .post-options {
             font-size: 20px;
             width: 100%;
             margin-bottom: 5px;
         }
-
+        
         .upvote {
             background: #eee;
             color: #ef9632;
             text-align: center;
         }
-
+        
         .upvote:hover,
         .post .downvote:hover {
             background: #ddd;
         }
-
+        
         .downvote {
             background: #eee;
             color: #7171ed;
             text-align: center;
         }
-
+        
         .upvoted {
             /* already upvoted posts. replaces the .upvote class. */
             color: #eee;
             background: #ef9632;
             text-align: center;
         }
-
+        
         .upvoted:hover {
             color: #eee;
             background: #ed8712;
             text-align: center;
         }
-
+        
         .post .downvoted {
             color: #eee;
             background: #7171ed;
             text-align: center;
         }
-
+        
         .post .downvoted:hover {
             color: #eee;
             background: #5959e5;
             text-align: center;
         }
-
+        
         .votecheck {
             background: #eee;
             color: #41e03e;
             text-align: center;
         }
-
+        
         .votecheck:hover,
         .post .votex:hover {
             background: #ddd;
         }
-
+        
         .votex {
             background: #eee;
             color: #e03c2a;
             text-align: center;
         }
-
+        
         .votechecked {
             color: #eee;
             background: #41e03e;
             text-align: center;
         }
-
+        
         .votechecked:hover {
             background: #1fc91c;
         }
-
+        
         .post .votexed {
             color: #eee;
             background: #e03c2a;
             text-align: center;
         }
-
+        
         .post .votexed:hover {
             background: #cc2c1a;
         }
-
+        
         .date {
             text-align: right;
             color: #666;
         }
-
+        
         .vote {
             text-align: left;
         }
-
+        
         .post .comments {
             text-align: center;
         }
-
+        
         .post .report {
             text-align: right;
         }
-
+        
         .noselect {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -156,7 +156,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-
+        
         .verifycheck {
             background-color: #2fc5fc;
             display: inline-block;
@@ -165,81 +165,81 @@
             font-size: 15px;
             padding: 3px;
         }
-
+        
         h1 .verifycheck {
             font-size: 20px;
             transform: translate(0px, -5px);
         }
-
+        
         .circle {
             border-radius: 50%;
         }
-
+        
         .read-more {
             margin-top: -20px;
             margin-bottom: 10px;
         }
-
+        
         .gone {
             display: none;
         }
-
+        
         .show-more-txt {
             margin-top: -15px;
         }
-
+        
         .comment-c,
         .report-c {
             border-radius: 50px;
             padding: 0 10px;
         }
-
+        
         .report-c:hover,
         .comment-c:hover {
             background-color: #ccc;
         }
-
+        
         .line {
             width: 100%;
             height: 3px;
             background-color: #ccc;
             margin: 15px 0;
         }
-
+        
         .comment {
             border-left: 3px solid #ccc;
             margin: 5px;
             padding: 5px;
             margin-bottom: 10px;
         }
-
+        
         h4 {
             font-size: 15px;
             color: grey;
         }
-
+        
         .margin {
             margin-top: 10px;
         }
-
+        
         .comment-body-container {
             word-break: break-all;
         }
-
+        
         .btn-xs {
             font-size: 12px;
         }
-
+        
         .post-body {
             word-break: break-all;
             /* If this isn't here text can overflow  I'd need to make an annoying script to cut off large words. Don't want to do that.*/
         }
-
+        
         .noastyle,
         .noastyle:hover {
             color: black;
         }
-
+        
         .nobstyle {
             background: none;
             color: inherit;
@@ -249,36 +249,36 @@
             cursor: pointer;
             outline: inherit;
         }
-
+        
         .report-submit {
             text-align: left;
         }
-
+        
         .report-close {
             text-align: right;
         }
-
+        
         .author,
         .comment-author {
             cursor: pointer;
         }
-
+        
         .author:hover,
         .comment-author:hover {
             color: #666;
         }
-
+        
         .read-more {
             font-size: 14px;
             color: #888;
         }
-
+        
         .read-more:hover {
             font-size: 14px;
             color: #666;
             text-decoration: underline;
         }
-
+        
         .alert {
             position: fixed;
             bottom: -60px;
@@ -290,19 +290,19 @@
             /* Safari */
             transition: bottom 0.5s;
         }
-
+        
         .attachment {
             margin-bottom: 10px;
         }
-
+        
         .attachment i {
             font-size: 30px;
         }
-
+        
         .attachment-link {
             color: black;
         }
-
+        
         .attachment-link:hover {
             color: #888;
             text-decoration: none;
@@ -388,7 +388,7 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                     <p class="comment-body">lol</p>
                 </div>
                 <div class="comment-options">
-                    <div class="uv-button upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-7.9k</span>
+                    <div class="uv-button upvote square rounded" style="width: 20px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">7097</span>
                     <div class="dv-button downvoted square rounded" style="width: 20px;"><i class="fas fa-arrow-down"></i></div>
                 </div>
                 <div class="comment-replies">
@@ -501,6 +501,41 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
         </div>
 
         <script>
+            function abbrNum(number, decPlaces) { // didn't write this lol
+                // 2 decimal places => 100, 3 => 1000, etc
+                decPlaces = Math.pow(10, decPlaces);
+
+                // Enumerate number abbreviations
+                var abbrev = ["k", "m", "b", "t"];
+
+                // Go through the array backwards, so we do the largest first
+                for (var i = abbrev.length - 1; i >= 0; i--) {
+
+                    // Convert array index to "1000", "1000000", etc
+                    var size = Math.pow(10, (i + 1) * 3);
+
+                    // If the number is bigger or equal do the abbreviation
+                    if (size <= number) {
+                        // Here, we multiply by decPlaces, round, and then divide by decPlaces.
+                        // This gives us nice rounding to a particular decimal place.
+                        number = Math.round(number * decPlaces / size) / decPlaces;
+
+                        // Handle special case where we round up to the next abbreviation
+                        if ((number == 1000) && (i < abbrev.length - 1)) {
+                            number = 1;
+                            i++;
+                        }
+
+                        // Add the letter for the abbreviation
+                        number += abbrev[i];
+
+                        // We are done... stop
+                        break;
+                    }
+                }
+
+                return number;
+            }
             let reported_post = 0;
 
             function report(button) {
@@ -604,6 +639,9 @@ list out each comment matching the post-id and comment-reply of 0. Then for each
                 $(this).html(newtxt);
             });
             */
+            $('.vote-number').each(function() { // for each .comment reply container
+                $(this).html(abbrNum($(this).html(), 1)); // abbreveate it to like 1.1k, fix later i lazy
+            });
             $('.comment-replies').each(function() { // for each .comment reply container
                 if ($(this).html().trim() !== "") { // if there are replies
                     $(this).addClass("margin"); // add a margin below updoot button
