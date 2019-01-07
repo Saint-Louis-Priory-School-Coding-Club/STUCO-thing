@@ -17,7 +17,6 @@ Using Font Awesome instead of unicode, some icons look off since only some are a
 <!--
 Overflow (more than 400 char) is handled automatically by JS.
 -->
-<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +33,11 @@ Overflow (more than 400 char) is handled automatically by JS.
         body {
             background-color: #eee;
         }
-
+        
         html {
             min-width: 620px;
         }
-
+        
         .post {
             display: block;
             margin: 20px 40px;
@@ -46,127 +45,127 @@ Overflow (more than 400 char) is handled automatically by JS.
             background: #fff;
             max-width: 1000px;
         }
-
+        
         .post h1 {
             font-size: 40px;
             margin-bottom: 5px;
         }
-
+        
         .post h2 {
             font-size: 20px;
             color: #888;
         }
-
+        
         .post h1 span {
             font-size: 20px;
         }
-
+        
         .post .post-options * {
             display: inline-block;
         }
-
+        
         .post .post-options {
             font-size: 20px;
             width: 100%;
             margin-bottom: 5px;
         }
-
+        
         .post .upvote {
             background: #eee;
             color: #ef9632;
             text-align: center;
         }
-
+        
         .post .upvote:hover,
         .post .downvote:hover {
             background: #ddd;
         }
-
+        
         .post .downvote {
             background: #eee;
             color: #7171ed;
             text-align: center;
         }
-
+        
         .upvoted {
             /* already upvoted posts. replaces the .upvote class. */
             color: #eee;
             background: #ef9632;
             text-align: center;
         }
-
+        
         .upvoted:hover {
             color: #eee;
             background: #ed8712;
             text-align: center;
         }
-
+        
         .post .downvoted {
             color: #eee;
             background: #7171ed;
             text-align: center;
         }
-
+        
         .post .downvoted:hover {
             color: #eee;
             background: #5959e5;
             text-align: center;
         }
-
+        
         .post .votecheck {
             background: #eee;
             color: #41e03e;
             text-align: center;
         }
-
+        
         .post .votecheck:hover,
         .post .votex:hover {
             background: #ddd;
         }
-
+        
         .post .votex {
             background: #eee;
             color: #e03c2a;
             text-align: center;
         }
-
+        
         .votechecked {
             color: #eee;
             background: #41e03e;
             text-align: center;
         }
-
+        
         .votechecked:hover {
             background: #1fc91c;
         }
-
+        
         .post .votexed {
             color: #eee;
             background: #e03c2a;
             text-align: center;
         }
-
+        
         .post .votexed:hover {
             background: #cc2c1a;
         }
-
+        
         .date {
             text-align: right;
             color: #666;
         }
-
+        
         .post .vote {
             text-align: left;
         }
-
+        
         .post .comments {
             text-align: center;
         }
-
+        
         .post .report {
             text-align: right;
         }
-
+        
         .noselect {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -174,7 +173,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             -ms-user-select: none;
             user-select: none;
         }
-
+        
         .verifycheck {
             background-color: #2fc5fc;
             display: inline-block;
@@ -183,41 +182,41 @@ Overflow (more than 400 char) is handled automatically by JS.
             font-size: 15px;
             padding: 3px;
         }
-
+        
         h1 .verifycheck {
             font-size: 20px;
             transform: translate(0px, -5px);
         }
-
+        
         .circle {
             border-radius: 50%;
         }
-
+        
         .read-more {
             margin-top: -10px;
             margin-bottom: 10px;
         }
-
+        
         .gone {
             display: none;
         }
-
+        
         .show-more-txt {
             margin-top: -15px;
             margin-bottom: 10px;
         }
-
+        
         .comment-c,
         .report-c {
             border-radius: 50px;
             padding: 0 10px;
         }
-
+        
         .report-c:hover,
         .comment-c:hover {
             background-color: #ccc;
         }
-
+        
         button {
             background: none;
             color: inherit;
@@ -227,33 +226,33 @@ Overflow (more than 400 char) is handled automatically by JS.
             cursor: pointer;
             outline: inherit;
         }
-
+        
         .post-body {
             word-wrap: break-word;
             overflow: hidden;
         }
-
+        
         .report-submit {
             text-align: left;
         }
-
+        
         .report-close {
             text-align: right;
         }
-
+        
         .post-top,
         .comment-c {
             cursor: pointer;
         }
-
+        
         .author {
             cursor: pointer;
         }
-
+        
         .author:hover {
             color: #666;
         }
-
+        
         .alert {
             position: fixed;
             bottom: -60px;
@@ -265,19 +264,19 @@ Overflow (more than 400 char) is handled automatically by JS.
             /* Safari */
             transition: bottom 0.5s;
         }
-
+        
         .attachment {
             margin-bottom: 10px;
         }
-
+        
         .attachment i {
             font-size: 30px;
         }
-
+        
         .attachment-link {
             color: black;
         }
-
+        
         .attachment-link:hover {
             color: #888;
             text-decoration: none;
@@ -288,7 +287,7 @@ Overflow (more than 400 char) is handled automatically by JS.
     let link_format = "http://website.com/@"; // redirect format, replace @ with post id
     let user_format = "http://website.com/user/@" // redirect format, replace @ with user
 </script>
-<?php include '../header.php'?>
+
 <body>
 
     <!-- text classes:
