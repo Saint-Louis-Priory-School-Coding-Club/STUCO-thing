@@ -23,7 +23,8 @@ foreach ($inifile as $key => $ind) {
         }
     }
     spl_autoload_register('my_autoloader');
-if ($_GET['url'] == 'index.php') $url = ['index'];
+if (!isset($_GET['url'])) $url = ['index'];
+elseif ($_GET['url'] == 'index.php') $url = ['index'];
 else $url = explode ('/', rtrim($_GET['url'], '/'));
 $length = sizeof($url);
 $params = $url;
