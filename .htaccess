@@ -1,2 +1,6 @@
-ErrorDocument 404 /404.php
-DirectoryIndex index.php
+RewriteEngine On
+RewriteCond %[REQUEST_FILENAME] !-d
+RewriteCond %[REQUEST_FILENAME] !-f
+RewriteCond %[REQUEST_FILENAME] !-l
+RewriteCond %{REQUEST_FILENAME} !\.(css|js|png|jpg|ico)$
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
