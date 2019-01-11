@@ -1,6 +1,3 @@
-<?php
-
-?>
 <form method="post" autocomplete="off">
 
 <div class="col-md-12">
