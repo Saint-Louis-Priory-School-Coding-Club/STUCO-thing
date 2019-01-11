@@ -46,9 +46,13 @@ if (isset($url[1]) && $params !== NULL && method_exists($controller, $url[1])) {
 elseif (isset($url[1]) && method_exists($controller, $url[1])) {
     $controller->{$url[1]}();
 }
-elseif (method_exists($controller, 'build')) {
+elseif (method_exists($controller, 'build') && !isset($url[1])) {
     $controller->build();
 }
 elseif (method_exists($controller, 'e404')) {
     $controller->e404();
+}
+else {
+    $lastresort = new View;
+    $lastresort->e404();
 }
