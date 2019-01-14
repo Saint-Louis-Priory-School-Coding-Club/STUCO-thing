@@ -17,9 +17,9 @@ foreach ($inifile as $key => $ind) {
         }else {
             $pagenotfound = new View;
             $pagenotfound->e404();
-            die();
+            //die();
             // Uncomment VVVVVV For Debuging Pages
-            //die('The file: ' . $class . ' does not exist inside of the Controllers folder <br> The file: ' . $class . ' does not exist inside of the Library folder');
+            die('The file: ' . $class . ' does not exist inside of the Controllers folder <br> The file: ' . $class . ' does not exist inside of the Library folder');
         }
     }
     spl_autoload_register('my_autoloader');
