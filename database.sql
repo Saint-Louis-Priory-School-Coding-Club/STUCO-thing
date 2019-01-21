@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2018 at 05:52 AM
+-- Generation Time: Jan 21, 2019 at 05:42 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `stuco`
 --
+CREATE DATABASE IF NOT EXISTS `stuco` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `stuco`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adminspanel`
+--
+
+CREATE TABLE `adminspanel` (
+  `id` int(11) NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `color` varchar(191) NOT NULL,
+  `icon` varchar(191) NOT NULL,
+  `message` varchar(191) NOT NULL,
+  `link` varchar(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `adminspanel`
+--
+
+INSERT INTO `adminspanel` (`id`, `name`, `color`, `icon`, `message`, `link`) VALUES
+(1, 'messages', 'primary', 'fas fa-fw fa-comment', 'new messages!', '#'),
+(2, 'tasks', 'warning', 'fas fa-fw fa-list', 'new tasks!', '#'),
+(3, 'orders', 'success', 'fas fa-fw fa-shopping-cart', 'new upvotes!', '#'),
+(4, 'tickets', 'danger', 'fas fa-fw fa-life-ring', 'new reports!', '#');
 
 -- --------------------------------------------------------
 
@@ -54,15 +81,6 @@ CREATE TABLE `blog` (
   `reports` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `blog`
---
-
-INSERT INTO `blog` (`id`, `title`, `author`, `date`, `content`, `upvote`, `downvote`, `reports`) VALUES
-(1, 'Sup', 'Me', 1544904486, 'I like to spell pizza like a sauce!', 1, 0, 0),
-(2, 'test', 'sup', 1544909202, 'hello', 0, 0, 0),
-(3, 'ARCH', 'sadfkas', 1544909330, 'lkafjsdlkf', 0, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -78,12 +96,32 @@ CREATE TABLE `ctask` (
   `suggestion_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `ctask`
+-- Table structure for table `pages`
 --
 
-INSERT INTO `ctask` (`id`, `title`, `author`, `solution`, `date`, `suggestion_id`) VALUES
-(1, 'Bonfire', 'STUCO Member', 'That is a wonderful suggestion, we will indeed have a bonfire within the next couple of years! Sorry it took so long to respond.', '1544904460', 1);
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `pageName` varchar(191) NOT NULL,
+  `pagePath` varchar(191) NOT NULL,
+  `parentId` int(11) NOT NULL DEFAULT '0',
+  `createdOn` int(11) NOT NULL,
+  `updatedOn` int(11) NOT NULL,
+  `author` varchar(191) NOT NULL,
+  `editHistory` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `pageName`, `pagePath`, `parentId`, `createdOn`, `updatedOn`, `author`, `editHistory`) VALUES
+(1, 'Blog', '/blog', 1, 0, 0, 'Admin', NULL),
+(2, 'Suggestion', '/suggestion', 2, 0, 0, 'Admin', NULL),
+(3, 'Tasks', '/tasks', 3, 0, 0, 'Admin', NULL),
+(4, 'Home', '/index', 4, 0, 0, 'Admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -98,13 +136,6 @@ CREATE TABLE `suggestion` (
   `content` text NOT NULL,
   `date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `suggestion`
---
-
-INSERT INTO `suggestion` (`id`, `title`, `author`, `content`, `date`) VALUES
-(1, 'Bonfire', 'Tariq', 'I think that we should have a bonfire because that would be pretty sick!', 1543783566);
 
 -- --------------------------------------------------------
 
@@ -139,15 +170,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `flname`, `email`, `password`, `userdata`, `profile`, `stuco`, `admin`) VALUES
-(1, 'Tariq Jassim', 'tjassim@stlprioryschool.org', '13dd4a9323285f63b3b506425f25acbba68876022801460a9995c0621dbe4af3', 'active=1,prevstuco=0,createdon=1544935314', 'http://stuco.build/profile.png', 1, 1);
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `adminspanel`
+--
+ALTER TABLE `adminspanel`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bcomments`
@@ -165,6 +195,12 @@ ALTER TABLE `blog`
 -- Indexes for table `ctask`
 --
 ALTER TABLE `ctask`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -190,6 +226,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `adminspanel`
+--
+ALTER TABLE `adminspanel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `bcomments`
 --
 ALTER TABLE `bcomments`
@@ -199,19 +241,25 @@ ALTER TABLE `bcomments`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ctask`
 --
 ALTER TABLE `ctask`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suggestion`
 --
 ALTER TABLE `suggestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tcomments`
@@ -223,7 +271,7 @@ ALTER TABLE `tcomments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
