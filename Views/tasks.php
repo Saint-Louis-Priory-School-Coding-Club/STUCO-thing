@@ -98,7 +98,7 @@ if (isset($_SESSION['user'])) {
     $id = $_SESSION['user'];
     $sql = $conn->query("SELECT * FROM users WHERE id=$id");
     $res = mysqli_fetch_array($sql, MYSQLI_ASSOC);
-    $imgurl = $res['profile'];
+    $imgurl = '/library/images/profile.png';
     echo '
     <form method="POST" id="logout"><input type="hidden" name="logout"></form>
     <h3 class="mitems">Welcome</h3>
