@@ -1,6 +1,6 @@
 # IMPORTANT!!!!!!
 
-Please update the setup.ini file to your database specifications. If you have any questions about the new system and what does what do not hesitate to contact me at tjassim@stlprioryschool.org
+Please copy the rename.me.setup.ini file and then rename it to setup.ini, and then fill it out to your database specifications. If you have any questions about the new system and what does what do not hesitate to contact me at tjassim@stlprioryschool.org
 
 # Setup
 
