@@ -173,17 +173,24 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $commenttotal= $commenttotal + 1;
             }
             $popularity = $post['upvote'] - $post['downvote'];
-            if (isset($userRow)) {
+            if (isset($_SESSION['user'])) {
+                $cidddd = $_SESSION['user'];
+                $userRow = $conn->query("SELECT * FROM users WHERE id = '".$cidddd."'") or die ($conn->error);
+                $userRow = mysqli_fetch_assoc($userRow);
                 $userData = $udatafunc->use_userdata($userRow['userdata'], $userRow['password']);
             } else {
                 //die('An Error has occured');
             }
             if (isset($userData)) {
+                //var_dump($userData);
                 if (isset($userData[$id.'vote'])) {
+                    //echo 'one step closer';
                    if ($userData[$id. 'vote'] == 'up') {
+                       //echo 'another step';
                             $upvotecolor = 'green';
                             $downvotecolor = '#aaa';
                    } else {
+                       //echo 'herm';
                             $upvotecolor = '#aaa';
                             $downvotecolor = 'red';
                    }
@@ -193,12 +200,15 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $reportcolor = 'black';
                 }
                     
-                } elseif (isset($userData[$id.'report'])) {
-                    $reportcolor = 'red';
-                }
+                } 
                 else {
+                    //echo 'wtf';
                     $upvotecolor = '#aaa';
                     $downvotecolor = '#aaa';
+                }
+                if (isset($userData[$id.'report'])) {
+                    $reportcolor = 'red';
+                } else {
                     $reportcolor = 'black';
                 }
             } else {
