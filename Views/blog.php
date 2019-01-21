@@ -49,7 +49,7 @@ if (isset($userData)) {
                 }
                 //var_dump($userData);
             $useid = $_SESSION['user'];
-    $userData = store_userdata($userData);
+    $userData = $model->store_userdata($userData);
     $conn->query("UPDATE users SET userdata='".$userData."' WHERE id = '".$useid."'");
             }
             if (isset($_POST[$id.'report'])) {
@@ -65,7 +65,7 @@ if (isset($userData)) {
                     $userData[$id.'report'] = TRUE;
                 }
                 $useid = $_SESSION['user'];
-        $userData = store_userdata($userData);
+        $userData = $model->store_userdata($userData);
         $conn->query("UPDATE users SET userdata='".$userData."' WHERE id = '".$useid."'");
             }
         }
