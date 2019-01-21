@@ -2,7 +2,7 @@
 if (!isset($userRow)) {
     header('Location: ' . '/user/login');
 }
-$functions = new UserData;
+$functions = new Userdata;
 $userData = $functions->use_userdata($userRow['userdata'], $userRow['password']);
 if (isset($_GET['name'])) {
     $defval = $_GET['name'];

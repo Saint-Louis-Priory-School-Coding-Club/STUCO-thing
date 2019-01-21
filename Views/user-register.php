@@ -1,5 +1,5 @@
 <?php
-$datafunc = new UserData;
+$datafunc = new Userdata;
 if (isset($_SESSION['user']) != "") {
     header("Location: /user/dashboard");
 }
