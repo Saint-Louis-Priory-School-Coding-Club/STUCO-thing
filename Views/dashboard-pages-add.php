@@ -146,7 +146,7 @@ if (isset($_POST['add-page'])) {
 
 require_once 'dashboard-header.php';
 ?>
-    <script src="<?php echo __URL?>/Library/JavaScript/auto-resize.js"></script>
+<script src="<?php echo __URL?>Library/JavaScript/auto-resize.js"></script>
 <style>
 .animated {
             -webkit-transition: height 0.2s;

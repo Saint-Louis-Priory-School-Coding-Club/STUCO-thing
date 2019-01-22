@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="<?php echo __URL?>Library/aPanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo __URL?>Library/aPanel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo __URL?>/Library/aPanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo __URL?>/Library/aPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="<?php echo __URL?>Library/aPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="<?php echo __URL?>Library/aPanel/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo __URL?>/Library/aPanel/css/sb-admin.css" rel="stylesheet">
     <script src="<?php echo __URL?>/Library/JavaScript/jquery-3.3.1.slim.min.js"></script>
     <script src="<?php echo __URL?>/Library/JavaScript/popper-1-14-3.min.js"></script>
     <script src="<?php echo __URL?>/Library/JavaScript/bootstrap.min.js"></script>
+    <script src="<?php echo __URL?>/Library/JavaScript/auto-resize.js"></script>
   </head>
 
   <body id="page-top">

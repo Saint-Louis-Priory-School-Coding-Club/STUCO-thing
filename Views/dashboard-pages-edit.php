@@ -18,14 +18,18 @@ $sizeOfPaths = sizeof($paths);
     } elseif ($sizeOfPaths > 3) {
         $pagePath = '/'.$paths[1].'-'.$paths[2];
     }
-$pageContent = file_get_contents('./Views'.$pagePath.'.php');
+$pageContent = htmlentities(file_get_contents('./Views'.$pagePath.'.php'));
+
 
 if (isset($_POST['edit-page'])) {
 if ($pageName !== $_POST['page-name']) $nameChanged = TRUE;
 else $nameChanged = FALSE;
 if ($pagePath !== $_POST['page-path']) $pathChanged = TRUE;
 else $pathChanged = FALSE;
-if ($pageContent !== $_POST['page-content']) $contentChanged = TRUE;
+if (html_entity_decode($pageContent) !== html_entity_decode($_POST['page-content'])) {
+    echo 'ok';
+    $contentChanged = TRUE;
+}
 else $contentChanged = FALSE;
 $pagePath = $sql['pagePath'];
 $pagePath = strtolower($pagePath);
@@ -84,8 +88,6 @@ if ($nameChanged) {
 }
 
 }
-
-
 require_once 'dashboard-header.php';
 ?>
     <script src="<?php echo __URL?>/Library/JavaScript/auto-resize.js"></script>
