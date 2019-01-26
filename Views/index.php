@@ -7,17 +7,18 @@
         <br> The <a href="/suggestions">Suggestions</a> page looks complete but has no working functions.
     </div>
     <br>
+    <h2>Priory Student Council</h2>
+      <p id="welcome">Welcome to the official Priory STUCO website!
+        <br>As your representatives, we always try to
+        <br> listen to your suggestions and come up with new
+      <br>ideas to make highschool as fun as possible.
+      <br> To help us do this, go ahead and leave a suggestion;
+      <br> or if you want you can check out the Announcements
+      <br> page to see what new events are coming up.
+     </p>
     <div class="container">
         <h4>Current STUCO Representatives:</h4>
-        <h2>Priory Student Council</h2>
-          <p id="welcome">Welcome to the official Priory STUCO website!
-            <br>As your representatives, we always try to
-            <br> listen to your suggestions and come up with new
-          <br>ideas to make highschool as fun as possible.
-          <br> To help us do this, go ahead and leave a suggestion;
-          <br> or if you want you can check out the Announcements
-          <br> page to see what new events are coming up.
-         </p>
+
         <ul>
         <li>
             <h6>Form VI</h6>
