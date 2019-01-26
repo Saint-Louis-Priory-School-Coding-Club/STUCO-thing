@@ -22,11 +22,11 @@ Overflow (more than 400 char) is handled automatically by JS.
         body {
             background-color: #eee;
         }
-        
+
         html {
             min-width: 620px;
         }
-        
+
         .post {
             display: block;
             margin: 20px 40px;
@@ -34,127 +34,127 @@ Overflow (more than 400 char) is handled automatically by JS.
             background: #fff;
             max-width: 1000px;
         }
-        
+
         .post h1 {
             font-size: 40px;
             margin-bottom: 5px;
         }
-        
+
         .post h2 {
             font-size: 20px;
             color: #888;
         }
-        
+
         .post h1 span {
             font-size: 20px;
         }
-        
+
         .post .post-options * {
             display: inline-block;
         }
-        
+
         .post .post-options {
             font-size: 20px;
             width: 100%;
             margin-bottom: 5px;
         }
-        
+
         .post .upvote {
             background: #eee;
             color: #ef9632;
             text-align: center;
         }
-        
+
         .post .upvote:hover,
         .post .downvote:hover {
             background: #ddd;
         }
-        
+
         .post .downvote {
             background: #eee;
             color: #7171ed;
             text-align: center;
         }
-        
+
         .upvoted {
             /* already upvoted posts. replaces the .upvote class. */
             color: #eee;
             background: #ef9632;
             text-align: center;
         }
-        
+
         .upvoted:hover {
             color: #eee;
             background: #ed8712;
             text-align: center;
         }
-        
+
         .post .downvoted {
             color: #eee;
             background: #7171ed;
             text-align: center;
         }
-        
+
         .post .downvoted:hover {
             color: #eee;
             background: #5959e5;
             text-align: center;
         }
-        
+
         .post .votecheck {
             background: #eee;
             color: #41e03e;
             text-align: center;
         }
-        
+
         .post .votecheck:hover,
         .post .votex:hover {
             background: #ddd;
         }
-        
+
         .post .votex {
             background: #eee;
             color: #e03c2a;
             text-align: center;
         }
-        
+
         .votechecked {
             color: #eee;
             background: #41e03e;
             text-align: center;
         }
-        
+
         .votechecked:hover {
             background: #1fc91c;
         }
-        
+
         .post .votexed {
             color: #eee;
             background: #e03c2a;
             text-align: center;
         }
-        
+
         .post .votexed:hover {
             background: #cc2c1a;
         }
-        
+
         .date {
             text-align: right;
             color: #666;
         }
-        
+
         .post .vote {
             text-align: left;
         }
-        
+
         .post .comments {
             text-align: center;
         }
-        
+
         .post .report {
             text-align: right;
         }
-        
+
         .noselect {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -162,7 +162,7 @@ Overflow (more than 400 char) is handled automatically by JS.
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         .verifycheck {
             background-color: #2fc5fc;
             display: inline-block;
@@ -171,41 +171,41 @@ Overflow (more than 400 char) is handled automatically by JS.
             font-size: 15px;
             padding: 3px;
         }
-        
+
         h1 .verifycheck {
             font-size: 20px;
             transform: translate(0px, -5px);
         }
-        
+
         .circle {
             border-radius: 50%;
         }
-        
+
         .read-more {
             margin-top: -10px;
             margin-bottom: 10px;
         }
-        
+
         .gone {
             display: none;
         }
-        
+
         .show-more-txt {
             margin-top: -15px;
             margin-bottom: 10px;
         }
-        
+
         .comment-c,
         .report-c {
             border-radius: 50px;
             padding: 0 10px;
         }
-        
+
         .report-c:hover,
         .comment-c:hover {
             background-color: #ccc;
         }
-        
+
         button {
             background: none;
             color: inherit;
@@ -215,33 +215,33 @@ Overflow (more than 400 char) is handled automatically by JS.
             cursor: pointer;
             outline: inherit;
         }
-        
+
         .post-body {
             word-wrap: break-word;
             overflow: hidden;
         }
-        
+
         .report-submit {
             text-align: left;
         }
-        
+
         .report-close {
             text-align: right;
         }
-        
+
         .post-top,
         .comment-c {
             cursor: pointer;
         }
-        
+
         .author {
             cursor: pointer;
         }
-        
+
         .author:hover {
             color: #666;
         }
-        
+
         .alert {
             position: fixed;
             bottom: -60px;
@@ -253,19 +253,19 @@ Overflow (more than 400 char) is handled automatically by JS.
             /* Safari */
             transition: bottom 0.5s;
         }
-        
+
         .attachment {
             margin-bottom: 10px;
         }
-        
+
         .attachment i {
             font-size: 30px;
         }
-        
+
         .attachment-link {
             color: black;
         }
-        
+
         .attachment-link:hover {
             color: #888;
             text-decoration: none;
@@ -277,6 +277,56 @@ Overflow (more than 400 char) is handled automatically by JS.
     let user_format = "http://website.com/user/@" // redirect format, replace @ with user
 </script>
 
+<?php
+
+$sql = $conn->query("SELECT * FROM suggestion");
+
+foreach ($sql as $ind){
+  $date = $ind['date'];
+  $title = $ind['title'];
+  $author = $ind['author'];
+  $content = $ind['content'];
+  require_once './Models/tasks_model.php';
+  $uni_time = new Tasks_model;
+  $date = $uni_time->uniToTime($date);
+
+  echo '
+  <div class="container-fluid">
+      <!--full body page-->
+      <div class="post rounded" post-id="213534">
+          <div class="row post-top">
+              <div class="col-8">
+                  <h1>'.$title.'</h1></div>
+              <div class="col-4 date">
+                  <h5>'.$date.'</h5></div>
+          </div>
+
+          <h2>by <span class="author noselect" author-id="213213">'.$author.'</span></h2>
+
+          <div class="post-body-container">
+              <p class="post-body">'.$content.'</p>
+          </div>
+          <div class="attachment"></div>
+          <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
+          <div class="post-options row noselect">
+              <div class="vote col-4">
+                  <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
+                  <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
+              </div>
+              <div class="comments col-4">
+                  <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
+              </div>
+              <div class="report col-4">
+                  <div class="report-c">
+                      <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+';
+}
+?>
 
     <!-- text classes:
 < title tag broken for some reason >
@@ -287,164 +337,7 @@ Overflow (more than 400 char) is handled automatically by JS.
 post body overflow is auto-handled, add code to prevent XSS attacks
 on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id to make the submission for reporting. kbye
 -->
-    <div class="container-fluid">
-        <!--full body page-->
-        <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
-        <br>
-        <div class="post rounded" post-id="213534">
-            <div class="row post-top">
-                <div class="col-8">
-                    <h1>Attention All Gamers <span class="badge badge-secondary">Announcement</span></h1></div>
-                <div class="col-4 date">
-                    <h5>now</h5></div>
-            </div>
 
-            <h2>by <span class="author noselect" author-id="213213">Robert</span></h2>
-
-            <div class="post-body-container">
-                <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
-            </div>
-            <div class="attachment"></div>
-            <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
-            <div class="post-options row noselect">
-                <div class="vote col-4">
-                    <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
-                    <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
-                </div>
-                <div class="comments col-4">
-                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-                </div>
-                <div class="report col-4">
-                    <div class="report-c">
-                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="post rounded" post-id="61346">
-            <div class="row post-top">
-                <div class="col-8">
-                    <h1>test <span class="badge badge-secondary">Test</span></h1></div>
-                <div class="col-4 date">
-                    <h5>2m ago</h5></div>
-            </div>
-            <h2>by <span class="author noselect" author-id="6969">memelord</span></h2>
-            <div class="post-body-container">
-                <p class="post-body">heeeeeeeerererewduysgfnisuydmhfinashgiahomsogjmewoifhoidjksfimaemiofhaeoisjfjoihfgjwg;lkjs;gkj;lghad;lskjg;lkdfjg lol despacito</p>
-            </div>
-            <div class="attachment">http://hexbugman213.net/favicon.mp3</div>
-            <div class="post-options row noselect">
-                <div class="vote col-4">
-                    <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span>
-                    <div class="dv-button downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
-                </div>
-                <div class="comments col-4">
-                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-                </div>
-                <div class="report col-4">
-                    <div class="report-c">
-                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="post rounded" post-id="01240">
-            <div class="row post-top ">
-                <div class="col-8">
-                    <h1><div class="verifycheck square circle" style="width: 30px;"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div>
-                <div class="col-4 date">
-                    <h5>2m ago</h5></div>
-            </div>
-            <h2>by <span class="author noselect" author-id="12473">Stuco guy <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></span></h2>
-            <div class="post-body-container">
-                <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p>
-            </div>
-            <div class="attachment">http://hexbugman213.net/files/TikTok%20PSA.mp4</div>
-            <div class="post-options row noselect">
-                <div class="vote col-4">
-                    <div class="ux-button votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span>
-                    <div class="dx-button votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
-                <div class="comments col-4">
-                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-                </div>
-                <div class="report col-4">
-                    <div class="report-c">
-                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="post rounded" post-id="12344">
-            <div class="row post-top">
-                <div class="col-8">
-                    <h1>fraf <span class="badge badge-secondary">Poll</span></h1></div>
-                <div class="col-4 date">
-                    <h5>2m ago</h5></div>
-            </div>
-            <h2>by <span class="author noselect" author-id="124373">guy</span></h2>
-            <div class="post-body-container">
-                <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p>
-            </div>
-            <div class="attachment">https://www.w3.org/Addressing/URL/url-spec.txt</div>
-            <div class="post-options row noselect">
-                <div class="vote col-4">
-                    <div class="ux-button votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span>
-                    <div class="dx-button votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
-                <div class="comments col-4">
-                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div>
-                </div>
-                <div class="report col-4">
-                    <div class="report-c">
-                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="alerts">
-            <div class="alert alert-clone" role="alert">
-                This is a danger alert—check it out!
-            </div>
-        </div>
-        <!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Report Post</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/action_page.php" id="report">
-                            <div class="form-group">
-                                <label for="email">Reason for Reporting:</label>
-                                <textarea name="reason" form="report" rows="4" cols="55">Enter reason here...</textarea>
-                                <input type="hidden" name="post-id" id="report-id" value="" />
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-primary report-submit" form="report">Submit</button>
-                                </div>
-                                <div class="col report-close">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
         <script>
             let reported_post = 0;
             let redirect = "";
