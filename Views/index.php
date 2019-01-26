@@ -3,6 +3,9 @@
   h1 {
     color:red;
   }
+  h2{
+    color:red;
+  }
   </style>
 </head>
 
