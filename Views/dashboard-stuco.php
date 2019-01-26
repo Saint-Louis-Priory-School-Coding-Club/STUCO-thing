@@ -9,6 +9,12 @@ if (isset($_GET['name'])) {
 } else {
     $defval = NULL;
 }
+if (isset($_SESSION['user'])) { // get information about you
+    $yourid = $_SESSION['user'];
+    $sql = $conn->query("SELECT stuco,flname FROM users WHERE id=$yourid");
+    $res = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+    $name = $res['flname'];
+}
 if (isset($_POST['stucoshift'])) {
     $idtochange = $_POST['stucoshift'];
     $namer = $_POST['stucoshifter'];
@@ -49,10 +55,10 @@ require_once 'dashboard-header.php';
                 document.getElementById('spacer').style.display = 'block';
             }
         </script>
-
+        <style>.admin-button {margin-right:10px;}</style>
         <div id="alerts" class="alert" style="display:none">
             <button class="float-right closer" type="button" onclick="closem()">X</button>
-            <h1 class="messages" id="messages"></h1>
+            <h3 class="messages" id="messages"></h3>
         </div>
         <div class="alert-spacer" id="spacer"></div>
         <?php
@@ -62,13 +68,13 @@ require_once 'dashboard-header.php';
                 if ($stuco == 1) {
                     echo "
                     <script>
-                        alertm('$names is now in STUCO!', 'success');
+                        alertm('$names is now in STUCO.', 'success');
                     </script>
                     ";
                 } else {
                     echo "
                     <script>
-                        alertm('$names is not in STUCO!', 'error');
+                        alertm('$names is no longer in STUCO', 'error');
                     </script>
                     ";
                 }
@@ -89,38 +95,41 @@ require_once 'dashboard-header.php';
                         <?php
                         if (isset($_GET['name'])) {
                             $name = $_GET['name'];
-                            $sql = $conn->query("SELECT * FROM users WHERE flname LIKE '%".$name."%'");
-                            if ($sql !== FALSE) {
-                                foreach ($sql as $ind) {
-                                    $iname = $ind['flname'];
-                                    $id = $ind['id'];
-                                    if ($ind['stuco'] == 1) {
-                                        $message = $iname . ' is not in STUCO!'
-                                        ?>
-                                        <form method="POST">
-                                            <input type="hidden" value="<?php echo $id?>" name="stucoshift">                                        <input type="hidden" value="<?php echo $id?>" name="stucoshift">
-                                            <input type="hidden" value="<?php echo $iname?>" name="stucoshifter">
-                                            <input type="hidden" value="0" name="stuco">
-                                            <button class="btn btn-danger float-right" type="submit" onclick="alertm('<?php echo $message?>', 'error')">Kick from Stuco</button>
-                                        </form>
-                                        <p><?php echo $iname?></p>
-                                        <?php
-                                    } else {
-                                        $message = $iname . ' is now in STUCO!'
-                                        ?>
-                                        <form method="POST">
-                                            <input type="hidden" value="<?php echo $id?>" name="stucoshift">                                        <input type="hidden" value="<?php echo $id?>" name="stucoshift">
-                                            <input type="hidden" value="<?php echo $iname?>" name="stucoshifter">
-                                            <input type="hidden" value="1" name="stuco">
-                                            <button class="btn btn-primary float-right" type="submit" onclick="alertm('<?php echo $message?>', 'success')">Make Stuco</button>
-                                        </form>
-                                        <p><?php echo $iname?></p>
-                                        <?php
-                                    }
+                            $sql = $conn->query("SELECT * FROM users WHERE flname LIKE '%" . $name . "%'");
+                        } else {
+                            $sql = $conn->query("SELECT * FROM users");
+                        }
+                        if ($sql !== FALSE) {
+                            foreach ($sql as $ind) {
+                                $iname = $ind['flname'];
+                                $id = $ind['id'];
+                                ?> <form method="POST"> <?php
+                                if ($ind['stuco'] == 1) {
+                                    $message = $iname . ' is now removed from STUCO.'
+                                    ?>
+
+                                        <input type="hidden" value="<?php echo $id?>" name="stucoshift">                                        <input type="hidden" value="<?php echo $id?>" name="stucoshift">
+                                        <input type="hidden" value="<?php echo $iname?>" name="stucoshifter">
+                                        <input type="hidden" value="0" name="stuco">
+                                        <button class="btn btn-danger float-right" type="submit" onclick="alertm('<?php echo $message?>', 'error')">Kick from Stuco</button>
+
+                                    <?php
+                                } else {
+                                    $message = $iname . ' is now in STUCO.'
+                                    ?>
+
+                                        <input type="hidden" value="<?php echo $id?>" name="stucoshift">                                        <input type="hidden" value="<?php echo $id?>" name="stucoshift">
+                                        <input type="hidden" value="<?php echo $iname?>" name="stucoshifter">
+                                        <input type="hidden" value="1" name="stuco">
+                                        <button class="btn btn-primary float-right" type="submit" onclick="alertm('<?php echo $message?>', 'success')">Make Stuco</button>
+
+
+                                    <?php
                                 }
-                            } else {
-                                echo '<p style="color:red"><strong>No users with that name exist</strong></p>';
+                                    ?> </form><p><?php echo $iname." (#".$id.")";if($yourid===$id){echo " (You)";}?></p><?php
                             }
+                        } else {
+                            echo '<p style="color:red"><strong>No users with that name exist</strong></p>';
                         }
                     } elseif ($userRow['stuco'] == 1){
                         
