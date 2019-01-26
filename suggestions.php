@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <!--INFO:
 I think you can also have custom html tags so there would be a post-id tag with the server's id for that post.
 THIS IS REQUIRED! I USE "post-id" FOR THE REPORTING SCRIPT!
@@ -18,7 +17,19 @@ Using Font Awesome instead of unicode, some icons look off since only some are a
 <!--
 Overflow (more than 400 char) is handled automatically by JS.
 -->
-<style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
         body {
             background-color: #eee;
         }
@@ -192,7 +203,6 @@ Overflow (more than 400 char) is handled automatically by JS.
 
         .show-more-txt {
             margin-top: -15px;
-            margin-bottom: 10px;
         }
 
         .comment-c,
@@ -253,80 +263,28 @@ Overflow (more than 400 char) is handled automatically by JS.
             /* Safari */
             transition: bottom 0.5s;
         }
-
         .attachment {
-            margin-bottom: 10px;
+        	margin-bottom:10px;
+        	margin-top: -10px;
         }
-
         .attachment i {
-            font-size: 30px;
+        	font-size:30px;
         }
-
         .attachment-link {
-            color: black;
+        	color:black;
         }
-
         .attachment-link:hover {
-            color: #888;
-            text-decoration: none;
+        	color: #888;
+        	text-decoration:none;
         }
     </style>
-
+</head>
 <script>
     let link_format = "http://website.com/@"; // redirect format, replace @ with post id
     let user_format = "http://website.com/user/@" // redirect format, replace @ with user
 </script>
 
-<?php
-
-$sql = $conn->query("SELECT * FROM suggestion");
-
-foreach ($sql as $ind){
-  $date = $ind['date'];
-  $title = $ind['title'];
-  $author = $ind['author'];
-  $content = $ind['content'];
-  require_once './Models/tasks_model.php';
-  $uni_time = new Tasks_model;
-  $date = $uni_time->uniToTime($date);
-
-  echo '
-  <div class="container-fluid">
-      <!--full body page-->
-      <div class="post rounded" post-id="213534">
-          <div class="row post-top">
-              <div class="col-8">
-                  <h1>'.$title.'</h1></div>
-              <div class="col-4 date">
-                  <h5>'.$date.'</h5></div>
-          </div>
-
-          <h2>by <span class="author noselect" author-id="213213">'.$author.'</span></h2>
-
-          <div class="post-body-container">
-              <p class="post-body">'.$content.'</p>
-          </div>
-          <div class="attachment"></div>
-          <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
-          <div class="post-options row noselect">
-              <div class="vote col-4">
-                  <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
-                  <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
-              </div>
-              <div class="comments col-4">
-                  <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
-              </div>
-              <div class="report col-4">
-                  <div class="report-c">
-                      <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-';
-}
-?>
+<body>
 
     <!-- text classes:
 < title tag broken for some reason >
@@ -337,16 +295,178 @@ foreach ($sql as $ind){
 post body overflow is auto-handled, add code to prevent XSS attacks
 on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id to make the submission for reporting. kbye
 -->
+    <div class="container-fluid">
+        <!--full body page-->
+        <h1>stucospacito<span class="glyphicon glyphicon-print"></span></h1>
+        <br>
+        <div class="post rounded" post-id="213534">
+            <div class="row post-top">
+                <div class="col-8">
+                    <h1>Attention All Gamers <span class="badge badge-secondary">Announcement</span></h1></div>
+                <div class="col-4 date">
+                    <h5>now</h5></div>
+            </div>
 
+            <h2>by <span class="author noselect" author-id="213213">Robert</span></h2>
+
+            <div class="post-body-container">
+                <p class="post-body">Attention all gamers, this website... is in grave danger and needs your help! Thanos is infecting the website with dead memes! All you need to do is remove Cedric from the GitHub repository so he can't add crap. But hurry! We haven't got much time!</p>
+            </div>
+            <div class="attachment">http://hexbugman213.net/favicon.png</div> <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
+            <div class="post-options row noselect">
+                <div class="vote col-4">
+                    <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
+                    <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
+                </div>
+                <div class="comments col-4">
+                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
+                </div>
+                <div class="report col-4">
+                    <div class="report-c">
+                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post rounded" post-id="61346">
+            <div class="row post-top">
+                <div class="col-8">
+                    <h1>test <span class="badge badge-secondary">Test</span></h1></div>
+                <div class="col-4 date">
+                    <h5>2m ago</h5></div>
+            </div>
+            <h2>by <span class="author noselect" author-id="6969">memelord</span></h2>
+            <div class="post-body-container">
+                <p class="post-body">heeeeeeeerererewduysgfnisuydmhfinashgiahomsogjmewoifhoidjksfimaemiofhaeoisjfjoihfgjwg;lkjs;gkj;lghad;lskjg;lkdfjg lol despacito</p>
+            </div>
+            <div class="post-options row noselect">
+                <div class="vote col-4">
+                    <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">-2</span>
+                    <div class="dv-button downvoted square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
+                </div>
+                <div class="comments col-4">
+                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
+                </div>
+                <div class="report col-4">
+                    <div class="report-c">
+                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post rounded" post-id="01240">
+            <div class="row post-top ">
+                <div class="col-8">
+                    <h1><div class="verifycheck square circle" style="width: 30px;"><i class="fas fa-check"></i></div> tespacito <span class="badge badge-secondary">Poll</span></h1></div>
+                <div class="col-4 date">
+                    <h5>2m ago</h5></div>
+            </div>
+            <h2>by <span class="author noselect" author-id="12473">Stuco guy <div class="verifycheck square circle" style="width: 24px;"><i class="fas fa-check"></i></div></span></h2>
+            <div class="post-body-container">
+                <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p>
+            </div>
+            <div class="post-options row noselect">
+                <div class="vote col-4">
+                    <div class="ux-button votechecked square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">432</span>
+                    <div class="dx-button votex square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">1</span></div>
+                <div class="comments col-4">
+                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
+                </div>
+                <div class="report col-4">
+                    <div class="report-c">
+                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post rounded" post-id="12344">
+            <div class="row post-top">
+                <div class="col-8">
+                    <h1>fraf <span class="badge badge-secondary">Poll</span></h1></div>
+                <div class="col-4 date">
+                    <h5>2m ago</h5></div>
+            </div>
+            <h2>by <span class="author noselect" author-id="124373">guy</span></h2>
+            <div class="post-body-container">
+                <p class="post-body">hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user hello i am a user</p>
+            </div>
+            <div class="post-options row noselect">
+                <div class="vote col-4">
+                    <div class="ux-button votecheck square rounded" style="width: 30px;"><i class="fas fa-check"></i></div> <span class="vote-number">12</span>
+                    <div class="dx-button votexed square rounded" style="width: 30px;"><i class="fas fa-times"></i></div> <span class="x-number">2</span></div>
+                <div class="comments col-4">
+                    <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">1</span> <span class="c-name">comments</span></div>
+                </div>
+                <div class="report col-4">
+                    <div class="report-c">
+                        <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alerts">
+            <div class="alert alert-clone" role="alert">
+                This is a danger alert—check it out!
+            </div>
+        </div>
+        <!-- ONLY ALLOW REPORTING FOR LOGGIN USERS -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Report Post</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/action_page.php" id="report">
+                            <div class="form-group">
+                                <label for="email">Reason for Reporting:</label>
+                                <textarea name="reason" form="report" rows="4" cols="55">Enter reason here...</textarea>
+                                <input type="hidden" name="post-id" id="report-id" value="" />
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary report-submit" form="report">Submit</button>
+                                </div>
+                                <div class="col report-close">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <script>
             let reported_post = 0;
             let redirect = "";
-            if (!Array.prototype.last) {
-                Array.prototype.last = function() {
-                    return this[this.length - 1];
-                };
-            };
+			function doesFileExist(urlToFile) {
+			    var xhr = new XMLHttpRequest();
+			    xhr.open('HEAD', urlToFile, false);
 
+			    if (xhr.status == "404") {
+			        return false;
+			    } else {
+			        return true;
+			    }
+			}
+if (!Array.prototype.last){
+    Array.prototype.last = function(){
+        return this[this.length - 1];
+    };
+};
             function closealert() {
                 $(".alert-danger").css("bottom", "-60px");
             }
@@ -382,11 +502,32 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                 reported_post = $(button.parent().parent().parent().parent()).attr("post-id");
                 $("#report-id").attr("value", reported_post);
             }
+            $('.attachment').each(function() { // for each .attachment
+    				let link = $(this).html();
+    				let new_content = "";
 
-            function isFile(pathname) {
-                return pathname.split('/').pop().indexOf('.') > -1;
-            }
+    				if (link != "") {
+    					if (doesFileExist(link)) { // if file exists (checks for 404)
+    						let file_name = link.split("/").last();
+    						if (file_name.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    							new_content = "<a href=" + link + " class=\"attachment-link\"><i class=\"far fa-file-image\"></i> " + file_name + "</a>";
 
+    						} else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
+    							new_content = "<a href=" + link + " class=\"attachment-link\"><i class=\"far fa-file-video\"></i> " + file_name + "</a>";
+    						} else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
+    							new_content = "<a href=" + link + " class=\"attachment-link\"><i class=\"far fa-file-video\"></i> " + file_name + "</a>";
+    						}
+    					} else {
+    						new_content = "<i class=\"fas fa-exclamation-circle\"></i> File does not exist!";
+    					}
+
+    					$(this).html(new_content);
+    				}
+
+    				//if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    				 //url is image
+    				//}
+            });
             $('.comment-number').each(function() { // for each .comment number
                 if ($(this).html() == "1") { // if there is exactly 1 comment
                     $(this).parent().children(".c-name").html("comment");
@@ -422,47 +563,6 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     $(this).html(newhtml); // insert them with a show more button
                 }
             });
-            $('.attachment').each(function() { // for each .attachment
-                let link = $(this).html();
-                let new_content = "";
-                if (link != "") {
-                    if (isFile(link)) { // if file exists (checks for 404) prefix is for CORS proxy
-                        let file_name = link.split("/").last().replace("%20", " ");
-                        if (file_name.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-                            new_content = "far fa-file-image";
-                        } else if (file_name.match(/\.(flv|avi|mov|mp4|mpg|mwv|3gp|asf|rm|swf)$/) != null) {
-                            new_content = "far fa-file-video";
-                        } else if (file_name.match(/\.(mp3|wav|pcm|aiff|aac|ogg|wma|flac|alac|wma)$/) != null) {
-                            new_content = "far fa-file-audio";
-                        } else if (file_name.match(/\.(doc|dot|wbk|docx|dotx|dotm|docb)$/) != null) {
-                            new_content = "far fa-file-word";
-                        } else if (file_name.match(/\.(pdf)$/) != null) {
-                            new_content = "far fa-file-pdf";
-                        } else if (file_name.match(/\.(asp|aspx|axd|asx|asmx|ashx|css|cfm|yaws|swf|html|htm|xhtml|jhtml|jsp|jspx|wss|do|action|java|js|pl|php|py|rb|xml|c|cpp|cs|exe)$/) != null) {
-                            new_content = "far fa-file-code";
-                        } else if (file_name.match(/\.(zip|rar|7z|tar)$/) != null) {
-                            new_content = "far fa-file-archive";
-                        } else if (file_name.match(/\.(pptx|pptm|ppt|potx|potm|pot|ppsx)$/) != null) {
-                            new_content = "far fa-file-powerpoint";
-                        } else if (file_name.match(/\.(csv)$/) != null) {
-                            new_content = "far fa-file-csv";
-                        } else if (file_name.match(/\.(xls|xlsm|xlsx|xltx|xlw)$/) != null) {
-                            new_content = "far fa-file-excel";
-                        } else if (file_name.match(/\.(txt|rtf|log|readme|md)$/) != null) {
-                            new_content = "far fa-file-alt";
-                        } else {
-                            new_content = "far fa-file";
-                        }
-                        new_content = "<a href=" + link + " class=\"attachment-link\" target=\"_blank\"><i class=\"" + new_content + "\"></i> " + file_name + "</a>";
-                    } else {
-                        new_content = "<a href=" + link + " class=\"attachment-link no-exist\" target=\"_blank\"><i class=\"fas fa-exclamation-circle\"></i> File does not exist!</a>";
-                    }
-
-                    $(this).html(new_content);
-                }
-
-                //doesFileExist("https://cors-proxy.htmldriven.com/?url=" + link)
-            });
             $('.author').click(function() { //redirect for clicking comments
                 redirect = $(this).attr("author-id");
                 let link = user_format.replace("@", redirect);
@@ -495,27 +595,18 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     dv.addClass("downvote");
                     originally_voted = true;
                 }
-                let xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        alert(this.responseText);
-                        let ajax_response = true;
-                        let ajax_vote = "2";
-                        if (ajax_response === false) {
-                            htmlalert("alert-danger", "Failed to upvote.");
-                            $(this).toggleClass("upvote").toggleClass("upvoted");
-                            if (originally_voted) {
-                                dv.toggleClass("downvoted").toggleClass("downvote");
-                            }
-
-                        } else {
-                            $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
-                        }
+                let ajax_response = true;
+                let ajax_vote = "420";
+                if (ajax_response === false) {
+                    htmlalert("alert-danger", "Failed to upvote.");
+                    $(this).toggleClass("upvote").toggleClass("upvoted");
+                    if (originally_voted) {
+                        dv.toggleClass("downvoted").toggleClass("downvote");
                     }
 
-                };
-                //xhttp.open("GET", "vote-response.php?post-id=" + post_clicked + "&type=upvote", true);
-                //xhttp.send();
+                } else {
+                    $(this).parent().children(".vote-number")[0].innerHTML = ajax_vote;
+                }
             });
             $('.dv-button').click(function() { //if downvote button clicked
                 let originally_voted = false;
@@ -594,5 +685,10 @@ on a div there is an attribute called "post-id". THIS IS REQUIRED. I use this id
                     $(this).parent().children(".x-number")[0].innerHTML = ajax_vote_x;
                 }
             });
+            //TODO: for me: post creation page
+            //TODO: for not me: AJAX
         </script>
     </div>
+</body>
+
+</html>
