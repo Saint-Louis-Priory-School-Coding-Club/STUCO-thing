@@ -1,4 +1,13 @@
-<div class="container-fluid">
+<head>
+  <style>
+  h1 {
+    color:red;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
     <div class="container">
         <br><br>
     <h1>Saint Louis Priory School Student Council Website <br></h1>
@@ -40,3 +49,4 @@
         </ul>
     </div>
 </div>
+</body>
