@@ -1,25 +1,11 @@
-<?php
-// base directory
-$base_dir = __DIR__;
-
-// server protocol
-$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
-
-// domain name
-$domain = $_SERVER['SERVER_NAME'];
-
-// base url
-$base_url = preg_replace("!^${doc_root}!", '', $base_dir);
-
-// server port
-$port = $_SERVER['SERVER_PORT'];
-$disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
-
-// put em all together to get the complete base URL
-$url = "${protocol}://${domain}${disp_port}${base_url}";
-
-echo $url; // = http://example.com/path/directory
-?>
+<?php function url(){
+    return sprintf(
+        "%s://%s%s",
+        isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+        $_SERVER['SERVER_NAME'],
+        $_SERVER['REQUEST_URI']
+    );
+} ?>
 <head>
   <style>
   h1 {
@@ -48,11 +34,11 @@ echo $url; // = http://example.com/path/directory
             <h6>Form VI</h6>
             <div class="table">
                 <ul id="horizontal-list">
-                <li><img src="<?php echo $url?>Library/StucoMembers/Preston.png"></li>
-                <li><img src="<?php echo $url?>Library/StucoMembers/Matthew.png"></li>
-                <li><img src="<?php echo $url?>Library/StucoMembers/Louis.png"></li>
-                <li><img src="<?php echo $url?>Library/StucoMembers/Jack.png"></li>
-                <li><img src="<?php echo $url?>Library/StucoMembers/Anthony.png"></li>
+                <li><img src="<?php echo url();?>Library/StucoMembers/Preston.png"></li>
+                <li><img src="<?php echo url();?>Library/StucoMembers/Matthew.png"></li>
+                <li><img src="<?php echo url();?>Library/StucoMembers/Louis.png"></li>
+                <li><img src="<?php echo url();?>Library/StucoMembers/Jack.png"></li>
+                <li><img src="<?php echo url();?>Library/StucoMembers/Anthony.png"></li>
                 </ul>
             </div>
         </li>
