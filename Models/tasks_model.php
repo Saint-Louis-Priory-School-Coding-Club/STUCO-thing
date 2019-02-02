@@ -3,7 +3,7 @@ class Tasks_Model extends Model{
 
     function __construct() {
         parent::__construct();
-        
+
 
     }
 
@@ -27,19 +27,19 @@ class Tasks_Model extends Model{
                         }
                     } else {
                         $date = round($ihours) . ' hours ago';
-    
+
                     }
                 }  elseif ($imins < 2) {
                     $date = round($imins) . ' minute ago';
                     } else {
-                        $date = round($imins) . ' minutes ago'; 
+                        $date = round($imins) . ' minutes ago';
                     }
             }  elseif ($isdate < 2) {
                 $date = $isdate . ' second ago';
             } else {
                 $date = $isdate . ' seconds ago';
             }
-            return $date;   
+            return $date;
         }
 
 
@@ -94,6 +94,53 @@ $result = $conn->query($sql);
 
 while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     switch ($dtable) {
+        case "suggestion":
+        foreach ($sql as $ind){
+          $date = $ind['date'];
+          $title = $ind['title'];
+          $author = $ind['author'];
+          $content = $ind['content'];
+          require_once './Models/tasks_model.php';
+          $uni_time = new Tasks_model;
+          $date = $uni_time->uniToTime($date);
+
+          echo '
+          <div class="container-fluid">
+              <!--full body page-->
+              <div class="post rounded" post-id="213534">
+                  <div class="row post-top">
+                      <div class="col-8">
+                          <h1>'.$title.'</h1></div>
+                      <div class="col-4 date">
+                          <h5>'.$date.'</h5></div>
+                  </div>
+
+                  <h2>by <span class="author noselect" author-id="213213">'.$author.'</span></h2>
+
+                  <div class="post-body-container">
+                      <p class="post-body">'.$content.'</p>
+                  </div>
+                  <div class="attachment"></div>
+                  <!--attachment for post. Simply insert link and it checks if it exists and auto makes link and such-->
+                  <div class="post-options row noselect">
+                      <div class="vote col-4">
+                          <div class="uv-button upvote square rounded" style="width: 30px;"><i class="fas fa-arrow-up"></i></div> <span class="vote-number">2</span>
+                          <div class="dv-button downvote square rounded" style="width: 30px;"><i class="fas fa-arrow-down"></i></div>
+                      </div>
+                      <div class="comments col-4">
+                          <div class="comment-c"><i class="far fa-comments"></i> <span class="comment-number">0</span> <span class="c-name">comments</span></div>
+                      </div>
+                      <div class="report col-4">
+                          <div class="report-c">
+                              <button type="button" class="nobstyle" onclick="this.blur();report(this);" data-toggle="modal" data-target="#myModal"><i class="far fa-flag"></i> Report</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        ';
+        }
+            break;    
         case "bcomments":
             $cid = htmlspecialchars($post['id']);
             $header = htmlspecialchars($post['title']);
@@ -139,16 +186,16 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         <div class="row">
         <div class="col-sm-8"><h1>'.$title.'&nbsp;</h1></div><div class="col-sm-4 date"><h5>'.$date.'</h5></div></div>
         <h2>by&nbsp;<span class="author">'.$author.'</span></h2>
-    
+
             <div class="inpost rounded">
                 <div class="row">
                 <div class="col-sm-8"><h2>'.$sugtitle.'&nbsp;</h2></div><div class="col-sm-4 date"><h6>'.$sugdate.'</h6></div></div>
-    
+
                 <h3>by&nbsp;<span class="author">'.$sugauthor.'</span></h3>
-    
+
                 <div class="inpost-body-container"><p class="inpost-body">'.$sugcontent.'<p></div>
             </div>
-        
+
         <div class="post-body-container"><p class="post-body">'.$content.'<p>
         <!--<button type="button" class="btn btn-dark read-more">Show More</button>-->
         <p class="show-more-txt"></p>
@@ -199,8 +246,8 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 } else {
                     $reportcolor = 'black';
                 }
-                    
-                } 
+
+                }
                 else {
                     //echo 'wtf';
                     $upvotecolor = '#aaa';
@@ -319,16 +366,16 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         <div class="row">
         <div class="col-sm-8"><h1>'.$title.'&nbsp;</h1></div><div class="col-sm-4 date"><h5>'.$date.'</h5></div></div>
         <h2>by&nbsp;<span class="author">'.$author.'</span></h2>
-    
+
             <div class="inpost rounded">
                 <div class="row">
                 <div class="col-sm-8"><h2>'.$sugtitle.'&nbsp;</h2></div><div class="col-sm-4 date"><h6>'.$sugdate.'</h6></div></div>
-    
+
                 <h3>by&nbsp;<span class="author">'.$sugauthor.'</span></h3>
-    
+
                 <div class="inpost-body-container"><p class="inpost-body">'.$sugcontent.'<p></div>
             </div>
-        
+
         <div class="post-body-container"><p class="post-body">'.$content.'<p>
         <!--<button type="button" class="btn btn-dark read-more">Show More</button>-->
         <p class="show-more-txt"></p>
@@ -372,7 +419,7 @@ while ($post = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 } else {
                     $reportcolor = 'black';
                 }
-                    
+
                 } elseif (isset($userData[$id.'report'])) {
                     $reportcolor = 'red';
                 }
