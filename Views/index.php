@@ -32,6 +32,9 @@
           color:red;
           font-size: 14px;
       }
+      .welcome{
+        font-size:20px;
+      }
   </style>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </head>
