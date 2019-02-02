@@ -35,6 +35,10 @@
       .welcome{
         font-size:20px;
       }
+      .longpic{
+        width:100px;
+        height:200px;
+      }
   </style>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </head>
@@ -48,8 +52,8 @@
     <p><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a> are complete.</p>
     <p>The <a href="/suggestions">Suggestions</a> page looks complete but has no working functions.</p>
     <p>Whoever originally designed this page commited a grave sin.</p>
-    <div>
-      <img src="<?php echo __URL;?>Library/Images/shield.png">
+    <div class="longpic">
+      <img src="<?php echo __URL;?>Library/Images/church1.png">
     </div>
     <h2>Priory Student Council</h2>
     <p class="welcome">Welcome to the official Priory STUCO website! As your representatives, <br />
