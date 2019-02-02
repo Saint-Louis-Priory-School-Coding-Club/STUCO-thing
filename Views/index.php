@@ -1,11 +1,3 @@
-<?php function url(){
-    return sprintf(
-        "%s://%s%s",
-        isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-        $_SERVER['SERVER_NAME'],
-        $_SERVER['REQUEST_URI']
-    );
-} ?>
 <head>
   <style>
       h1 {
@@ -58,27 +50,27 @@
     <h4>Current STUCO Representatives:</h4>
     <div class="grid">
         <div class="grid-item stuco-member">
-            <img src="<?php echo url();?>Library/StucoMembers/Preston.png">
+            <img src="<?php echo __URL;?>Library/StucoMembers/Preston.png">
             <hr>
             <p class="stuco-desc"><span class="name">Preston</span> <span class="form">Form VI</span></p>
         </div>
         <div class="grid-item stuco-member">
-            <img src="<?php echo url();?>Library/StucoMembers/Matthew.png">
+            <img src="<?php echo __URL;?>Library/StucoMembers/Matthew.png">
             <hr>
             <p class="stuco-desc"><span class="name">Matthew</span> <span class="form">Form VI</span></p>
         </div>
         <div class="grid-item stuco-member">
-            <img src="<?php echo url();?>Library/StucoMembers/Louis.png">
+            <img src="<?php echo __URL;?>Library/StucoMembers/Louis.png">
             <hr>
             <p class="stuco-desc"><span class="name">Louis</span> <span class="form">Form VI</span></p>
         </div>
         <div class="grid-item stuco-member">
-            <img src="<?php echo url();?>Library/StucoMembers/Jack.png">
+            <img src="<?php echo __URL;?>Library/StucoMembers/Jack.png">
             <hr>
             <p class="stuco-desc"><span class="name">Jack</span> <span class="form">Form VI</span></p>
         </div>
         <div class="grid-item stuco-member">
-            <img src="<?php echo url();?>Library/StucoMembers/Anthony.png">
+            <img src="<?php echo __URL;?>Library/StucoMembers/Anthony.png">
             <hr>
             <p class="stuco-desc"><span class="name">Anthony</span> <span class="form">Form VI</span></p>
         </div>
