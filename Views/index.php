@@ -47,7 +47,7 @@
     <h2>Coding Club Ramblings™</h2>
     <p><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a> are complete.</p>
     <p>The <a href="/suggestions">Suggestions</a> page looks complete but has no working functions.</p>
-    <p>Whoever originally designed this page commited a grave sin.</p>
+    <p>Whoever originally designed this page commited a grave sin™.</p>
     <div>
       <img src="<?php echo __URL;?>Library/Images/shield.png">
     </div>
