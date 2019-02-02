@@ -48,6 +48,9 @@
     <p><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a> are complete.</p>
     <p>The <a href="/suggestions">Suggestions</a> page looks complete but has no working functions.</p>
     <p>Whoever originally designed this page commited a grave sin.</p>
+    <div>
+      <img src="<?php echo __URL;?>Library/Images/shield.png">
+    </div>
     <h2>Priory Student Council</h2>
     <p class="welcome">Welcome to the official Priory STUCO website! As your representatives, <br />
       we always try to listen to your suggestions and come up with new ideas to make <br />
