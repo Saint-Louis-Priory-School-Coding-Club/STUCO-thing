@@ -23,9 +23,6 @@
         <br><br>
     <h1>Saint Louis Priory School Student Council Website</h1>
         <hr>
-        <p><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a> are complete.</p>
-        <p>The <a href="/suggestions">Suggestions</a> page looks complete but has no working functions.</p>
-        <p>Whoever originally designed this page commited a grave sin.</p>
         <h2>Priory Student Council</h2>
         <p id="welcome">Welcome to the official Priory STUCO website! As your representatives, we always try to listen to your suggestions and come up with new ideas to make highschool as fun as possible. To help us do this, go ahead and leave a suggestion; or if you want you can check out the Announcements page to see what new events are coming up.</p>
         <h4>Current STUCO Representatives:</h4>
