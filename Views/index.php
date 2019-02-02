@@ -39,7 +39,7 @@
 <body>
 <br>
   <div class="container-fluid">
-    <h1>Saint Louis Priory School Student Council Website<span class="abb"> (SLPSSCW)</span></h1>
+    <h1>Saint Louis Priory School Student Council Website<span class="abb"> (SaLPSchoStuCoW or Salpscostucow)</span></h1>
     <hr>
     <h2>Coding Club Ramblings™</h2>
     <p><a href="/tasks">Tasks</a> and the <a href="/blog">Announcements</a> are complete.</p>
